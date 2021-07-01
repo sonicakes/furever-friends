@@ -19,7 +19,7 @@
 <style>
 #navbar {
     position: sticky;
-    max-width: 100vw;
+    width: 100%;
 }
 
 ul {
