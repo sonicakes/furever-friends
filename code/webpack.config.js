@@ -66,7 +66,18 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
+      {
+        test: /\.(mov|mp4)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }  
+          }
+        ]
+      }      
     ]
   },
   resolve: {
