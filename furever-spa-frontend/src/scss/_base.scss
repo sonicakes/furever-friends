@@ -1,0 +1,134 @@
+// Base
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+
+body {
+  padding: 0;  
+  margin: 0;
+  color: var(--base-txt-color);
+  font-family: var(--base-font-family);
+  font-weight: 300;
+  background: var(--body-bg);
+  height: 100vh;
+}
+
+
+// headings ------------
+h1,h2,h3,h5,h6 {
+  margin: 0 0 .5em;
+  color: var(--heading-color);
+}
+
+// links ---------------
+a {
+  color: var(--link-color);
+}
+
+
+// app splash screen -------
+.app-splash {
+  position: fixed;
+  background: #fff;
+  color: #777;
+  display: flex;
+  left: 0;
+  top:0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  .app-logo {
+    width: 180px;
+    display: block;
+    margin-bottom: 1em;
+  }
+}
+
+
+// helper classes ---------
+.calign {
+  text-align: center;
+}
+
+.large-text {
+  font-size: 1.6em;
+}
+
+.brand-color {
+  color: var(--brand-color);
+}
+
+// generic-entry ------------
+.generic-entry {
+  box-shadow: 0px 3px 5px rgba(0,0,0,0.07);
+  border-radius: 5px;
+  margin-bottom: .5em;
+  padding: 1em;
+  background: #fff;
+}
+
+// root ---------------
+#root {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  overflow: hidden;
+}
+
+// page --------------------
+.page-content {
+  position: absolute;
+  top: var(--app-header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  padding: 1em;
+  &.no-pad {
+    padding: 0;
+  }
+}
+
+.page-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// sign in + sign up pages ----------
+.signinup-box,
+.signup-box {  
+  max-width: 320px;
+  text-align: center;
+}
+
+.signinup-logo {
+  width: 200px;
+  margin-bottom: 1em;
+}
+
+// guide page ---------------
+.guide-step {
+  padding: 1em;
+  margin: 1.5em auto;
+  max-width: 600px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// RESPONSIVE - MOBILE -------------------
+@media all and (max-width: 768px){ 
+
+  .signinup-box {
+    width: 90%;
+    max-width: none;
+  }
+}

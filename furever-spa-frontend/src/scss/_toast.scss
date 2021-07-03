@@ -1,0 +1,29 @@
+// Toast
+
+#toasts {
+  position: fixed;
+  left: 50%;  
+  top: 1em; 
+  transform: translateX(-50%); 
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+}
+
+.toast-entry {  
+  background:#fff;
+  margin: 0 auto;
+  color: #333;  
+  border-radius: 200px;
+  box-shadow: 0px 3px 25px rgba(0,0,0,0.14);
+  padding: .7em 1.3em;
+  font-size: 1em;
+  margin-bottom: .25em;
+  text-align: center;
+  transition: all .2 ease;
+  &.is-error {
+    background: rgb(212, 25, 93);
+    color:#fff;
+  }  
+}
