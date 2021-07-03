@@ -1,0 +1,28 @@
+{
+  "name": "furever-spa-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "prod": "parcel build src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@polymer/lit-element": "^0.7.1",
+    "gsap": "^3.6.0",
+    "lit-html": "^1.3.0",
+    "moment": "^2.29.1",
+    "parcel-plugin-static-files-copy": "^2.5.0",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.30.0"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ]
+}
