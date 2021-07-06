@@ -29,4 +29,9 @@
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+
+h3 {
+  font-family: 'Otomanopee One', sans-serif;
+}
 </style>

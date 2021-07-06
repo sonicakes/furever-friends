@@ -1,14 +1,18 @@
+import Vue from 'vue'
+
 // import views
-import homeView from './views/pages/home'
 import fourOFourView from './views/pages/404'
 import signinView from './views/pages/signin'
 import signupView from './views/pages/signup'
 import profileView from './views/pages/profile'
 import editProfileView from './views/pages/editProfile'
+import Matches from './components/Matches.vue'
+import Home from './components/Home.vue'
 
 // define routes
 const routes = {
-	'/': homeView,	
+	'/': Home,	
+	'/matches': Matches,
 	'404' : fourOFourView,
 	'/signin': signinView,
 	'/signup': signupView,
@@ -38,7 +42,8 @@ class Router {
 		
 		if(route){
 			// if route exists, run init() of the view
-			this.routes[window.location.pathname].init()
+			//this.routes[window.location.pathname].init()
+			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app');
 		}else{			
 			// show 404 view instead
 			this.routes['404'].init()			

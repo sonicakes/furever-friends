@@ -20,6 +20,7 @@
   }
 
   #text {
+    font-family: 'Otomanopee One', sans-serif;  
     color: white;
     position:absolute;
     top:40vh;

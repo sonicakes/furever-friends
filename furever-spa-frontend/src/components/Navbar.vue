@@ -10,7 +10,7 @@
           </li>   
         <li style="display:inline-block"><img src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
         <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused'); }">
-          <a to="settings" class="nav-item" exact>
+          <a class="nav-item" exact>
             <div class="three-cogs fa-1x">
               <i class="fa fa-cog fa-2x fa-fw spin" id="cog1"></i>
               <i class="fa fa-cog fa-1x fa-fw spin-back" id="cog2"></i>
@@ -25,8 +25,8 @@
         </li>
 
         <li style="float:right">
-          <a to="saved" class="nav-item" exact>
-            <i class="fas fa-heart" style="margin-top: 10px"></i>
+          <a href="/matches" class="nav-item" exact id="heart">
+            <i class="fas fa-heart heart" style="margin-top: 10px;scale: 1.25;"></i>
           </a>
         </li>
     </ul> 
@@ -35,20 +35,64 @@
 </template>
 
 <script>
+
+	import {matches} from '../index.js';
+
   export default {
     name: 'navbar',
+	methods: {
+            matches: () => {
+                return matches 	;
+            }
+        }
   }
 </script>
 
 <style>
 
+@keyframes heartbeat {
+  0%
+  {
+    transform: scale( 1.25 );
+  }
+  20%
+  {
+    transform: scale( 1.5 );
+  }
+  40%
+  {
+    transform: scale( 1.25 );
+  }
+  60%
+  {
+    transform: scale( 1.5 );
+  }
+  80%
+  {
+    transform: scale( 1.25 );
+  }
+  100%
+  {
+    transform: scale( 1.25 );
+  }
+}
+
 .cogs:hover .spin, .cogs:hover .spin-back {
   animation-play-state: running;
 }
 
+#heart:hover .heart {
+	animation-play-state: running;
+}
+
+.heart {
+	animation: heartbeat 1s infinite;
+	animation-play-state: paused;
+}
+
 .three-cogs {
-	 position: relative;
-   padding-top: 5px;
+	position: relative;
+    padding-top: 5px;
 }
 
 .spin {
