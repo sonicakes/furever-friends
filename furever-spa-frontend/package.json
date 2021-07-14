@@ -21,7 +21,8 @@
     "moment": "^2.29.1",
     "npm": "^7.19.1",
     "parcel-plugin-static-files-copy": "^2.5.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
