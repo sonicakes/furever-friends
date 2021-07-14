@@ -310,7 +310,7 @@ customElements.define('fur-app-header', class AppHeader extends LitElement {
               </div>
             </a>
           </li>   
-        <li style="display:inline-block"><img src="/images/video.mp4" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
+        <li style="display:inline-block"><img src="/images/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
         <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused'); }">
           <a to="settings" class="nav-item" exact>
             <div class="three-cogs fa-1x">

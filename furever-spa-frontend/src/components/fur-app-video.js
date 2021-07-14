@@ -29,8 +29,8 @@ customElements.define('fur-app-video', class AppVideo extends LitElement {
     </style> 
     
     <div>
-    <video controls autoplay muted loop id="myVideo">
-        <source src="https://git.heroku.com/furever-friends-backend.git/video.mp4" type="video/mp4">
+    <video loop="true" autoplay="autoplay" muted="true" id="myVideo">
+        <source src="/images/video.mp4" type="video/mp4">
     </video>
     <h1 id="text">Find your pawfect match</h1>
     </div>
