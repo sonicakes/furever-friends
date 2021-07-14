@@ -33,7 +33,7 @@ class HomeView {
       </div>
      
     `
-    // render(template, App.rootEl)
+    render(template, App.rootEl)
   }
 }
 
