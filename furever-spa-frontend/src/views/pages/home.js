@@ -19,8 +19,9 @@ class HomeView {
       
 
       <div class="page-content">
-
+      <div>
       <fur-app-video></fur-app-video>
+      </div>
       
         <h1 class="anim-in">Hey ${Auth.currentUser.firstName}</h1>
 
