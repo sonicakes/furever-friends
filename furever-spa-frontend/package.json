@@ -15,35 +15,15 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "@polymer/lit-element": "^0.7.1",
-    "@vue/cli": "^4.5.13",
     "gsap": "^3.6.0",
-<<<<<<< HEAD
-    "jquery": "^3.6.0",
-=======
     "install": "^0.13.0",
->>>>>>> StevenSPA
     "lit-html": "^1.3.0",
-    "lodash.camelcase": "^4.3.0",
     "moment": "^2.29.1",
-<<<<<<< HEAD
-    "node-sass": "^6.0.1",
-    "parcel-plugin-static-files-copy": "^2.5.0",
-    "scss": "^0.2.4",
-    "vue": "^2.6.14",
-    "vue-slick-carousel": "^1.0.6",
-    "vueify": "^9.4.1"
-=======
     "npm": "^7.19.1",
     "parcel-plugin-static-files-copy": "^2.5.0",
-    "scss": "^0.2.4",
-    "vue": "^2.6.14",
-    "vue-hot-reload-api": "^2.3.4",
-    "vue-loader": "^16.3.0",
-    "vue-template-compiler": "^2.6.14"
->>>>>>> StevenSPA
+    "scss": "^0.2.4"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.2.2",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.35.1"
   },

@@ -8,7 +8,7 @@ class App {
     this.name = "Furever"
     this.version = "1.0.0"
     this.apiBase = 'http://localhost:3000'
-    this.rootEl =  
+    this.rootEl =  document.getElementById("root")
     this.version = "1.0.0"
   }
   
@@ -20,10 +20,10 @@ class App {
     
     Router.init()
     // Authentication check    
-    // Auth.check(() => {
-    //   // authenticated! init Router
-    //   Router.init()
-    // })    
+    Auth.check(() => {
+      // authenticated! init Router
+      Router.init()
+    })    
   }
 }
 
