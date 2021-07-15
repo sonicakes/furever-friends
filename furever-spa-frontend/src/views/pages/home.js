@@ -14,15 +14,12 @@ class HomeView {
 
   render(){
     const template = html`
+      <fur-app-header title="Home" user=${JSON.stringify(Auth.currentUser)}></fur-app-header>
       
-      <fur-app-header title="Profile" user="${JSON.stringify(Auth.currentUser)}"></fur-app-header>
-      
-
       <div class="page-content">
-      <div>
+
       <fur-app-video></fur-app-video>
-      </div>
-      
+
         <h1 class="anim-in">Hey ${Auth.currentUser.firstName}</h1>
 
         <h3>Button example:</h3>
