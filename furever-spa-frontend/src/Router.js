@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+
 // import views
 import fourOFourView from './views/pages/404'
 import signinView from './views/pages/signin'

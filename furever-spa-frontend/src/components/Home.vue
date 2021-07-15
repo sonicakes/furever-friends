@@ -1,9 +1,9 @@
 <template>
-  <div id="home" class="small-container">
+  <div id="home" class="small-container" padding-bottom="50px">
     <navbar></navbar>    
     <frontVideo/>
     <carousel/>
-    <div style="width: 100%;text-align: center;">
+    <div style="width: 100%; text-align: center;">
       <button>Find a Match</button>
     </div>
     <blueFooter></blueFooter>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  import {updateUser} from '../UserAPI.js';
   import navbar from './Navbar.vue'
   import carousel from './Image-Carousel.vue'
   import frontVideo from './Video.vue'

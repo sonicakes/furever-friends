@@ -1,6 +1,10 @@
 <template>
-  <div id="home" class="small-container">
-    <navbar/>        
+  <div id="home" class="small-container" style="  position: relative;
+  min-height: 100vh;">
+  <div id="content-wrap" style="padding-bottom: 2.5rem; ">
+      <navbar/>
+      <matchesCards/>        
+    </div>
     <blueFooter/>
   </div>
 </template>
@@ -8,11 +12,13 @@
 <script>
   import navbar from './Navbar.vue'
   import blueFooter from './Footer.vue'
+  import matchesCards from './Matches-Cards.vue'
 
   export default {
     name: 'matches',
     components: {
       navbar,
+      matchesCards,
       blueFooter
     },
   }
@@ -21,7 +27,9 @@
 
 <style>
   #home {
+    min-height: 100vh;
     background-color: #EBDAD1;
+    overflow: hidden;
   }
 
   button {

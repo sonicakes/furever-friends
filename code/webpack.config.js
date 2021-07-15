@@ -37,6 +37,20 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          transformAssetUrls: {
+            video: ['src', 'poster'],
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href',
+            'b-avatar': 'src',
+            'b-img': 'src',
+            'b-img-lazy': ['src', 'blank-src'],
+            'b-card': 'img-src',
+            'b-card-img': 'src',
+            'b-card-img-lazy': ['src', 'blank-src'],
+            'b-carousel-slide': 'img-src',
+            'b-embed': 'src'
+          },
           loaders: {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.

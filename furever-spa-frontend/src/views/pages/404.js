@@ -1,6 +1,7 @@
 import App from './../../App'
 import {html, render } from 'lit-html'
 
+
 class FourOFourView{
   init(){
     console.log('FourOFourView.init')    

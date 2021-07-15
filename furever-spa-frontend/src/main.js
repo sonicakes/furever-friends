@@ -7,12 +7,13 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(FontAwesomeIcon)
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue) 
 Vue.use(VueSlickCarousel)
 
 
@@ -20,5 +21,8 @@ Vue.use(VueSlickCarousel)
   const app = new Vue({
     el: '#root',
     router,
-    render: h => h(Home)
+    render: h => h(Home),
+    data() {
+      images: []
+    },
   }); 

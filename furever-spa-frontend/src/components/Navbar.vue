@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="navbar">
     <ul style='background-color: rgb(255, 253, 232);'>
           <li style="cursor: pointer;" onclick="$('.navTrigger').toggleClass('active');">
@@ -31,24 +32,45 @@
         </li>
     </ul> 
   </div>
-
+  <div id="logo">
+	  
+  </div>
+</div>
 </template>
 
 <script>
 
 	import {matches} from '../index.js';
 
-  export default {
-    name: 'navbar',
-	methods: {
+	export default {
+ 	   name: 'navbar',
+		methods: {
             matches: () => {
                 return matches 	;
             }
         }
-  }
+    }
 </script>
 
 <style>
+
+#logo {
+	width: 100vw;
+	margin: auto;
+	position: fixed;
+}
+
+ul li:hover > ul {
+	display:inherit;
+}
+	
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+	width:170px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
 
 @keyframes heartbeat {
   0%
