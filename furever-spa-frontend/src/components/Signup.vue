@@ -1,4 +1,6 @@
 <template>
+<div>
+    <img src="https://images.unsplash.com/photo-1415369629372-26f2fe60c467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" height="100vh">
   <div class="page-content page-centered">      
         <div class="signinup-box">
         <img class="signinup-logo" src="../assets/logo.png">
@@ -20,6 +22,7 @@
           </sl-form>
           <p>Have an account? <a href="/signin">Sign In</a></p>
         </div>
+      </div>
       </div>
 </template>
 
