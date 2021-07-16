@@ -3,6 +3,7 @@
   min-height: 100vh;">
   <div id="content-wrap" style="padding-bottom: 2.5rem; ">
       <navbar/>
+      <div>{{ currentUser }}</div>
       <matchesCards/>        
     </div>
     <blueFooter/>
@@ -10,12 +11,18 @@
 </template>
 
 <script>
+  import * as Auth from '../Auth.js'
   import navbar from './Navbar.vue'
   import blueFooter from './Footer.vue'
   import matchesCards from './Matches-Cards.vue'
 
   export default {
     name: 'matches',
+    data() {
+      return {
+        currentUser: `${Auth.currentUser}`
+      }
+    },
     components: {
       navbar,
       matchesCards,

@@ -10,7 +10,7 @@ class Auth {
     this.currentUser = {}
   }
   
-  async signUp(userData, fail = false){  
+  async signUp(userData, fail = false) {  
     const response = await fetch(`${App.apiBase}/user`, {
       method: 'POST',      
       body: userData

@@ -9,14 +9,16 @@ import profileView from './views/pages/profile'
 import editProfileView from './views/pages/editProfile'
 import Matches from './components/Matches.vue'
 import Home from './components/Home.vue'
+import Signin from './components/Signin.vue'
+import Signup from './components/Signup.vue'
 
 // define routes
 const routes = {
 	'/': Home,	
 	'/matches': Matches,
 	'404' : fourOFourView,
-	'/signin': signinView,
-	'/signup': signupView,
+	'/signin': Signin,
+	'/signup': Signup,
 	'/profile': profileView,
 	'/editProfile': editProfileView	
 }
