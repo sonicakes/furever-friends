@@ -17,11 +17,8 @@
 </template>
 
 <script>
-import * as Auth from '../Auth.js'
+import Auth from '../Auth.js'
 export default {
-    data: {
-
-    },
     methods: {
         signInSubmitHandler: function(event) {
             event.preventDefault()
