@@ -18,7 +18,7 @@ class HomeView {
       
       <div class="page-content">
       <div><fur-app-video/></div>
-      <div><fur-app-image-carousel/></div>
+      <div><fur-app-slider/></div>
         
       <div>
         <h1 class="anim-in">Hey ${Auth.currentUser.firstName}</h1>
