@@ -17,9 +17,10 @@ class HomeView {
       <fur-app-header title="Home" user=${JSON.stringify(Auth.currentUser)}></fur-app-header>
       
       <div class="page-content">
-
-      <fur-app-video></fur-app-video>
-
+      <div><fur-app-video/></div>
+      <div><fur-app-image-carousel/></div>
+        
+      <div>
         <h1 class="anim-in">Hey ${Auth.currentUser.firstName}</h1>
 
         <h3>Button example:</h3>
@@ -27,7 +28,10 @@ class HomeView {
         <p>&nbsp;</p>
         <h3>Link example</h3>
         <a href="/profile" @click=${anchorRoute}>View Profile</a>
-        
+      </div>
+
+      <div><fur-app-footer/></div>
+      
       </div>
      
     `

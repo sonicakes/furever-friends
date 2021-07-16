@@ -3,7 +3,7 @@ import {anchorRoute, gotoRoute} from '../Router'
 import Auth from '../Auth'
 import App from '../App'
 
-customElements.define('fur-app-footer', class AppVideo extends LitElement {
+customElements.define('fur-app-footer', class AppFooter extends LitElement {
   constructor(){
     super()    
   }

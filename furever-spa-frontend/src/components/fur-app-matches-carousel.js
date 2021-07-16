@@ -3,7 +3,7 @@ import {anchorRoute, gotoRoute} from '../Router'
 import Auth from '../Auth'
 import App from '../App'
 
-customElements.define('fur-app-matches-carousel', class AppVideo extends LitElement {
+customElements.define('fur-app-matches-carousel', class AppMatche extends LitElement {
   constructor(){
     super()    
   }
@@ -12,6 +12,22 @@ customElements.define('fur-app-matches-carousel', class AppVideo extends LitElem
 
   render(){    
     return html`
+    <style>
+    #home {
+      min-height: 100vh;
+      background-color: #EBDAD1;
+      overflow: hidden;
+    }
+  
+    button {
+      background-color: #FFFBF8;
+      border-radius: 40px;
+      height: 5vh;
+      width: 10vw;
+      border-color: #f2a2b1;
+      margin-bottom: 30px;
+    }
+    </style>
 
     <div id="home" class="small-container" style="  position: relative;
     min-height: 100vh;">
@@ -22,3 +38,6 @@ customElements.define('fur-app-matches-carousel', class AppVideo extends LitElem
       </div>
       <blueFooter/>
     </div>
+`
+  }
+})

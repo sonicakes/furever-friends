@@ -15,7 +15,7 @@ customElements.define('fur-app-video', class AppVideo extends LitElement {
     <style>
     #myVideo {
         position:static;
-        width: 100%;
+        width: 100vw;
     }
 
     #text {
