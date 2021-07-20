@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="small-container" padding-bottom="50px">
+  <div id="home" class="small-container" padding-bottom="50px" >
     <navbar></navbar>    
     <frontVideo/>
     <carousel/>
@@ -30,6 +30,7 @@
 
 <style>
   #home {
+    position: relative;
     background-color: #EBDAD1;
   }
 

@@ -177,7 +177,7 @@ customElements.define('fur-app-header', class AppHeader extends LitElement {
     </header>
 
     <sl-drawer class="app-side-menu" placement="left">
-      <img class="app-side-menu-logo" src="/images/logo.svg">
+      <img class="app-side-menu-logo" src="/images/logo.png">
       <nav class="app-side-menu-items">
         <a href="/" @click="${this.menuClick}">Home</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
