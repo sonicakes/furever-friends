@@ -11,11 +11,16 @@ import Matches from './components/Matches.vue'
 import Home from './components/Home.vue'
 import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
+import { parseTwoDigitYear } from 'moment'
+import addPet from './components/add-pet.vue'
+
+
 
 // define routes
 const routes = {
 	'/': Home,	
 	'/matches': Matches,
+	'/add': addPet,
 	'404' : fourOFourView,
 	'/signin': Signin,
 	'/signup': Signup,
