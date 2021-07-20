@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const router = express.Router()
 const User = require('./../models/User')
+const Pet = require('./../models/Pet')
 const Utils = require('./../utils')
 const jwt = require('jsonwebtoken')
 
