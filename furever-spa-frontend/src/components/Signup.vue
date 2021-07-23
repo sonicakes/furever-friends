@@ -1,5 +1,4 @@
 <template>
-<div>
     <div class="row">
         <div class="col">
             <img src="https://images.unsplash.com/photo-1415369629372-26f2fe60c467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" style="height: 100vh;">
@@ -11,16 +10,16 @@
                 <h1>Sign Up</h1>
                 <sl-form class="form-signup" v-on:sl-submit.prevent="signUpSubmitHandler">
                     <div class="input-group">
-                    <sl-input name="firstName" type="text" placeholder="First Name" required></sl-input>
+                        <sl-input name="firstName" type="text" placeholder="First Name" required></sl-input>
                     </div>
                     <div class="input-group">
-                    <sl-input name="lastName" type="text" placeholder="Last Name" required></sl-input>
+                        <sl-input name="lastName" type="text" placeholder="Last Name" required></sl-input>
                     </div>
-                    <div class="input-group">
-                    <sl-input name="email" type="email" placeholder="Email" required></sl-input>
+                    <div class="input-group">  
+                        <sl-input name="email" type="email" placeholder="Email" required></sl-input>
                     </div>
-                    <div class="input-group">
-                    <sl-input name="password" type="password" placeholder="Password" required toggle-password></sl-input>
+                    <div class="input-group">   
+                        <sl-input name="password" type="password" placeholder="Password" required toggle-password></sl-input>
                     </div>            
                     <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Sign Up</sl-button>
                 </sl-form>
@@ -28,8 +27,7 @@
                 </div>
             </div>
         </div>
-    </div>
-      </div>
+    </div> 
 </template>
 
 <script>

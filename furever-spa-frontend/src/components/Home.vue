@@ -28,7 +28,7 @@
 
 </script>
 
-<style>
+<style scoped>
   #home {
     position: relative;
     background-color: #EBDAD1;

@@ -52,7 +52,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 
 #logo {
 	width: 100vw;
