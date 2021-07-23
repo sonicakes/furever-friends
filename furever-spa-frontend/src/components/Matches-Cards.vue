@@ -1,33 +1,25 @@
 <template>
-    <div id="main" style="padding: 50px; padding-top: 118px;" class="align" min-height="100vh">
-        <div class="grid">
-            <div class="masonry js-masonry js-images-loaded">
-                <li v-for="image in images" :key="image" style="list-style: none; margin: auto;">   
-                    <div class="masonry__item js-masonry-item">
-                        <figure>
-                            <picture>
-                                <img 
-                                    slot="image" 
-                                    :src="image"
-                                    alt="A kitten walks towards camera on top of pallet."
-                                    width="100%"
-                                >
-                                <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
-                            </picture>
-                        </figure>
-                    </div>
-                </li>
-            </div>
-        </div>    
+    <div id="main" style="padding: 50px; padding-top: 118px; columns: 250px; column-gap: 20px; " min-height="100vh">
+        <article>
+        <li v-for="image in images" :key="image" style="list-style: none; margin: auto;">
+                <img 
+                  slot="image" 
+                  :src="image"
+                  alt="A kitten walks towards camera on top of pallet."
+                  width="100%"
+                >
+                <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
+        </li>
+        </article>
     </div>
-</template> 
+</template>
 
 <script>
 export default {
     name: 'matchesCards',
     data: function() {
         return {
-            images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-4.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')]
+            images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')]
             // images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg')]
         };
     }
@@ -35,8 +27,26 @@ export default {
 </script>
 
 <style scoped>
+    * {
+	box-sizing: border-box;
+}
 
+    img {
+      width: 100%;
+    }
 
+article {
+	column-width: 13em;
+	column-gap: 0.5em;
+}
+
+section {
+	display: inline-block;
+	margin:  0.25rem;
+	padding:  1rem;
+	width:  100%; 
+	border: 0.1em solid black;
+}
     .matchClick {
         animation-play-state: running !important;
         transition: background 1s steps(28) !important;
@@ -47,7 +57,8 @@ export default {
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
     width: 100px;
-    height: 100px;  
+    height: 100px;
+    top: 25px;  
     position: relative;
     left: 50%;
     right: 50%;

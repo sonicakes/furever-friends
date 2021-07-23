@@ -21,7 +21,7 @@ class ProfileView {
           <sl-avatar style="--size: 200px; margin-bottom: 1em;" image=${(Auth.currentUser && Auth.currentUser.avatar) ? `${App.apiBase}/images/${Auth.currentUser.avatar}` : ''}></sl-avatar>
         `:html`
         <sl-avatar style="--size: 200px; margin-bottom: 1em;"></sl-avatar>
-        `}
+        `} l
         <h2>${Auth.currentUser.firstName} ${Auth.currentUser.lastName}</h2>
         <p>${Auth.currentUser.email}</p>
         

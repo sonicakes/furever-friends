@@ -29,7 +29,7 @@ class SignUpView{
     const template = html`      
       <div class="page-content page-centered">      
         <div class="signinup-box">
-        <img class="signinup-logo" src="/images/logo.svg">
+        <img class="signinup-logo" src="/images/logo.png">
           <h1>Sign Up</h1>
           <sl-form class="form-signup" @sl-submit=${this.signUpSubmitHandler}>
             <div class="input-group">
