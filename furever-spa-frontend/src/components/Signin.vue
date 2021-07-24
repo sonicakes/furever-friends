@@ -7,22 +7,25 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Welcome back!</h3>
-                <form class="form-signup dark-theme" v-on:submit="signInSubmitHandler">          
+                <h3 class="login-heading mb-4">Login to Furever Friends</h3>
+                <sl-form class="form-signup dark-theme" v-on:sl-submit="signInSubmitHandler">          
                   <div class="form-label-group">
-                    <sl-input id="email" name="email" type="email" placeholder="Email address" required autofocus></sl-input>
+                    <sl-input name="email" type="email" placeholder="Email" required></sl-input>
                   </div>
                   <div class="form-label-group">
                     <sl-input name="password" type="password" placeholder="Password" required toggle-password></sl-input>
                   </div>
+
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">Remember password</label>
                   </div>
-                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" STYLE="width: 100%">Sign in</button>
-                  <div class="text-center">
-                    <a class="small" href="#">Forgot password?</a></div>
-                </form>
+
+                  <sl-button class="submit-btn" type="primary" submit style="width: 100%;">Sign In</sl-button>
+                    <div class="text-center">
+                      <a class="small" href="/signup">No Account? Sign Up</a>
+                    </div>
+                </sl-form>
               </div>
             </div>
           </div>
@@ -30,29 +33,6 @@
       </div>
     </div>
   </div>
-
-
-
-<!-- 
-
-
-
-
-  <div class="page-content page-centered">
-    <div class="signinup-box">
-      <img class="signinup-logo" src="../assets/logo.png">          
-      <sl-form class="form-signup dark-theme" v-on:sl-submit="signInSubmitHandler">          
-        <div class="input-group">
-          <sl-input name="email" type="email" placeholder="Email" required></sl-input>
-        </div>
-        <div class="input-group">
-          <sl-input name="password" type="password" placeholder="Password" required toggle-password></sl-input>
-        </div>
-        <sl-button class="submit-btn" type="primary" submit style="width: 100%;">Sign In</sl-button>
-      </sl-form>
-      <p>No Account? <a href="/signup">Sign Up</a></p>
-    </div>
-  </div> -->
 </template>
 
 <script>
@@ -75,7 +55,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
+/* https://jsfiddle.net/StartBootstrap/efvg9j7a/ */
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: 0.75rem;

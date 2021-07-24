@@ -20,10 +20,10 @@ class App {
     
     Router.init()
     // Authentication check    
-    // Auth.check(() => {
-    //   // authenticated! init Router
-    //   Router.init()
-    // })    
+    Auth.check(() => {
+      // authenticated! init Router
+      Router.init()
+    })    
   }
 }
 

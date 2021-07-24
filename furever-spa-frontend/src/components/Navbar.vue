@@ -20,7 +20,7 @@
         </li>
 
         <li style="float:right">
-          <a to="login" class="nav-item" exact>
+          <a href="/profile" class="nav-item" exact>
             <i class="fas fa-user" style="margin-top: 10px"></i>
           </a>
         </li>
