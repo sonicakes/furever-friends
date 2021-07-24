@@ -55,19 +55,19 @@ class Auth {
     Toast.show(`Welcome  ${data.user.firstName}`)
     // save access token (jwt) to local storage
     localStorage.setItem('accessToken', data.accessToken)
+    localStorage.setItem('user', JSON.stringify(data.user))
     // set current user
     this.currentUser = data.user      
-    // console.log(this.currentUser)           
+    console.log(this.currentUser)           
     // redirect to home
-    Router.init()
-    gotoRoute('/')
+    window.location.href = '/';
   }
 
 
   async check(success){
-    // show splash screen while loading ...   
-    render(splash, App.rootEl)
     
+    console.log(localStorage)
+
     // check local token is there
     if(!localStorage.accessToken){
       // no local token!

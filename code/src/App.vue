@@ -24,7 +24,7 @@
   
 </script>
 
-<style>
+<style scoped>
   #app {
     background-color: #EBDAD1;
   }

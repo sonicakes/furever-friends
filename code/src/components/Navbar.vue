@@ -16,7 +16,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 #navbar {
     position: sticky;
     width: 100%;

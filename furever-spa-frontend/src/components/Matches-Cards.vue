@@ -1,6 +1,27 @@
 <template>
-    <div id="main" style="padding: 50px; padding-top: 118px; columns: 250px; column-gap: 20px; " min-height="100vh">
+    <div id="main" style="padding: 50px; padding-top: 118px; columns: 200px; column-gap: 20px; " min-height="100vh">
+        <vue-flex-waterfall
+            class="custom-class"
+            :col="5"
+            :col-spacing="15"
+            :break-at="breakAt"
+            :break-by-container="true"
+            @order-update="onOrderUpdate"
+            style="align-content: center;"
+        >
+            <div
+                class="item"
+                v-for="image in images"
+                :key="image"
+                :style="{ height: `${image.h}px` }"
+            >
+                Item here
+          </div>
+        </vue-flex-waterfall>
+
+
         <article>
+
         <li v-for="image in images" :key="image" style="list-style: none; margin: auto;">
                 <img 
                   slot="image" 
@@ -36,7 +57,7 @@ export default {
     }
 
 article {
-	column-width: 13em;
+	column-width: auto;
 	column-gap: 0.5em;
 }
 
