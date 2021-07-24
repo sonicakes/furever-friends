@@ -6,3 +6,20 @@
 .page-form {
   max-width: 700px;
 }
+
+.bg-container {
+  background:  var(--brand-color-3);
+
+}
+
+.form-add-pet {
+  padding: 50px 100px;
+
+  .custom-input {
+    text-align: left;
+  }
+
+  .submit-btn > .button {
+    background: red;
+  }
+}

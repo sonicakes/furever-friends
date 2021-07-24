@@ -4,23 +4,24 @@
   <div class="page-centered" style="position: relative;">      
         <div class="add-pet-box">
           <h1>About You</h1>
+          <div class="bg-container">
           <sl-form class="form-add-pet" v-on:sl-submit.prevent="addPetSubmitHandler">
                   <div class="input-group">
-              <sl-select multiple clearable label="What best describes where you live?" name="preferredLiving" type="text" placeholder="suburban home, apartment, acreage" required>
+              <sl-select class="custom-input" multiple clearable label="What best describes where you live?" name="preferredLiving" type="text" placeholder="suburban home, apartment, acreage" required>
                 <sl-menu-item value="suburban-home">Suburban Home</sl-menu-item>
                 <sl-menu-item value="apartment">Apartment</sl-menu-item>
                 <sl-menu-item value="acreage">Acreage</sl-menu-item>
               </sl-select>
             </div>
                       <div class="input-group">
-              <sl-select multiple clearable label="How large is your yard space?" name="accomodationSize" type="text" placeholder="Non-existent/average size/on the larger side 
+              <sl-select class="custom-input" multiple clearable label="How large is your yard space?" name="accomodationSize" type="text" placeholder="Non-existent/average size/on the larger side 
 " required>
                 <sl-menu-item value="non-existent">Non-existent</sl-menu-item>
                 <sl-menu-item value="average-size">Average Size</sl-menu-item>
                 <sl-menu-item value="larger-side">On the larger side</sl-menu-item>
               </sl-select>
             </div>
-            <div class="input-group">
+            <div class="input-group custom-input">
               <sl-radio-group label="Select an item">
                 <fieldset part="base" role="radiogroup" class="radio-group">
         <legend part="label" class="radio-group__label">
@@ -33,14 +34,14 @@
 </sl-radio-group>
             </div>
                                <div class="input-group">
-              <sl-select multiple clearable label="If yes, how would you describe your existing pet?" name="accomodationSize" type="text" placeholder="Non-existent/average size/on the larger side 
+              <sl-select class="custom-input" multiple clearable label="If yes, how would you describe your existing pet?" name="accomodationSize" type="text" placeholder="Non-existent/average size/on the larger side 
 " required>
                 <sl-menu-item value="quiet">Quiet</sl-menu-item>
                 <sl-menu-item value="neutral">Neutral</sl-menu-item>
                 <sl-menu-item value="energetic">Energretic</sl-menu-item>
               </sl-select>
             </div>
-                  <div class="input-group">
+                  <div class="input-group custom-input">
               <sl-radio-group label="Do you have children?">
                 <fieldset part="base" role="radiogroup" class="radio-group">
         <legend part="label" class="radio-group__label">
@@ -53,7 +54,7 @@
 </sl-radio-group>
             </div>
                                <div class="input-group">
-              <sl-select multiple clearable label="If yes, what is the age of your youngest child?" name="accomodationSize" type="text" placeholder="Children age
+              <sl-select class="custom-input" multiple clearable label="If yes, what is the age of your youngest child?" name="accomodationSize" type="text" placeholder="Children age
 " required>
                 <sl-menu-item value="under-2">under 2</sl-menu-item>
                 <sl-menu-item value="3-6">3-6 yrs old</sl-menu-item>
@@ -69,8 +70,9 @@
              
             <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Submit Your Information</sl-button>
           </sl-form>
-          <p>Cancel add? <a href="/">Return Home</a></p>
+          </div>
         </div>
+
       </div>
       <blueFooter/>
       </div>

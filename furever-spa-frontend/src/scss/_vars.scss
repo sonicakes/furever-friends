@@ -10,7 +10,13 @@
 
   // colors  
   $brand-color: #3cc6b9;
+  $brand-color-2: #637365;
+  $brand-color-3: #bf9673;
+
   --brand-color: #{$brand-color};
+  --brand-color-2: #{$brand-color-2};
+  --brand-color-3: #{$brand-color-3};
+
   --link-color: --brand-color;
   
   // app header
@@ -26,10 +32,11 @@
   --sl-color-primary-200: #{lighten($brand-color, 30%)};
   --sl-color-primary-300: #{lighten($brand-color, 20%)};
   --sl-color-primary-400: #{lighten($brand-color, 10%)};
-  --sl-color-primary-500: #{$brand-color};
+  --sl-color-primary-500: #fff;
   --sl-color-primary-600: #{darken($brand-color, 10%)};
   --sl-color-primary-700: #{darken($brand-color, 20%)};
   --sl-color-primary-800: #{darken($brand-color, 30%)};
   --sl-color-primary-900: #{darken($brand-color, 40%)};
   --sl-focus-ring-color-primary: #{rgba($brand-color, 0.1)};
+  --sl-color-primary-text: #000; 
 }
