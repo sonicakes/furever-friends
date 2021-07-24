@@ -11,8 +11,11 @@ import Matches from './components/Matches.vue'
 import Home from './components/Home.vue'
 import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
+// import Profile from './components/Profile.vue'
 import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
+import aboutYou from './components/about-you.vue'
+
 
 
 
@@ -21,10 +24,11 @@ const routes = {
 	'/': Home,	
 	'/matches': Matches,
 	'/add': addPet,
+	'/about': aboutYou,
 	'404' : fourOFourView,
 	'/signin': Signin,
 	'/signup': Signup,
-	'/profile': profileView,
+	// '/profile': Profile,
 	'/editProfile': editProfileView	
 }
 
@@ -52,7 +56,7 @@ class Router {
 			// if route exists, run init() of the view
 			//this.routes[window.location.pathname].init()
 			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app');
-		}else{			
+		} else {			
 			// show 404 view instead
 			this.routes['404'].init()			
 		}
