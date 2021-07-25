@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Utils = require('./../utils')
-const Pet = require('./../models/User')
+const Pet = require('./../models/Pet')
 const path = require('path')
 
 // GET - get single pet -------------------------------------------------------
-router.get('/:id', (req, res) => {
-  if(req.pet._id != req.params.id){
+router.get('/:petName', (req, res) => {
+  if(req.pet.petName != req.params.petName){
     return res.status(401).json({
       message: "Not authorised"
     })
@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
 
 
 // PUT - update pet ---------------------------------------------
-router.put('/:id', (req, res) => {
+router.put('/:petName', (req, res) => {
   // validate request
   if(!req.body) return res.status(400).send("Task content can't be empty")
   
@@ -42,7 +42,7 @@ router.put('/:id', (req, res) => {
       // update pet with all fields including avatar
       updatePet({
         petName: req.body.petName,
-        type: req.body.type,
+        petType: req.body.petType,
         age: req.body.age,
         breed: req.body.breed,
         sex: req.body.sex,
@@ -52,6 +52,8 @@ router.put('/:id', (req, res) => {
         personality: req.body.personality,
         preferredFamily: req.body.preferredFamily,
         preferredLiving: req.body.preferredLiving,
+        thingsToAvoid: req.body.thingsToAvoid,
+        bio: req.body.bio,
         image: imageFilename        
       })
     })
@@ -68,7 +70,9 @@ router.put('/:id', (req, res) => {
         activities: req.body.activities,
         personality: req.body.personality,
         preferredFamily: req.body.preferredFamily,
-        preferredLiving: req.body.preferredLiving    
+        preferredLiving: req.body.preferredLiving,
+        thingsToAvoid: req.body.thingsToAvoid,
+        bio: req.body.bio
     })
   }
   
@@ -92,12 +96,12 @@ router.post('/', (req, res) => {
     return res.status(400).send({message: "Pet content can not be empty"})
   }
 
-  // check account with email doen't already exist
-  Pet.findOne({name: req.body.name})
+  // check account with name doen't already exist
+  Pet.findOne({petName: req.body.petName})
   .then(pet => {
     if( pet != null ){
       return res.status(400).json({
-        message: "name already in use, please create a unique pet name such as Roxie_2019"
+        message: "Pet name already in use, please create a unique name such as Roxie_2019"
       })
     }
   // create new pet       
@@ -111,7 +115,7 @@ router.post('/', (req, res) => {
     .catch(err => {
       console.log(err)
       return res.status(500).send({
-        message: "Problem creating profile",
+        message: "Problem creating pet profile",
         error: err
       })
     })

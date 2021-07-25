@@ -9,6 +9,12 @@
               <sl-input label="Name" name="petName" type="text" placeholder="Pet Name" required></sl-input>
             </div>
             <div class="input-group">
+              <sl-select label="Pet Type" name="petType" type="text" placeholder="Cat" required>
+                <sl-menu-item value="cat">Cat</sl-menu-item>
+                <sl-menu-item value="dog">Dog</sl-menu-item>
+              </sl-select>
+            </div>
+            <div class="input-group">
               <sl-select label="Age" name="age" type="number" placeholder="0-1" required>
                 <sl-menu-item value="0-1">0-1</sl-menu-item>
                 <sl-menu-item value="1-4">1-4</sl-menu-item>
@@ -105,7 +111,7 @@
               </sl-textarea>
             <div class="input-group">
               <label>Pet Image</label><br>          
-                <sl-image image="${App.apiBase}/images/${this.pet.image}"></sl-image>
+                <sl-image v-on:image="App.apiBase/images/this.pet.image"></sl-image>
                 <input type="file" name="image" />
             </div>   
             <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Add Pet</sl-button>
@@ -120,6 +126,7 @@
 <script>
   import navbar from './Navbar.vue'
   import blueFooter from './Footer.vue'
+
 import Auth from '../Auth.js'
 export default {
     methods: {
@@ -132,7 +139,7 @@ export default {
             
     
             // addPet using Auth
-            Auth.addPetUp(formData, () => {
+            Auth.addPet(formData, () => {
                 submitBtn.removeAttribute('loading')
             })   
         },

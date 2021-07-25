@@ -108,7 +108,7 @@
               </sl-textarea>
             <div class="input-group">
               <label>Pet Image</label><br>          
-                <sl-image image="${App.apiBase}/images/${this.pet.image}"></sl-image>
+                <sl-image v-on:image="App.apiBase/images/this.pet.image"></sl-image>
                 <input type="file" name="image" />
             </div>   
             <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Add Pet</sl-button>
