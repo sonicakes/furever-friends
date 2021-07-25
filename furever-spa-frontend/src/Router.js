@@ -53,8 +53,9 @@ class Router {
 		
 		if(route){
 			// if route exists, run init() of the view
-			//this.routes[window.location.pathname].init()
-			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app');
+			// this.routes[window.location.pathname].init()
+			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app')
+
 		} else {			
 			// show 404 view instead
 			this.routes['404'].init()			

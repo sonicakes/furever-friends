@@ -8,7 +8,7 @@ class App {
     this.name = "Furever"
     this.version = "1.0.0"
     this.apiBase = 'http://localhost:3000'
-    this.rootEl =  
+    this.rootEl =  document.getElementById("app")
     this.version = "1.0.0"
   }
   
