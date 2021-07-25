@@ -7,8 +7,8 @@ class App {
   constructor(){
     this.name = "Furever"
     this.version = "1.0.0"
-    this.apiBase = 'http://localhost:3000'
-    this.rootEl = document.getElementById("root")
+    this.apiBase = 'https://git.heroku.com/furever-friends-backend.git'
+    this.rootEl =  document.getElementById("app")
     this.version = "1.0.0"
   }
   
@@ -18,6 +18,7 @@ class App {
     // Toast init
     Toast.init()   
     
+    Router.init()
     // Authentication check    
     Auth.check(() => {
       // authenticated! init Router

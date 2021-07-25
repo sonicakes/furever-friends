@@ -1,19 +1,34 @@
+import Vue from 'vue'
+
+
 // import views
-import homeView from './views/pages/home'
 import fourOFourView from './views/pages/404'
-import signinView from './views/pages/signin'
-import signupView from './views/pages/signup'
-import profileView from './views/pages/profile'
 import editProfileView from './views/pages/editProfile'
+import Matches from './components/Matches.vue'
+import Home from './components/Home.vue'
+import Signin from './components/Signin.vue'
+import Signup from './components/Signup.vue'
+// import Profile from './components/Profile.vue'
+import { parseTwoDigitYear } from 'moment'
+import addPet from './components/add-pet.vue'
+import editPet from './components/edit-pet.vue'
+import aboutYou from './components/about-you.vue'
+
+
+
 
 // define routes
 const routes = {
-	'/': homeView,	
+	'/': Home,	
+	'/matches': Matches,
+	'/add': addPet,
+	'/editpet': editPet,
+	'/about': aboutYou,
 	'404' : fourOFourView,
-	'/signin': signinView,
-	'/signup': signupView,
-	'/profile': profileView,
-	'/editProfile': editProfileView	
+	'/signin': Signin,
+	'/signup': Signup,
+	// '/profile': Profile,
+	'/editpProfile': editProfileView	
 }
 
 class Router {
@@ -38,8 +53,10 @@ class Router {
 		
 		if(route){
 			// if route exists, run init() of the view
-			this.routes[window.location.pathname].init()
-		}else{			
+			// this.routes[window.location.pathname].init()
+			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app')
+
+		} else {			
 			// show 404 view instead
 			this.routes['404'].init()			
 		}

@@ -37,6 +37,12 @@ app.use('/auth', authRouter)
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)
 
+<<<<<<< HEAD
+=======
+// pet
+const petRouter = require('./routes/pet')
+app.use('/pet', petRouter)
+>>>>>>> schema-and-pages
 
 // run app listen on port --------------------
 app.listen(port, () => {

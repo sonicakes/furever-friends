@@ -2,7 +2,62 @@
 
 .input-group {
   margin-bottom: .5em;
+  position: static;
+  display: block;
 }
 .page-form {
   max-width: 700px;
+}
+
+.bg-container {
+  background:  #d9cdbf;
+
+}
+
+.add-pet-box{
+  h1{
+      font-family: 'Otomanopee One', sans-serif;
+  }
+}
+
+.form-add-pet {
+  padding: 50px 100px;
+
+  .custom-input {
+    text-align: left;
+    font-family: 'Otomanopee One', sans-serif;
+    padding-bottom: 10px;
+  }
+
+  .submit-btn > .button {
+    background: red;
+  }
+}
+
+sl-button.add-pet-submit::part(base) {
+  background-color: white;
+  border: 3px solid #bf9673;
+}
+
+sl-textarea.add-pet-input::part(base) {
+  background-color:#bf9673;
+  //border-color: $brand-color-3;
+  border-color: #bf9673;
+}
+
+sl-input.add-pet-input::part(base) {
+  background-color:#bf9673;
+  border-color: #bf9673;
+  color: #000;
+}
+
+sl-select.add-pet-input div[slot="trigger"] {
+  background-color: green;
+  border-color: orange;
+
+}
+
+sl-select.add-pet-input::part(menu) {
+  background-color:#bf9673;
+  border-color: #bf9673;
 }

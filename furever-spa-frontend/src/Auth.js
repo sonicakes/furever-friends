@@ -9,8 +9,29 @@ class Auth {
   constructor(){
     this.currentUser = {}
   }
-  
-  async signUp(userData, fail = false){  
+  async addPet (petData, fail = false) {  
+    const response = await fetch(`${App.apiBase}/pet`, {
+      method: 'POST',      
+      body: petData
+    })
+
+    // if response not ok
+    if(!response.ok){      
+      // console log error
+      const err = await response.json()
+      if(err) console.log(err)
+      // show error      
+      Toast.show(`Problem getting pet: ${response.status}`)   
+      // run fail() functon if set
+      if(typeof fail == 'function') fail()
+    }
+    /// pet add success - show toast and redirect to sign in page
+    Toast.show('Pet added')        
+    // redirect to add
+    gotoRoute('/add')
+  }
+
+  async signUp(userData, fail = false) {  
     const response = await fetch(`${App.apiBase}/user`, {
       method: 'POST',      
       body: userData
@@ -55,19 +76,19 @@ class Auth {
     Toast.show(`Welcome  ${data.user.firstName}`)
     // save access token (jwt) to local storage
     localStorage.setItem('accessToken', data.accessToken)
+    localStorage.setItem('user', JSON.stringify(data.user))
     // set current user
     this.currentUser = data.user      
-    // console.log(this.currentUser)           
+    console.log(this.currentUser)           
     // redirect to home
-    Router.init()
-    gotoRoute('/')
+    window.location.href = '/';
   }
 
 
   async check(success){
-    // show splash screen while loading ...   
-    render(splash, App.rootEl)
     
+    console.log(localStorage)
+
     // check local token is there
     if(!localStorage.accessToken){
       // no local token!

@@ -17,9 +17,13 @@ class HomeView {
       <fur-app-header title="Home" user=${JSON.stringify(Auth.currentUser)}></fur-app-header>
       
       <div class="page-content">
+<<<<<<< HEAD
 
       <fur-app-video></fur-app-video>
 
+=======
+      <navBar></navBar>
+>>>>>>> schema-and-pages
         <h1 class="anim-in">Hey ${Auth.currentUser.firstName}</h1>
 
         <h3>Button example:</h3>
@@ -31,7 +35,11 @@ class HomeView {
       </div>
      
     `
+<<<<<<< HEAD
     render(template, App.rootEl)
+=======
+    // render(template, App.rootEl)
+>>>>>>> schema-and-pages
   }
 }
 
