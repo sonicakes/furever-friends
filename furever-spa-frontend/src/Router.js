@@ -5,6 +5,7 @@ import signinView from './views/pages/signin'
 import signupView from './views/pages/signup'
 import profileView from './views/pages/profile'
 import editProfileView from './views/pages/editProfile'
+<<<<<<< HEAD
 
 // define routes
 const routes = {
@@ -13,6 +14,30 @@ const routes = {
 	'/signin': signinView,
 	'/signup': signupView,
 	'/profile': profileView,
+=======
+import Matches from './components/Matches.vue'
+import Home from './components/Home.vue'
+import Signin from './components/Signin.vue'
+import Signup from './components/Signup.vue'
+// import Profile from './components/Profile.vue'
+import { parseTwoDigitYear } from 'moment'
+import addPet from './components/add-pet.vue'
+import aboutYou from './components/about-you.vue'
+
+
+
+
+// define routes
+const routes = {
+	'/': Home,	
+	'/matches': Matches,
+	'/add': addPet,
+	'/about': aboutYou,
+	'404' : fourOFourView,
+	'/signin': Signin,
+	'/signup': Signup,
+	// '/profile': Profile,
+>>>>>>> parent of 76946ad... Updates
 	'/editProfile': editProfileView	
 }
 

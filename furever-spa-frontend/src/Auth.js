@@ -10,7 +10,11 @@ class Auth {
     this.currentUser = {}
   }
   
+<<<<<<< HEAD
   async signUp(userData, fail = false){  
+=======
+  async signUp(userData, fail = false) {  
+>>>>>>> parent of 76946ad... Updates
     const response = await fetch(`${App.apiBase}/user`, {
       method: 'POST',      
       body: userData
