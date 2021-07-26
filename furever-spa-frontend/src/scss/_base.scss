@@ -136,8 +136,6 @@ a {
 // ADD PET pages ----------
 .add-pet-box { 
   padding-top: 75px; 
-  max-width: 420px;
-  width: 600px;
   text-align: center;
   margin-top: auto;
   padding-bottom: 50px;
@@ -156,7 +154,6 @@ a {
 @media all and (max-width: 768px){ 
 
   .add-pet-box {
-    width: 90%;
     max-width: none;
   }
 }
