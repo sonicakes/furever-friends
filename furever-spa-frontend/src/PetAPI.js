@@ -4,12 +4,12 @@ import Toast from './Toast'
 
 class PetAPI {
   
-  async updatePet(petId, petData){
+  async updatePet(petName, petData){
     // validate
-    if(!petId || !petData) return
+    if(!petName || !petData) return
     
     // make fetch request to backend
-    const response = await fetch(`${App.apiBase}/pet/${petId}`, {
+    const response = await fetch(`${App.apiBase}/pet/${petName}`, {
       method: "PUT",
         headers: { "Authorization": `Bearer ${localStorage.accessToken}`},
         body: petData
@@ -31,12 +31,12 @@ class PetAPI {
     return data
   }
 
-  async getPet(petId){
+  async getPet(petName){
     // validate
-    if(!petId) return
+    if(!petName) return
     
     // fetch the json data
-    const response = await fetch(`${App.apiBase}/pet/${petId}`, {
+    const response = await fetch(`${App.apiBase}/pet/${petName}`, {
       headers: { "Authorization": `Bearer ${localStorage.accessToken}`}
     })
 
