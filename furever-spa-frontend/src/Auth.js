@@ -86,14 +86,22 @@ class Auth {
 
 
   async check(success){
-    
-    console.log(localStorage)
 
     // check local token is there
-    if(!localStorage.accessToken){
+    if(null === localStorage.getItem('accessToken')){
       // no local token!
-      Toast.show("Please sign in")    
-      // redirect to sign in page      
+      Toast.show("Please sign in")
+
+      // User is not logged in, but they are trying to visit
+      // the sign in or sign up page, let them through
+      switch (window.location.pathname) {
+        case '/signin':
+        case '/signup':
+          success();
+          return;
+      }
+
+      // Otherwise, redirect to sign in page
       gotoRoute('/signin')
       return
     }

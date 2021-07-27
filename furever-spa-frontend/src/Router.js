@@ -11,7 +11,7 @@ import Matches from './components/Matches.vue'
 import Home from './components/Home.vue'
 import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
-// import Profile from './components/Profile.vue'
+import Profile from './components/Profile.vue'
 import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
 import aboutYou from './components/about-you.vue'
@@ -28,11 +28,13 @@ const routes = {
 	'404' : fourOFourView,
 	'/signin': Signin,
 	'/signup': Signup,
-	// '/profile': Profile,
+	'/profile': Profile,
 	'/editProfile': editProfileView	
 }
 
 class Router {
+	viewContainer = null;
+
 	constructor(){
 		this.routes = routes
 	}
@@ -53,9 +55,16 @@ class Router {
 		const route = this.routes[pathname]
 		
 		if(route){
-			// if route exists, run init() of the view
-			//this.routes[window.location.pathname].init()
-			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app');
+			// See https://forum.vuejs.org/t/add-component-to-dom-programatically/7308/12
+			if (null !== this.viewContainer) {
+				// This is a page change, so delete the existing Vue instance
+				// and create the child DIV.
+				this.viewContainer.$destroy();
+				document.querySelector('#app').appendChild(document.createElement('div'));
+			}
+
+			this.viewContainer = new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app div');
+
 		} else {			
 			// show 404 view instead
 			this.routes['404'].init()			
