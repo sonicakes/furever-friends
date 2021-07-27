@@ -8,7 +8,7 @@ const petSchema = new mongoose.Schema({
     type: String,
     require: true
   },
-  type: {
+  petType: {
     type: String,
     required: true
   },
@@ -17,7 +17,7 @@ const petSchema = new mongoose.Schema({
     required: true
   },
   breed: {
-    type: mongoose.SchemaTypes.Email,
+    type: String,
     required: true    
   },
   sex: {
@@ -31,16 +31,23 @@ const petSchema = new mongoose.Schema({
     type: String,
   },
   activities: {
-    type: String,
+    type: Array,
   },
   personality: {
-    type: String,
+    type: Array,
   },
   preferredFamily: {
     type: String,    
   },
   preferredLiving: {
-    type: String    
+    type: Array,    
+  },
+  thingsToAvoid: {
+    type: Array,    
+  },
+  bio: {
+    type: String,
+    require: true   
   }
 }, { timestamps: true })
 
