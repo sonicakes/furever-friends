@@ -1,5 +1,7 @@
+import Vue from 'vue'
+
+
 // import views
-import homeView from './views/pages/home'
 import fourOFourView from './views/pages/404'
 import signinView from './views/pages/signin'
 import signupView from './views/pages/signup'
@@ -14,9 +16,15 @@ import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
 import aboutYou from './components/about-you.vue'
 
+
+
+
 // define routes
 const routes = {
-	'/': homeView,	
+	'/': Home,	
+	'/matches': Matches,
+	'/add': addPet,
+	'/about': aboutYou,
 	'404' : fourOFourView,
 	'/signin': Signin,
 	'/signup': Signup,
