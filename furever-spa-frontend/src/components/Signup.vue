@@ -24,7 +24,7 @@
                     <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Sign Up</sl-button>
                     
                     <div class="text-center">
-                      <a class="small" href="/signup">Sign In</a>
+                      <a class="small" href="/signin">Sign In</a>
                     </div>
 
                 </sl-form>

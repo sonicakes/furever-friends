@@ -33,6 +33,8 @@ const routes = {
 }
 
 class Router {
+	viewContainer = null;
+
 	constructor(){
 		this.routes = routes
 	}
@@ -53,9 +55,16 @@ class Router {
 		const route = this.routes[pathname]
 		
 		if(route){
-			// if route exists, run init() of the view
-			//this.routes[window.location.pathname].init()
-			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app');
+			// See https://forum.vuejs.org/t/add-component-to-dom-programatically/7308/12
+			if (null !== this.viewContainer) {
+				// This is a page change, so delete the existing Vue instance
+				// and create the child DIV.
+				this.viewContainer.$destroy();
+				document.querySelector('#app').appendChild(document.createElement('div'));
+			}
+
+			this.viewContainer = new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app div');
+
 		} else {			
 			// show 404 view instead
 			this.routes['404'].init()			
