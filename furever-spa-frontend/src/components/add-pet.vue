@@ -10,6 +10,12 @@
               <sl-input class="add-pet-input" label="Name" name="petName" type="text" placeholder="Pet Name" required></sl-input>
             </div>
             <div class="input-group custom-input">
+              <sl-select class="add-pet-input" label="Pet Type" name="petType" type="text" placeholder="Cat" required>
+                <sl-menu-item value="cat">Cat</sl-menu-item>
+                <sl-menu-item value="dog">Dog</sl-menu-item>
+              </sl-select>
+            </div>
+            <div class="input-group custom-input">
               <sl-select class="add-pet-input" label="Age" name="age" type="number" placeholder="0-1" required>
                 <sl-menu-item value="0-1">0-1</sl-menu-item>
                 <sl-menu-item value="1-4">1-4</sl-menu-item>
@@ -132,7 +138,7 @@ export default {
             
     
             // addPet using Auth
-            Auth.addPetUp(formData, () => {
+            Auth.addPet(formData, () => {
                 submitBtn.removeAttribute('loading')
             })   
         },
