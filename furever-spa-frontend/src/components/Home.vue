@@ -34,6 +34,7 @@
     background-color: #EBDAD1;
   }
 
+
   button {
     background-color: #FFFBF8;
     border-radius: 40px;

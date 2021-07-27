@@ -8,7 +8,7 @@
                 <a href="/add">Add Pet</a>
             </div>
             <div class="col">
-                <a href="/add">Update Info</a>
+                <a href="/about">Update Info</a>
             </div>
         <div>
     </div>

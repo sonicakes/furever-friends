@@ -11,7 +11,7 @@
           </li>   
         <li style="display:inline-block"><img src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
         <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused'); }">
-          <a class="nav-item" exact>
+          <a href="/profile" class="nav-item" exact> 
             <div class="three-cogs fa-1x">
               <i class="fa fa-cog fa-2x fa-fw spin" id="cog1"></i>
               <i class="fa fa-cog fa-1x fa-fw spin-back" id="cog2"></i>

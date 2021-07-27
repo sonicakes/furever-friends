@@ -2,7 +2,7 @@
   <div style="max-width: 100vw; padding-top: 50px; padding-bottom: 20px;" >
     <h3 style="text-align:center; padding-bottom:10px;">ANIMALS WAITING FOR YOU</h3>
     <VueSlickCarousel :arrows="true" :slidesToShow="3" :speed="500" :variableWidth="true" :dots="true" :centerMode="true">
-      <div class="card"><img src="../assets/resized/cat-1.jpg" height="350px" style="border-radius: 10px;"></div>
+      <div class="card"><img src="../assets/resized/cat-1.jpg" height="350px"></div>
       <div class="card"><img src="../assets/resized/dog-1.jpg" height="350px"></div>
       <div class="card"><img src="../assets/resized/cat-2.jpg" height="350px"></div>
       <div class="card"><img src="../assets/dog-2.jpg" height="350px"></div>

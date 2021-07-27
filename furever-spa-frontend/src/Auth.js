@@ -60,7 +60,7 @@ class Auth {
     this.currentUser = data.user      
     console.log(this.currentUser)           
     // redirect to home
-    window.location.href = '/';
+    gotoRoute('/')
   }
 
 
@@ -111,10 +111,9 @@ class Auth {
     Toast.show("You are signed out")
     // delete local token
     localStorage.removeItem('accessToken')       
+    localStorage.removeItem('user')       
     // redirect to sign in    
     gotoRoute('/signin')
-    // unset currentUser
-    this.currentUser = null
   }
 }
 
