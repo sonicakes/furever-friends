@@ -18,8 +18,7 @@ class App {
     // Toast init
     Toast.init()   
     
-    Router.init()
-    // Authentication check    
+    // Authentication check
     Auth.check(() => {
       // authenticated! init Router
       Router.init()
