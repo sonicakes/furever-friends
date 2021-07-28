@@ -12,7 +12,7 @@ body {
   font-family: var(--base-font-family);
   font-weight: 300;
   background: var(--body-bg);
-  height: 100vh;
+  // height: 100vh;
 }
 
 
@@ -129,6 +129,31 @@ a {
 
   .signinup-box {
     width: 90%;
+    max-width: none;
+  }
+}
+
+// ADD PET pages ----------
+.add-pet-box { 
+  padding-top: 75px; 
+  text-align: center;
+  margin-top: auto;
+  padding-bottom: 50px;
+}
+
+.form-add-pet {
+  margin-top: auto;
+}
+
+.add-pet-logo {
+  width: 200px;
+  margin-bottom: 1em;
+}
+
+// RESPONSIVE - MOBILE -------------------
+@media all and (max-width: 768px){ 
+
+  .add-pet-box {
     max-width: none;
   }
 }

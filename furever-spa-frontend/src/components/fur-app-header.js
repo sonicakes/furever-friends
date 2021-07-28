@@ -54,287 +54,138 @@ customElements.define('fur-app-header', class AppHeader extends LitElement {
 
   render(){    
     return html`
-
-    <style>
-
-    .cogs:hover .spin, .cogs:hover .spin-back {
-    animation-play-state: running;
-    }
-
-    .three-cogs {
-        position: relative;
-    padding-top: 5px;
-    }
-
-    .spin {
-    animation: cog-spin 4s infinite linear;
-    animation-play-state: paused;
-    }
-
-    #cog2 {
-    position: absolute;
-    top: -0.05em;
-    right: -0.25em;
-    }
-
-    .spin-back {
-    animation: cog-spin 2s infinite linear;
-    animation-direction: reverse;
-    animation-play-state: paused;
-    }
-
-    @keyframes cog-spin {
-    from {
-            transform:rotate(0deg);
-        }
-    to {
-        transform:rotate(360deg);
-    }
-    }
-    
-
-    #fur-app-header {
+    <style>      
+      * {
+        box-sizing: border-box;
+      }
+      .app-header {
+        background: var(--brand-color);
         position: fixed;
-        width: 100%;
-        z-index: 100;
-    }
+        top: 0;
+        right: 0;
+        left: 0;
+        height: var(--app-header-height);
+        color: #fff;
+        display: flex;
+        z-index: 9;
+        box-shadow: 4px 0px 10px rgba(0,0,0,0.2);
+        align-items: center;
+      }
+      
 
-    .navMenu {
-    cursor: pointer;
-    }
+      .app-header-main {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+      }
 
-    ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    }
+      .app-header-main::slotted(h1){
+        color: #fff;
+      }
 
-    li {
-    float: left;
-    }
+      .app-logo a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2em;
+        padding: .6em;
+        display: inline-block;        
+      }
 
-    li a {
-    display: block;
-    color: #000;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    height: 68px;
-    width: 72px;
-    }
+      .app-logo img {
+        width: 90px;
+      }
+      
+      .hamburger-btn::part(base) {
+        color: #fff;
+      }
 
-    /* Change the link color on hover */
-    li a:hover {
-    background-color: rgb(182, 182, 182);
-    }
+      .app-top-nav {
+        display: flex;
+        height: 100%;
+        align-items: center;
+      }
 
-
-    /* Code from https://codepen.io/dicson/pen/waKPgQ used under education license */
-
-    .navTrigger {
-        cursor: pointer;
-        width: 30px;
-        height: 25px;
-        margin: auto;
-    margin-top: 8px;
-    }
-    .navTrigger i {
-        background-color: #000;
-        border-radius: 2px;
-        content: '';
+      .app-top-nav a {
+        display: inline-block;
+        padding: .8em;
+        text-decoration: none;
+        color: #fff;
+      }
+      
+      .app-side-menu-items a {
         display: block;
-        width: 100%;
-        height: 4px;
-    }
-    .navTrigger i:nth-child(1) {
-        -webkit-animation: outT 0.8s backwards;
-        animation: outT 0.8s backwards;
-        -webkit-animation-direction: reverse;
-        animation-direction: reverse;
-    }
-    .navTrigger i:nth-child(2) {
-        margin: 5px 0;
-        -webkit-animation: outM 0.8s backwards;
-        animation: outM 0.8s backwards;
-        -webkit-animation-direction: reverse;
-        animation-direction: reverse;
-    }
-    .navTrigger i:nth-child(3) {
-        -webkit-animation: outBtm 0.8s backwards;
-        animation: outBtm 0.8s backwards;
-        -webkit-animation-direction: reverse;
-        animation-direction: reverse;
-    }
-    .navTrigger.active i:nth-child(1) {
-        -webkit-animation: inT 0.8s forwards;
-        animation: inT 0.8s forwards;
-    }
-    .navTrigger.active i:nth-child(2) {
-        -webkit-animation: inM 0.8s forwards;
-        animation: inM 0.8s forwards;
-    }
-    .navTrigger.active i:nth-child(3) {
-        -webkit-animation: inBtm 0.8s forwards;
-        animation: inBtm 0.8s forwards;
-    }
-    @-webkit-keyframes inM {
-        50% {
-            -webkit-transform: rotate(0deg);
+        padding: .5em;
+        text-decoration: none;
+        font-size: 1.3em;
+        color: #333;
+      }
+
+      .app-side-menu-logo {
+        width: 120px;
+        margin-bottom: 1em;
+        position: absolute;
+        top: 2em;
+        left: 1.5em;
+      }
+
+      .page-title {
+        color: var(--app-header-txt-color);
+        margin-right: 0.5em;
+        font-size: var(--app-header-title-font-size);
+      }
+
+      /* active nav links */
+      .app-top-nav a.active,
+      .app-side-menu-items a.active {
+        font-weight: bold;
+      }
+
+      /* RESPONSIVE - MOBILE ------------------- */
+      @media all and (max-width: 768px){       
+        
+        .app-top-nav {
+          display: none;
         }
-        100% {
-            -webkit-transform: rotate(45deg);
-        }
-    }
-    @keyframes inM {
-        50% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(45deg);
-        }
-    }
-    @-webkit-keyframes outM {
-        50% {
-            -webkit-transform: rotate(0deg);
-        }
-        100% {
-            -webkit-transform: rotate(45deg);
-        }
-    }
-    @keyframes outM {
-        50% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(45deg);
-        }
-    }
-    @-webkit-keyframes inT {
-        0% {
-            -webkit-transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            -webkit-transform: translateY(9px) rotate(0deg);
-        }
-        100% {
-            -webkit-transform: translateY(9px) rotate(135deg);
-        }
-    }
-    @keyframes inT {
-        0% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            transform: translateY(9px) rotate(0deg);
-        }
-        100% {
-            transform: translateY(9px) rotate(135deg);
-        }
-    }
-    @-webkit-keyframes outT {
-        0% {
-            -webkit-transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            -webkit-transform: translateY(9px) rotate(0deg);
-        }
-        100% {
-            -webkit-transform: translateY(9px) rotate(135deg);
-        }
-    }
-    @keyframes outT {
-        0% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            transform: translateY(9px) rotate(0deg);
-        }
-        100% {
-            transform: translateY(9px) rotate(135deg);
-        }
-    }
-    @-webkit-keyframes inBtm {
-        0% {
-            -webkit-transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            -webkit-transform: translateY(-9px) rotate(0deg);
-        }
-        100% {
-            -webkit-transform: translateY(-9px) rotate(135deg);
-        }
-    }
-    @keyframes inBtm {
-        0% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            transform: translateY(-9px) rotate(0deg);
-        }
-        100% {
-            transform: translateY(-9px) rotate(135deg);
-        }
-    }
-    @-webkit-keyframes outBtm {
-        0% {
-            -webkit-transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            -webkit-transform: translateY(-9px) rotate(0deg);
-        }
-        100% {
-            -webkit-transform: translateY(-9px) rotate(135deg);
-        }
-    }
-    @keyframes outBtm {
-        0% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            transform: translateY(-9px) rotate(0deg);
-        }
-        100% {
-            transform: translateY(-9px) rotate(135deg);
-        }
-    }
-    
+      }
+
     </style>
+
     <header class="app-header">
-    <div id="fur-app-header">
-    <ul style='background-color: rgb(255, 253, 232);'>
-          <li style="cursor: pointer;" onclick="$('.navTrigger').toggleClass('active');">
-            <a>
-              <div class="navTrigger">
-                <i></i><i></i><i></i>
-              </div>
-            </a>
-          </li>   
-        <li style="display:inline-block"><img src="/images/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
-        <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused'); }">
-          <a to="settings" class="nav-item" exact>
-            <div class="three-cogs fa-1x">
-              <i class="fa fa-cog fa-2x fa-fw spin" id="cog1"></i>
-              <i class="fa fa-cog fa-1x fa-fw spin-back" id="cog2"></i>
-            </div>
-          </a>
-        </li>
+      <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 1.5em;"></sl-icon-button>       
+      
+      <div class="app-header-main">
+        ${this.title ? html`
+          <h1 class="page-title">${this.title}</h1>
+        `:``}
+        <slot></slot>
+      </div>
 
-        <li style="float:right">
-          <a to="login" class="nav-item" exact>
-            <i class="fas fa-user" style="margin-top: 10px"></i>
+      <nav class="app-top-nav">
+        <a href="/" @click="${anchorRoute}">Home</a>        
+        <sl-dropdown>
+          <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
+            <sl-avatar style="--size: 24px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
           </a>
-        </li>
+          <sl-menu>            
+            <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
+            <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
+            <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
+          </sl-menu>
+        </sl-dropdown>
+      </nav>
+    </header>
 
-        <li style="float:right">
-          <a to="saved" class="nav-item" exact>
-            <i class="fas fa-heart" style="margin-top: 10px"></i>
-          </a>
-        </li>
-    </ul> 
-  </div> 
-  </header>
-  `
-}
-
+    <sl-drawer class="app-side-menu" placement="left">
+      <img class="app-side-menu-logo" src="/images/logo.png">
+      <nav class="app-side-menu-items">
+        <a href="/" @click="${this.menuClick}">Home</a>
+        <a href="/profile" @click="${this.menuClick}">Profile</a>
+        <a href="#" @click="${() => Auth.signOut()}">Sign Out</a>
+      </nav>  
+    </sl-drawer>
+    `
+  }
+  
 })
+

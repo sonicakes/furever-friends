@@ -37,6 +37,9 @@ app.use('/auth', authRouter)
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)
 
+// pet
+const petRouter = require('./routes/pet')
+app.use('/pet', petRouter)
 
 // run app listen on port --------------------
 app.listen(port, () => {
