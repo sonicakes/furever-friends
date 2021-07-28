@@ -10,7 +10,7 @@ import editProfileView from './views/pages/editProfile'
 import Matches from './components/Matches.vue'
 import Home from './components/Home.vue'
 import Signin from './components/Signin.vue'
-import Signup from './components/Signup.vue'
+import Signup from './components/Signup.vue'	
 import Profile from './components/Profile.vue'
 import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
@@ -72,8 +72,13 @@ class Router {
 	}
 
 	gotoRoute(pathname){
-		window.history.pushState({}, pathname, window.location.origin + pathname);
-		this.route(pathname)
+		if (pathname == '/' || pathname == '/signup' || pathname == '/signin') {
+			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app');
+		} else if (localStorage.getItem('user') != null) {
+			new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app');
+		} else {
+			new Vue({ render: createElement => createElement(Signin) }).$mount('#app');
+		}
 	}	
 }
 
