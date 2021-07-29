@@ -10,22 +10,23 @@
     }
 </script>
 
-<style>
+<style scoped>
     #footer {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 2.5rem;    
+        height: 2.3rem;    
         height: 50px;   
         width: 100%;
-        background-color: #C4F2EE;
+        background-color: #637365;
         text-align: center;
     }
 
-    #footer p {
+    p {
         padding-top: 10px;
         margin: auto;
         vertical-align: middle;
-        height: 50px;
+        height: 3rem;
+        color: white;
     }
 </style>
