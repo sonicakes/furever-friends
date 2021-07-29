@@ -1,17 +1,22 @@
 <template>
 <div>
-  <div id="navbar">
-    <ul style='background-color: rgb(255, 253, 232);'>
-          <li style="cursor: pointer;" onclick="$('.navTrigger').toggleClass('active');">
-            <a>
-              <div class="navTrigger">
-                <i></i><i></i><i></i>
-              </div>
-            </a>
-          </li>   
+  <div id="navbar" style='background-color: #FFFBF8;'>
+    <ul>
+		<li class="nav-item dropdown" style="cursor: pointer;" onclick="$('.navTrigger').toggleClass('active');">
+			<a class="nav-link dropdown-toggle top-navbar" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<div class="navTrigger">
+					<i></i><i></i><i></i>
+				</div>
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink" style="border-radius: 0px; background-color: rgb(255, 251, 248); border-color: rgb(255, 251, 248); position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 68px);">
+				<li><a class="dropdown-item" href="#">Action</a></li>
+				<li><a class="dropdown-item" href="#">Another action</a></li>
+				<li><a class="dropdown-item" v-on:click="logout">Logout</a></li>
+			</ul>
+		</li>
         <li style="display:inline-block"><img src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
         <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused'); }">
-          <a class="nav-item" exact>
+          <a class="nav-item top-navbar" exact>
             <div class="three-cogs fa-1x">
               <i class="fa fa-cog fa-2x fa-fw spin" id="cog1"></i>
               <i class="fa fa-cog fa-1x fa-fw spin-back" id="cog2"></i>
@@ -20,20 +25,17 @@
         </li>
 
         <li style="float:right">
-          <a href="/profile" class="nav-item" exact>
+          <a href="/profile" class="nav-item top-navbar" exact>
             <i class="fas fa-user" style="margin-top: 10px"></i>
           </a>
         </li>
 
         <li style="float:right">
-          <a href="/matches" class="nav-item" exact id="heart">
+          <a href="/matches" class="nav-item top-navbar" exact id="heart">
             <i class="fas fa-heart heart" style="margin-top: 10px;scale: 1.25;"></i>
           </a>
         </li>
     </ul> 
-  </div>
-  <div id="logo">
-	  
   </div>
 </div>
 </template>
@@ -41,35 +43,37 @@
 <script>
 
 	import {matches} from '../index.js';
+	import Auth from '../Auth.js';
 
 	export default {
  	   name: 'navbar',
 		methods: {
             matches: () => {
-                return matches 	;
-            }
-        }
+                return matches;
+            },
+			logout: () => {
+				event.preventDefault();
+				Auth.signOut();
+			}
+        },
+		data: {listOne:   false}
     }
 </script>
 
 <style scoped>
 
+.dropdown-toggle::after {
+	content: none;
+}
+
 #logo {
-	width: 100vw;
+	width: 100vw; 
 	margin: auto;
 	position: fixed;
 }
-
-ul li:hover > ul {
-	display:inherit;
-}
 	
-/* Fisrt Tier Dropdown */
-nav ul ul li {
-	width:170px;
-	float:none;
-	display:list-item;
-	position: relative;
+#navbar li ul li {
+	width: 100%;
 }
 
 @keyframes heartbeat {
@@ -158,14 +162,13 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 li {
   float: left;
 }
 
-li a {
+.top-navbar{
   display: block;
   color: #000;
   text-align: center;
@@ -176,7 +179,7 @@ li a {
 }
 
 /* Change the link color on hover */
-li a:hover {
+.top-navbar:hover {
   background-color: rgb(182, 182, 182);
 }
 
