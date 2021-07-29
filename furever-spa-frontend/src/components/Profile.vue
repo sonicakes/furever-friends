@@ -1,5 +1,8 @@
 <template>
+<div>
+        <navbar/>
     <div class="page-content calign">    
+
         <sl-avatar style="--size: 200px; margin-bottom: 1em;"></sl-avatar>
         <h2>{{ currentUser }}</h2>
 
@@ -12,15 +15,22 @@
             </div>
         <div>
     </div>
+    <blueFooter/>
+    </div>
 </template>
 
 <script>
-import Auth from '../Auth'
+import navbar from './Navbar.vue'
+  import blueFooter from './Footer.vue'
 export default {
     data: function() {
         return {
             currentUser: JSON.parse(localStorage.user).firstName +  " " + JSON.parse(localStorage.user).lastName
         }
+    },
+    components: {
+        navbar,
+        blueFooter
     }
 }
 </script>

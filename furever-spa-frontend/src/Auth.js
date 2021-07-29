@@ -91,6 +91,7 @@ class Auth {
     if(null === localStorage.getItem('accessToken')){
       // no local token!
       Toast.show("Please sign in")
+      console.log(localStorage.getItem('user'))
 
       // User is not logged in, but they are trying to visit
       // the sign in or sign up page, let them through
