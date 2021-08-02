@@ -1,7 +1,7 @@
 <template>
 <div>
         <navbar/>
-    <div class="page-content calign">    
+    <div class="page-content calign" style="background-color: #D9CDBF;">    
 
         <sl-avatar style="--size: 200px; margin-bottom: 1em;"></sl-avatar>
         <h2>{{ currentUser }}</h2>
@@ -21,10 +21,11 @@
 
 <script>
 import navbar from './Navbar.vue'
-  import blueFooter from './Footer.vue'
+import blueFooter from './Footer.vue'
 export default {
     data: function() {
         return {
+            // userImage: JSON.parse(localStorage.user).
             currentUser: JSON.parse(localStorage.user).firstName +  " " + JSON.parse(localStorage.user).lastName
         }
     },

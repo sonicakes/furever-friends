@@ -20,6 +20,7 @@
         width: 100%;
         background-color: #637365;
         text-align: center;
+        right: 0;
     }
 
     p {

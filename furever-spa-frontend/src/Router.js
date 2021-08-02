@@ -15,6 +15,7 @@ import Profile from './components/Profile.vue'
 import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
 import aboutYou from './components/about-you.vue'
+import Settings from './components/Settings.vue'
 
 
 
@@ -26,10 +27,11 @@ const routes = {
 	'/add': addPet,
 	'/about': aboutYou,
 	'404' : fourOFourView,
-	'/signin': Signin,
+	'/login': Signin,
 	'/signup': Signup,
 	'/profile': Profile,
-	'/editProfile': editProfileView	
+	'/editProfile': editProfileView,
+	'/settings': Settings,
 }
 
 class Router {

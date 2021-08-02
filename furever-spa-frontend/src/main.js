@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Signin from './components/Signin.vue';
+import Signin from './components/login.vue';
 import { createRouter } from './Router.js';
 import VueSlickCarousel from 'vue-slick-carousel'
 import { library } from '@fortawesome/fontawesome-svg-core'
