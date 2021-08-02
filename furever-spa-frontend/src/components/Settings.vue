@@ -4,21 +4,23 @@
         <div class="page-content" style="background-color: #D9CDBF;">
             <h1 style="text-align: center;">PREFERENCES</h1>
             <div class="row">
-                <div class="col">
+                <div class="col mx-auto">
                     <div class="ar-image">
                         <div class="article-image">
                         </div>
                         <h2><div>ABOUT ME<br>Questionnaire</div></h2>
                     </div>
-                    <p>You last completed this questionnaire on [DATE]</p>
+                    <h3 style="padding-top: 10px; width: 75%; margin: auto;">You last completed this questionnaire on [DATE]</h3>
+                    <p style="width: 75%; margin: auto;">If your details have changed, please feel free to update your information by retaking the questionnaire.</p>
                 </div>
-                <div class="col">
+                <div class="col mx-auto">
                     <div class="ar-image">
                         <div class="article-image-2">
                         </div>
-                        <h2><div>ABOUT MY PET <br/> Questionnaire</div></h2>
+                        <h2><div>MY IDEAL PET<br/> Questionnaire</div></h2>
                     </div>
-                    <p>You last completed this questionnaire on [DATE]</p>
+                    <h3 style="padding-top: 10px; width: 75%; margin: auto;">You last completed this questionnaire on [DATE]</h3>
+                    <p style="width: 75%; margin: auto;">If your details have changed, please feel free to update your information by retaking the questionnaire.</p>
                 </div>
             </div>
         </div>
@@ -39,7 +41,7 @@ export default {
 
 <style scoped>
 .article-image, .article-image-2 {
-    height: 70vh;
+    height: 50vh;
     width: 80%;
 }
 
@@ -55,7 +57,7 @@ export default {
     filter: grayscale(0) blur(0);
     transition: .4s ease-in-out;
     background-size: cover;
-    background-position: center;
+    background-position: 10% 40%;
     background-clip: border-box;
     border-radius: 20px;
     margin: 0 auto;
@@ -119,22 +121,20 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     color: black;
     font-size: 2em;
-    padding-bottom: 10vh;
+    padding-bottom: 3vh;
     text-align: center;
 }
 h3 {
     font-family: 'Montserrat', sans-serif;
     color: black;
-    font-size: 16px;
-    padding-bottom: 10vh;
-    text-align: center;
+    font-size: 1.25rem;
+    text-align: left;
 }
 
 p {
     font-family: 'Montserrat', sans-serif;
     color: black;
-    font-size: 14px;
-    padding-bottom: 10vh;
-    text-align: center;
+    font-size: 1rem;
+    text-align: left;
 }
 </style>
