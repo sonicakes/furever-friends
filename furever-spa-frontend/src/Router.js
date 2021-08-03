@@ -1,5 +1,7 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 
+Vue.use(BootstrapVue)
 
 // import views
 import fourOFourView from './views/pages/404'

@@ -28,7 +28,7 @@
           <a href="/profile" class="nav-item top-navbar" exact>
             <i class="fas fa-user" style="margin-top: 10px"></i>
           </a>
-        </li>
+        </li> 	
 
         <li style="float:right">
           <a href="/matches" class="nav-item top-navbar" exact id="heart">

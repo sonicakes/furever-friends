@@ -29,5 +29,6 @@
         vertical-align: middle;
         height: 3rem;
         color: white;
+        text-align: center;
     }
 </style>

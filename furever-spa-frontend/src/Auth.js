@@ -74,6 +74,7 @@ class Auth {
     // sign in success
     const data = await response.json()
     Toast.show(`Welcome  ${data.user.firstName}`)
+    console.log(data)
     // save access token (jwt) to local storage
     localStorage.setItem('accessToken', data.accessToken)
     localStorage.setItem('user', JSON.stringify(data.user))
