@@ -1,5 +1,5 @@
 <template>
-    <div id="main" style="padding: 50px; padding-top: 118px; columns: 200px; column-gap: 20px; " min-height="100vh">
+    <div id="main" style="padding: 50px; padding-top: 118px; columns: 5; column-gap: 20px; " min-height="100vh">
         <Waterfall >
             <WaterfallItem v-for="image in images"
                 :key="image">
@@ -7,7 +7,7 @@
                     <img 
                         :src="image"
                         alt="A kitten walks towards camera on top of pallet."
-                        width="100%"
+                        
                     >
                     <h2><div>MORE INFO</div></h2>
                     <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
@@ -33,6 +33,11 @@ export default {
 </script>
 
 <style scoped>
+img {
+    width: 100%;
+    height: 100%;
+}
+
 h2 > div {
     width: max-content;
     margin: auto;
@@ -45,7 +50,7 @@ h2 > div {
     top: 40%;
     display: block;
     color: #ffffff;
-    font-size: 25px;
+    font-size: 2vh;
     font-weight: bold;
     z-index: 999999;
     right: 0;
@@ -58,11 +63,20 @@ h2 > div {
     overflow: hidden;
 }
 
-.grid-item img:hover {
-    -webkit-filter: grayscale(10%) blur(10px);
-  filter: grayscale(10%) blur(2px);
-  transition: .4s ease-in-out;
+.grid-item:hover img {
+    -webkit-filter: grayscale(50%) blur(10px);
+    filter: grayscale(50%) blur(2px);
+    transition: .4s ease-in-out;
 }
+
+.grid-item:hover > h2 > div {
+    display: block;
+}
+
+.grid-item h2 > div {
+    display: none;
+}
+
     * {
 	box-sizing: border-box;
 }
@@ -92,11 +106,12 @@ section {
 
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
-    width: 100px;
-    height: 100px;
+    width: 20vw;
+    height: 20vw;
     position: relative;
     left: 50%;
     right: 50%;
+    background-size: contain;
     transform: translate(-50%, -50%);
     background: url('../assets/heart.png') no-repeat;
     background-position: 0 0;

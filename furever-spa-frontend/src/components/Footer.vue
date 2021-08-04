@@ -24,9 +24,9 @@
 
     p {
         padding-top: 10px;
+        padding-bottom: 10px;
         margin: auto;
         vertical-align: middle;
-        height: 3rem;
         color: white;
         text-align: center;
     }
