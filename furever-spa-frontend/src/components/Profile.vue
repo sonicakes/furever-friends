@@ -3,6 +3,7 @@
     <navbar />
     <div class="page-content calign" style="background-color: #d9cdbf">
       <div class="container emp-profile">
+
         <form method="post">
           <div class="row">
             <div class="col-md-4">
@@ -57,11 +58,47 @@
                                         <label>Children</label>
                                     </div>
                                     <div class="col-9">
-                                        <p>{{ user.children }}</p>
+                                        <p>3</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label>Youngest Child's Age</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+
+                                 <div class="row">
+                                    <div class="col-3">
+                                        <label>Home Type</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <p>Suburban</p>
                                     </div>
                                 </div>
                             </b-tab>
-                            <b-tab title="Preferences"><p></p></b-tab>
+                            <b-tab title="Ideal Pet">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label>Species</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <p>Cat</p>
+                                    </div>
+                                </div>
+
+                                 <div class="row">
+                                    <div class="col-3">
+                                        <label>Color</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </b-tab>
                         </b-tabs>
                     </div>
                 </div>

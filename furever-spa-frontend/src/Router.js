@@ -18,6 +18,8 @@ import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
 import aboutYou from './components/about-you.vue'
 import Settings from './components/Settings.vue'
+import Pet from './components/Pet.vue'
+import error from './components/404.vue'
 
 
 
@@ -34,6 +36,7 @@ const routes = {
 	'/profile': Profile,
 	'/editProfile': editProfileView,
 	'/settings': Settings,
+	'/pet': Pet,
 }
 
 class Router {
@@ -71,7 +74,7 @@ class Router {
 
 		} else {			
 			// show 404 view instead
-			this.routes['404'].init()			
+			this.viewContainer = new Vue({ render: createElement => createElement(error) }).$mount('#app div');	
 		}
 	}
 

@@ -25,6 +25,7 @@ class Auth {
       // run fail() functon if set
       if(typeof fail == 'function') fail()
     }
+    console.log(response.json())
     /// pet add success - show toast and redirect to sign in page
     Toast.show('Pet added')        
     // redirect to add

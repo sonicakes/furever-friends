@@ -124,6 +124,7 @@ h1 {
     padding-bottom: 3vh;
     text-align: center;
 }
+
 h3 {
     font-family: 'Montserrat', sans-serif;
     color: black;
