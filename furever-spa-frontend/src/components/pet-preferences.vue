@@ -5,7 +5,7 @@
       <div class="form-box">
       <h1>About You</h1>
         <div class="bg-container">
-          <sl-form class="form" v-on:sl-submit.prevent="aboutYouSubmitHandler">
+          <sl-form class="form" v-on:sl-submit.prevent="petPreferencesSubmitHandler">
             <div class="input-group custom-input">
               <sl-select  class="form-input" multiple clearable label="What best describes where you live?" name="preferredLiving" type="text" placeholder="suburban home, apartment, acreage" required>
                 <sl-menu-item value="suburban-home">Suburban Home</sl-menu-item>
@@ -82,7 +82,7 @@ export default {
         }
       },
       
-      async aboutYouSubmitHandler(e){
+      async petPreferencesSubmitHandler(e){
         e.preventDefault()
         const formData = e.detail.formData
         const submitBtn = document.querySelector('.submit-btn')

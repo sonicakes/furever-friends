@@ -4,10 +4,10 @@
   <img src="https://images.unsplash.com/photo-1415369629372-26f2fe60c467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" height="100vh">
   </div>
   <div class="page-content page-centered">      
-        <div class="add-pet-box">
-        <img class="add-pet-logo" src="../assets/logo.png">
+        <div class="form-box">
+        <img class="form-logo" src="../assets/logo.png">
           <h1>Add Pet</h1>
-          <sl-form class="form-add-pet" v-on:sl-submit.prevent="addPetSubmitHandler">
+          <sl-form class="form" v-on:sl-submit.prevent="addPetSubmitHandler">
             <div class="input-group">
               <sl-input label="Name" name="petName" type="text" placeholder="Pet Name" required></sl-input>
             </div>
