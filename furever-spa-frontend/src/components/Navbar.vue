@@ -14,7 +14,9 @@
 				<li><a class="dropdown-item" v-on:click="logout">Logout</a></li>
 			</ul>
 		</li>
-        <li style="display:inline-block"><img src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
+        <li style="display:inline-block"><img class="navbar-img" src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
+
+
         <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused'); }">
           <a class="nav-item top-navbar" exact href="/settings">
             <div class="three-cogs fa-1x">
