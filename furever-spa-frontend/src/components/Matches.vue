@@ -35,7 +35,7 @@
 <style>
   #home {
     min-height: 100vh;
-    background-color: #EBDAD1;
+    background-color: #D9CDBF;
     overflow: hidden;
   }
 

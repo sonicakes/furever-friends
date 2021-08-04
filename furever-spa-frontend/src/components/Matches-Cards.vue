@@ -1,60 +1,75 @@
 <template>
     <div id="main" style="padding: 50px; padding-top: 118px; columns: 200px; column-gap: 20px; " min-height="100vh">
-        <vue-flex-waterfall
-            class="custom-class"
-            :col="5"
-            :col-spacing="15"
-            :break-at="breakAt"
-            :break-by-container="true"
-            @order-update="onOrderUpdate"
-            style="align-content: center;"
-        >
-            <div
-                class="item"
-                v-for="image in images"
-                :key="image"
-                :style="{ height: `${image.h}px` }"
-            >
-                Item here
-          </div>
-        </vue-flex-waterfall>
-
-
-        <article>
-
-        <li v-for="image in images" :key="image" style="list-style: none; margin: auto;">
-                <img 
-                  slot="image" 
-                  :src="image"
-                  alt="A kitten walks towards camera on top of pallet."
-                  width="100%"
-                >
-                <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
-        </li>
-        </article>
+        <Waterfall >
+            <WaterfallItem v-for="image in images"
+                :key="image">
+                <div class='grid-item' style="position: relative;">
+                    <img 
+                        :src="image"
+                        alt="A kitten walks towards camera on top of pallet."
+                        width="100%"
+                    >
+                    <h2><div>MORE INFO</div></h2>
+                    <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
+                </div>
+            </WaterfallItem>
+        </Waterfall>
     </div>
 </template>
 
 <script>
+import {Waterfall, WaterfallItem} from 'vue2-waterfall';
 export default {
     name: 'matchesCards',
     data: function() {
         return {
-            images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')]
+            images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')],
+            options: {  columnWidth: '.grid-item',
+                        itemSelector: '.grid-item'},
             // images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg')]
         };
-    }
+    },
 }
 </script>
 
 <style scoped>
+h2 > div {
+    width: max-content;
+    margin: auto;
+    border: 4px solid transparent;
+}
+
+ h2 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 40%;
+    display: block;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+    z-index: 999999;
+    right: 0;
+    left: 0;
+    text-align: center;
+    transition: .4s ease-in-out;
+}
+
+.grid-item {
+    overflow: hidden;
+}
+
+.grid-item img:hover {
+    -webkit-filter: grayscale(10%) blur(10px);
+  filter: grayscale(10%) blur(2px);
+  transition: .4s ease-in-out;
+}
     * {
 	box-sizing: border-box;
 }
 
-    img {
-      width: 100%;
-    }
+img {
+    width: 100%;
+}
 
 article {
 	column-width: auto;
@@ -68,23 +83,22 @@ section {
 	width:  100%; 
 	border: 0.1em solid black;
 }
-    .matchClick {
-        animation-play-state: running !important;
-        transition: background 1s steps(28) !important;
-        background-position: -2800px 0 !important; 
 
-    }
+.matchClick {
+    animation-play-state: running !important;
+    transition: background 1s steps(28) !important;
+    background-position: -2800px 0 !important; 
+}
 
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
     width: 100px;
     height: 100px;
-    top: 25px;  
     position: relative;
     left: 50%;
     right: 50%;
     transform: translate(-50%, -50%);
-    background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+    background: url('../assets/heart.png') no-repeat;
     background-position: 0 0;
     cursor: pointer;
     animation-play-state: paused;

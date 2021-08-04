@@ -24,7 +24,7 @@
                     <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Sign Up</sl-button>
                     
                     <div class="text-center">
-                      <a class="small" href="/signin">Sign In</a>
+                      <a class="small" href="/login">Sign In</a>
                     </div>
 
                 </sl-form>
@@ -50,7 +50,7 @@
                 <img class="signinup-logo" src="../assets/logo.png">
                 <h1>Sign Up</h1>
                 
-                <p>Have an account? <a href="/signin">Sign In</a></p>
+                <p>Have an account? <a href="/login">Sign In</a></p>
                 </div>
             </div>
         </div>

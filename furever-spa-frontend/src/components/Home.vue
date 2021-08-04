@@ -38,9 +38,11 @@
     background-color: #FFFBF8;
     border-radius: 40px;
     height: 5vh;
-    width: 10vw;
+    width: auto;
+    padding-right: 40px;
+    padding-left: 40px;
     border-color: #f2a2b1;
-    margin-bottom: 30px;
+    margin-bottom: 8vh;
   }
 
 </style>

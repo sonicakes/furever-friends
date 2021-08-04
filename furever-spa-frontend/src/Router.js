@@ -1,5 +1,7 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 
+Vue.use(BootstrapVue)
 
 // import views
 import fourOFourView from './views/pages/404'
@@ -15,6 +17,9 @@ import Profile from './components/Profile.vue'
 import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
 import aboutYou from './components/about-you.vue'
+import Settings from './components/Settings.vue'
+import Pet from './components/Pet.vue'
+import error from './components/404.vue'
 
 
 
@@ -26,10 +31,12 @@ const routes = {
 	'/add': addPet,
 	'/about': aboutYou,
 	'404' : fourOFourView,
-	'/signin': Signin,
+	'/login': Signin,
 	'/signup': Signup,
 	'/profile': Profile,
-	'/editProfile': editProfileView	
+	'/editProfile': editProfileView,
+	'/settings': Settings,
+	'/pet': Pet,
 }
 
 class Router {
@@ -67,7 +74,7 @@ class Router {
 
 		} else {			
 			// show 404 view instead
-			this.routes['404'].init()			
+			this.viewContainer = new Vue({ render: createElement => createElement(error) }).$mount('#app div');	
 		}
 	}
 

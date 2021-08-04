@@ -4,7 +4,7 @@
   <div class="page-centered" style="position: relative;">      
         <div class="add-pet-box">
           <h1>Add Pet</h1>
-                    <div class="bg-container">
+          <div class="bg-container">
           <sl-form class="form-add-pet" v-on:sl-submit.prevent="addPetSubmitHandler">
             <div class="input-group custom-input">
               <sl-input class="add-pet-input" label="Name" name="petName" type="text" placeholder="Pet Name" required></sl-input>
