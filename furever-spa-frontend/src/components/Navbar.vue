@@ -2,13 +2,13 @@
 <div>
   <div id="navbar" style='background-color: #FFFBF8;'>
     <ul>
-		<li class="nav-item dropdown" style="cursor: pointer;" onclick="$('.navTrigger').toggleClass('active');">
+		<li id="nav-menu" class="nav-item dropdown" style="cursor: pointer;">
 			<a class="nav-link dropdown-toggle top-navbar" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				<div class="navTrigger">
 					<i></i><i></i><i></i>
 				</div>
 			</a>
-			<ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink" style="border-radius: 0px; background-color: rgb(255, 251, 248); border-color: rgb(255, 251, 248); position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 68px);">
+			<ul class="dropdown-menu" id="dropdown" aria-labelledby="navbarDarkDropdownMenuLink" style="border-radius: 0px; background-color: rgb(255, 251, 248); border-color: rgb(255, 251, 248); position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 68px);">
 				<li><a class="dropdown-item" href="#">Action</a></li>
 				<li><a class="dropdown-item" href="#">Another action</a></li>
 				<li><a class="dropdown-item" v-on:click="logout">Logout</a></li>
@@ -58,7 +58,16 @@
 				Auth.signOut();
 			}
         },
-		data: {listOne:   false}
+		data: {listOne:   false},
+		mounted() {
+			$('#navbarDarkDropdownMenuLink').on('show.bs.dropdown', function () {
+				$('.navTrigger').addClass('active');
+			})
+
+			$('#navbarDarkDropdownMenuLink').on('hide.bs.dropdown', function () {
+				$('.navTrigger').removeClass('active');
+			})
+		}
     }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div id="main" style="padding: 50px; padding-top: 118px; columns: 5; column-gap: 20px; " min-height="100vh">
-        <Waterfall >
+        <Waterfall>
             <WaterfallItem v-for="image in images"
                 :key="image">
                 <div class='grid-item' style="position: relative;">
@@ -61,6 +61,7 @@ h2 > div {
 
 .grid-item {
     overflow: hidden;
+    padding-bottom: 5vw;
 }
 
 .grid-item:hover img {
@@ -101,23 +102,24 @@ section {
 .matchClick {
     animation-play-state: running !important;
     transition: background 1s steps(28) !important;
-    background-position: -2800px 0 !important; 
+    background-position: right center !important; 
 }
 
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
-    width: 20vw;
-    height: 20vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    background-size: contain;
-    transform: translate(-50%, -50%);
-    background: url('../assets/heart.png') no-repeat;
-    background-position: 0 0;
-    cursor: pointer;
-    animation-play-state: paused;
-    animation: fave-heart 1s steps(28);
+        width: 10vw;
+        height: 10vw;
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        background-size: cover;
+        transform: translate(-50%, -50%);
+        background-image: url('../assets/heart.png');
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        cursor: pointer;
+        animation-play-state: paused;
+        animation: fave-heart 1s steps(28);
     }
     
     @keyframes fave-heart {
@@ -125,7 +127,7 @@ section {
         background-position: 0 0;
     }
     100% {
-        background-position: -2800px 0;
+        background-position: left center;
     }
     }
 
