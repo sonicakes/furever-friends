@@ -51,11 +51,31 @@
                 <sl-radio value="no">No</sl-radio>
               </sl-radio-group>
             </div>
-            <div class="input-group custom-input">
+            <!-- <div class="input-group custom-input">
               <sl-select class="form-input" multiple clearable label="If yes, what is the age of your youngest child?" name="accomodationSize" type="text" placeholder="Children age" required>
                 <sl-menu-item value="under-2">under 2</sl-menu-item>
                 <sl-menu-item value="3-6">3-6 yrs old</sl-menu-item>
                 <sl-menu-item value="7-10">7-10 yrs old</sl-menu-item>
+              </sl-select>
+            </div> -->
+            <div class="input-group custom-input">
+              <sl-select class="form-input" label="Family size?" name="familySize" type="text" placeholder="Small" required>
+                <sl-menu-item value="small">Small</sl-menu-item>
+                <sl-menu-item value="medium">Medium</sl-menu-item>
+                <sl-menu-item value="large">Large</sl-menu-item>
+                <sl-menu-item value="any">N/A</sl-menu-item>
+              </sl-select>
+            </div> 
+                        <div class="input-group custom-input">
+              <sl-select class="form-input" multiple clearable label="Preferred Living" name="preferredLiving" type="text" placeholder="Outdoor, Indoor, Backyard" required>
+                <sl-menu-item value="outdoor">Outdoor</sl-menu-item>
+                <sl-menu-item value="indoor">Indoor</sl-menu-item>
+                <sl-menu-item value="backyard">Backyard</sl-menu-item>
+                <sl-menu-item value="balcony">Balcony</sl-menu-item>
+                <sl-menu-item value="house">House</sl-menu-item>
+                <sl-menu-item value="apartment">Apartment</sl-menu-item>
+                <sl-menu-item value="couch-potato">Couch Potato</sl-menu-item>
+                <sl-menu-item value="on-the-road">On the road</sl-menu-item>
               </sl-select>
             </div>
             <sl-button type="primary" class="form-submit submit-btn" submit>Submit Your Information</sl-button>

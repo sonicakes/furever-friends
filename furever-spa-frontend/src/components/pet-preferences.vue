@@ -7,60 +7,72 @@
         <div class="bg-container">
           <sl-form class="form" v-on:sl-submit.prevent="petPreferencesSubmitHandler">
             <div class="input-group custom-input">
-              <sl-select  class="form-input" multiple clearable label="What best describes where you live?" name="preferredLiving" type="text" placeholder="suburban home, apartment, acreage" required>
-                <sl-menu-item value="suburban-home">Suburban Home</sl-menu-item>
-                <sl-menu-item value="apartment">Apartment</sl-menu-item>
-                <sl-menu-item value="acreage">Acreage</sl-menu-item>
+              <sl-select class="form-input" label="Pet Type" name="petType" type="text" placeholder="Cat" required>
+                <sl-menu-item value="cat">Cat</sl-menu-item>
+                <sl-menu-item value="dog">Dog</sl-menu-item>
+                <sl-menu-item value="any">Any</sl-menu-item>
               </sl-select>
             </div>
             <div class="input-group custom-input">
-              <sl-select  class="form-input" multiple clearable label="How large is your yard space?" name="accomodationSize" type="text" placeholder="Non-existent / average size / on the larger side">
-                <sl-menu-item value="non-existent">Non-existent</sl-menu-item>
-                <sl-menu-item value="average-size">Average Size</sl-menu-item>
-                <sl-menu-item value="larger-side">On the larger side</sl-menu-item>
+              <sl-select class="form-input" label="Age" name="age" type="number" placeholder="<1" required>
+                <sl-menu-item value="<1">&#62;1</sl-menu-item>
+                <sl-menu-item value="1-4">1-4</sl-menu-item>
+                <sl-menu-item value="4-8">4-8</sl-menu-item>
+                <sl-menu-item value=">8">&#62;8</sl-menu-item>
+                <sl-menu-item value="any">Any</sl-menu-item>
               </sl-select>
             </div>
             <div class="input-group custom-input">
-              <sl-radio-group label="Select an item" class="form-input">
-                <fieldset part="base" role="radiogroup" class="radio-group">
-                  <legend part="label" class="radio-group__label">
-                    <slot name="label">Do you have any other animals in the home?</slot>
-                  </legend>
-                  <slot></slot>
-                </fieldset>
-                <sl-radio value="yes">Yes</sl-radio>
-                <sl-radio value="no">No</sl-radio>
-              </sl-radio-group>
+              <sl-input class="form-input" label="Breed" name="breed" type="text" placeholder="Ragdoll" required></sl-input>
             </div>
             <div class="input-group custom-input">
-              <sl-select class="form-input" multiple clearable label="If yes, how would you describe your existing pet?" name="accomodationSize" type="text" placeholder="Non-existent/average size/on the larger side" required>
-                <sl-menu-item value="quiet">Quiet</sl-menu-item>
-                <sl-menu-item value="neutral">Neutral</sl-menu-item>
-                <sl-menu-item value="energetic">Energretic</sl-menu-item>
+              <sl-select class="form-input" label="Sex" name="sex" type="text" placeholder="Male / Female" required>
+                <sl-menu-item value="male">Male</sl-menu-item>
+                <sl-menu-item value="female">Female</sl-menu-item>
+                <sl-menu-item value="any">Any</sl-menu-item>
               </sl-select>
-            </div>
+            </div>    
             <div class="input-group custom-input">
-              <sl-radio-group label="Do you have children?">
-                <fieldset part="base" role="radiogroup" class="radio-group">
-                  <legend part="label" class="radio-group__label">
-                    <slot name="label">Do you have children?</slot>
-                  </legend>
-                  <slot></slot>
-                </fieldset>
-                <sl-radio value="yes">Yes</sl-radio>
-                <sl-radio value="no">No</sl-radio>
-              </sl-radio-group>
-            </div>
+              <sl-input label="Colour" name="colour" type="text" placeholder="Brindle" required></sl-input>
+            </div>  
             <div class="input-group custom-input">
-              <sl-select class="form-input" multiple clearable label="If yes, what is the age of your youngest child?" name="accomodationSize" type="text" placeholder="Children age" required>
-                <sl-menu-item value="under-2">under 2</sl-menu-item>
-                <sl-menu-item value="3-6">3-6 yrs old</sl-menu-item>
-                <sl-menu-item value="7-10">7-10 yrs old</sl-menu-item>
+              <sl-select class="form-input" multiple clearable label="Prefered pet personality?" name="personality" type="text" placeholder="Confident, Friendly" required>
+                <sl-menu-item value="confident">Confident</sl-menu-item>
+                <sl-menu-item value="friendly">Friendly</sl-menu-item>
+                <sl-menu-item value="needsTraining">Needs Training</sl-menu-item>
+                <sl-menu-item value="shy-timid">Shy or timid</sl-menu-item>
+                <sl-menu-item value="independant">Independant</sl-menu-item>
+                <sl-menu-item value="laidback">Laidback</sl-menu-item>
+                <sl-menu-item value="adaptable">Adaptable</sl-menu-item>
+                <sl-menu-item value="energetic">Energitic</sl-menu-item>
+                <sl-menu-item value="dependant">Dependant</sl-menu-item>
+                <sl-menu-item value="serious">Serious</sl-menu-item>
+                <sl-menu-item value="calm">Calm</sl-menu-item>
               </sl-select>
-            </div>
-            <sl-button type="primary" class="form-submit submit-btn" submit>Submit Your Information</sl-button>
+            </div> 
+            <div class="input-group custom-input">
+              <sl-select class="form-input" multiple clearable label="What are your desired pet activities?" name="activities" type="text" placeholder="Sleeping, Playing with toys" required>
+                <sl-menu-item value="running">Running</sl-menu-item>
+                <sl-menu-item value="walking">Walking</sl-menu-item>
+                <sl-menu-item value="sleeping">Sleeping</sl-menu-item>
+                <sl-menu-item value="playing-toys">Playing with toys</sl-menu-item>
+                <sl-menu-item value="playing-fetch">Playing fetch</sl-menu-item>
+                <sl-menu-item value="swimming">Swimming</sl-menu-item>
+                <sl-menu-item value="bathing">Bathing</sl-menu-item>
+                <sl-menu-item value="grooming">Grooming</sl-menu-item>
+                <sl-menu-item value="dress-ups">Dress-ups</sl-menu-item>
+                <sl-menu-item value="bird-watching">Bird watching</sl-menu-item>
+                <sl-menu-item value="lap-time">Lap time</sl-menu-item>
+              </sl-select>
+            </div>  
+            <div class="input-group custom-input">
+              <sl-textarea class="form-input " resize="auto" label="Bio" help-text="Tell us about your purrfect pet">
+              </sl-textarea>
+            </div>   
+            <sl-button type="button" class="form-submit submit-btn" submit>Add Pet</sl-button>
           </sl-form>
-          </div>
+        </div>
+          <a href="/">Cancel edit?</a>
         </div>
       </div>
       <blueFooter/>
@@ -68,8 +80,8 @@
 </template>
 
 <script>
-  import navbar from './Navbar.vue'
-  import blueFooter from './Footer.vue'
+import navbar from './Navbar.vue'
+import blueFooter from './Footer.vue'
 import Auth from '../Auth.js'
 export default {
     methods: {
