@@ -30,19 +30,14 @@ const routes = {
 	'/matches': Matches,
 	'/add': addPet,
 	'/editpet': editPet,
-
 	'/about': aboutYou,
 	'/edit': editProfile,
 	'/profile': Profile,
 	'/preferences': petPreferences,
-	
 	'404' : fourOFourView,
 	'/signin': Signin,
 	'/signup': Signup
 
-
-	
-	
 
 }
 

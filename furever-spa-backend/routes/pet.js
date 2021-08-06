@@ -12,7 +12,7 @@ router.get('/:petName', (req, res) => {
     })
   }
 
-  Pet.findById(req.params.id)
+  Pet.find(req.params.petName)
     .then(pet => {
       res.json(pet)
     })
