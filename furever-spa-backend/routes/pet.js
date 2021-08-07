@@ -5,21 +5,20 @@ const Pet = require('./../models/Pet')
 const path = require('path')
 
 // GET - get single pet -------------------------------------------------------
-router.get('/:petName', (req, res) => {
-  if(req.pet.petName != req.params.petName){
-    return res.status(401).json({
-      message: "Not authorised"
-    })
+router.get('/', (req, res) => {
+  // validate request
+  if(Object.keys(req.body).length === 0){   
+    return res.status(400).send({message: "Pet name can not be empty"})
   }
-
-  Pet.find(req.params.petName)
-    .then(pet => {
+  
+  Pet.findOne({petName: req.body.petName})
+  .then(pet => {
       res.json(pet)
     })
     .catch(err => {
       console.log(err)
       res.status(500).json({
-        message: "Couldn't get pet",
+        message: "Could not find pet",
         error: err
       })
     })

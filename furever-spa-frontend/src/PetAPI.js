@@ -57,23 +57,23 @@ class PetAPI {
   }
 
   async getPets() {
-    // const response = await fetch(`${App.apiBase}/pet`, {
-    //   headers: { "Authorization": `Bearer ${localStorage.accessToken}`}
-    // })
+    const response = await fetch(`${App.apiBase}/pet`, {
+      headers: { "Authorization": `Bearer ${localStorage.accessToken}`}
+    })
 
-    // // if response not ok
-    // if(!response.ok){ 
-    //   // console log error
-    //   const err = await response.json()
-    //   if(err) console.log(err)
-    //   // throw error (exit this function)      
-    //   throw new Error('Problem getting pet')
-    // }
+    // if response not ok
+    if(!response.ok){ 
+      // console log error
+      const err = await response.json()
+      if(err) console.log(err)
+      // throw error (exit this function)      
+      throw new Error('Problem getting pets')
+    }
     
-    // // convert response payload into json - store as data
-    // const data = await response.json()
+    // convert response payload into json - store as data
+    const data = await response.json()
     
-    // // return data
+    // return data
     return data
   }
 }
