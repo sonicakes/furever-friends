@@ -7,7 +7,7 @@ class App {
   constructor(){
     this.name = "Furever"
     this.version = "1.0.0"
-    this.apiBase = 'https://furever-friends-backend.herokuapp.com'
+    this.apiBase = 'http://localhost:3000'
     this.rootEl = document.getElementById("root")
     this.version = "1.0.0"
   }

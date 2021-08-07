@@ -49,6 +49,7 @@ class PetAPI {
       throw new Error('Problem getting pet')
     }
     
+    console.log(response.json())
     // convert response payload into json - store as data
     const data = await response.json()
     

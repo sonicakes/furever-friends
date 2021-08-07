@@ -24,24 +24,24 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: String,    
   },
-  avatar: {
-    type: String,    
-  },
-  avatar: {
-    type: String,    
-  },
-  avatar: {
-    type: String,    
-  },
-  avatar: {
-    type: String,    
-  },
-  avatar: {
-    type: String,    
-  },
-  avatar: {
-    type: String,    
-  },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
 }, { timestamps: true })
 
 // encrypt password field on save
