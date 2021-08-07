@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import navbar from './Navbar.vue'
+    import navbar from './navbar.vue'
 
     export default {
         name: 'login',

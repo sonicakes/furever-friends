@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import navbar from './Navbar.vue'
-import blueFooter from './Footer.vue'
+import navbar from './navbar.vue'
+import blueFooter from './footer.vue'
 export default {
     components: {
         navbar,
