@@ -1,5 +1,7 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 
+Vue.use(BootstrapVue)
 
 // import views
 import fourOFourView from './views/pages/404'
@@ -76,7 +78,7 @@ class Router {
 
 		} else {			
 			// show 404 view instead
-			this.routes['404'].init()			
+			this.viewContainer = new Vue({ render: createElement => createElement(error) }).$mount('#app div');	
 		}
 	}
 
