@@ -98,14 +98,14 @@ class Auth {
       // User is not logged in, but they are trying to visit
       // the sign in or sign up page, let them through
       switch (window.location.pathname) {
-        case '/login':
+        case '/signin':
         case '/signup':
           success();
           return;
       }
 
       // Otherwise, redirect to sign in page
-      gotoRoute('/login')
+      gotoRoute('/signin')
       return
     }
     
