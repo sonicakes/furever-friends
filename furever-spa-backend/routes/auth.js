@@ -6,8 +6,8 @@ const Pet = require('./../models/Pet')
 const Utils = require('./../utils')
 const jwt = require('jsonwebtoken')
 
-// GET /signIn ---------------------------------------
-router.post('/signin', (req, res) => {
+// GET /login ---------------------------------------
+router.post('/login', (req, res) => {
   // 1. check if email and passwore are empty
   if( !req.body.email || !req.body.password ){     
     return res.status(400).json({message: "Please provide email and password"})

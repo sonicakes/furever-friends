@@ -36,7 +36,7 @@
               <sl-select class="form-input" multiple clearable label="If yes, how would you describe your existing pet?" name="accomodationSize" type="text" placeholder="Non-existent/average size/on the larger side" required>
                 <sl-menu-item value="quiet">Quiet</sl-menu-item>
                 <sl-menu-item value="neutral">Neutral</sl-menu-item>
-                <sl-menu-item value="energetic">Energretic</sl-menu-item>
+                <sl-menu-item value="energetic">Energetic</sl-menu-item>
               </sl-select>
             </div>
             <div class="input-group custom-input">

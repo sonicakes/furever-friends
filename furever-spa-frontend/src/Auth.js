@@ -25,6 +25,7 @@ class Auth {
       // run fail() functon if set
       if(typeof fail == 'function') fail()
     }
+    console.log(response.json())
     /// pet add success - show toast and redirect to sign in page
     Toast.show('Pet added')        
     // redirect to add
@@ -50,12 +51,12 @@ class Auth {
     /// sign up success - show toast and redirect to sign in page
     Toast.show('Account created, please sign in')        
     // redirect to signin
-    gotoRoute('/signin')
+    gotoRoute('/login')
   }
 
 
   async signIn(userData, fail = false){
-    const response = await fetch(`${App.apiBase}/auth/signin`, {
+    const response = await fetch(`${App.apiBase}/auth/login`, {
       method: 'POST',      
       body: userData
     })
@@ -74,6 +75,7 @@ class Auth {
     // sign in success
     const data = await response.json()
     Toast.show(`Welcome  ${data.user.firstName}`)
+    console.log(data)
     // save access token (jwt) to local storage
     localStorage.setItem('accessToken', data.accessToken)
     localStorage.setItem('user', JSON.stringify(data.user))
@@ -86,23 +88,24 @@ class Auth {
 
 
   async check(success){
-
+    console.log(localStorage.getItem('user'))
     // check local token is there
     if(null === localStorage.getItem('accessToken')){
       // no local token!
       Toast.show("Please sign in")
 
+
       // User is not logged in, but they are trying to visit
       // the sign in or sign up page, let them through
       switch (window.location.pathname) {
-        case '/signin':
+        case '/login':
         case '/signup':
           success();
           return;
       }
 
       // Otherwise, redirect to sign in page
-      gotoRoute('/signin')
+      gotoRoute('/login')
       return
     }
     
@@ -123,7 +126,7 @@ class Auth {
       localStorage.removeItem('accessToken')
       Toast.show("session expired, please sign in")
       // redirect to sign in      
-      gotoRoute('/signin')
+      gotoRoute('/login')
       return
     }
     
@@ -142,7 +145,7 @@ class Auth {
     localStorage.removeItem('accessToken')       
     localStorage.removeItem('user')      
     // redirect to sign in    
-    gotoRoute('/signin')
+    gotoRoute('/login')
     // unset currentUser
     this.currentUser = null
   }
