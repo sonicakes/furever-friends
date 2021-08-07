@@ -11,12 +11,11 @@
 
 .bg-container {
   background:  #d9cdbf;
-
 }
 
 .form-box{
   h1{
-      font-family: 'Otomanopee One', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
@@ -25,8 +24,9 @@
 
   .custom-input {
     text-align: left;
-    font-family: 'Otomanopee One', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding-bottom: 10px;
+    font-size: var(--sl-input-label-font-size-medium) !important;
   }
 
   .submit-btn > .button {

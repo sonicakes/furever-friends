@@ -5,7 +5,7 @@
             <h1 style="text-align: center;">PREFERENCES</h1>
             <div class="row">
                 <div class="col mx-auto">
-                    <div class="ar-image">
+                    <div class="ar-image" onclick='window.location.href="/about"'>
                         <div class="article-image">
                         </div>
                         <h2><div>ABOUT ME<br>Questionnaire</div></h2>
@@ -14,7 +14,7 @@
                     <p style="width: 75%; margin: auto;">If your details have changed, please feel free to update your information by retaking the questionnaire.</p>
                 </div>
                 <div class="col mx-auto">
-                    <div class="ar-image">
+                    <div class="ar-image" onclick='window.location.href="/"'>
                         <div class="article-image-2">
                         </div>
                         <h2><div>MY IDEAL PET<br/> Questionnaire</div></h2>
@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import navbar from './navbar.vue'
-import blueFooter from './footer.vue'
+import navbar from './Navbar.vue'
+import blueFooter from './Footer.vue'
 export default {
     components: {
         navbar,

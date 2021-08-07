@@ -3,12 +3,13 @@
         <Waterfall >
             <WaterfallItem v-for="image in images"
                 :key="image">
-                <div class='grid-item'>
+                <div class='grid-item' style="position: relative;">
                     <img 
                         :src="image"
                         alt="A kitten walks towards camera on top of pallet."
                         width="100%"
                     >
+                    <h2><div>MORE INFO</div></h2>
                     <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
                 </div>
             </WaterfallItem>
@@ -32,9 +33,35 @@ export default {
 </script>
 
 <style scoped>
+h2 > div {
+    width: max-content;
+    margin: auto;
+    border: 4px solid transparent;
+}
+
+ h2 {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 40%;
+    display: block;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+    z-index: 999999;
+    right: 0;
+    left: 0;
+    text-align: center;
+    transition: .4s ease-in-out;
+}
 
 .grid-item {
     overflow: hidden;
+}
+
+.grid-item img:hover {
+    -webkit-filter: grayscale(10%) blur(10px);
+  filter: grayscale(10%) blur(2px);
+  transition: .4s ease-in-out;
 }
     * {
 	box-sizing: border-box;

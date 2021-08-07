@@ -1,7 +1,7 @@
 <template>
   <div style="max-width: 100vw; padding-top: 50px; padding-bottom: 20px;" >
     <h3 style="text-align:center; padding-bottom:10px;">ANIMALS WAITING FOR YOU</h3>
-    <VueSlickCarousel :arrows="true" :slidesToShow="3" :speed="500" :variableWidth="true" :dots="true" :centerMode="true">
+    <VueSlickCarousel v-bind="settings">
       <div class="card"><img src="../assets/resized/cat-1.jpg" height="350px" style="border-radius: 10px;"></div>
       <div class="card"><img src="../assets/resized/dog-1.jpg" height="350px"></div>
       <div class="card"><img src="../assets/resized/cat-2.jpg" height="350px"></div>
@@ -25,6 +25,19 @@
   export default {
     name: 'carousel',
     components: { VueSlickCarousel },
+    data() {  
+      return {
+        settings: {
+          "dots": true,
+          "infinite": true,
+          "centerMode": true,
+          "centerPadding": "20px",
+          "slidesToShow": 1,
+          "slidesToScroll": 1,
+          "variableWidth": true
+        }
+      }
+    }
   }
 </script>
 
