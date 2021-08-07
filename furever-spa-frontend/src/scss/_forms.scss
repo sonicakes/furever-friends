@@ -14,13 +14,13 @@
 
 }
 
-.add-pet-box{
+.form-box{
   h1{
       font-family: 'Otomanopee One', sans-serif;
   }
 }
 
-.form-add-pet {
+.form {
   padding: 50px 100px;
 
   .custom-input {
@@ -34,30 +34,30 @@
   }
 }
 
-sl-button.add-pet-submit::part(base) {
+sl-button.form-submit::part(base) {
   background-color: white;
   border: 3px solid #bf9673;
 }
 
-sl-textarea.add-pet-input::part(base) {
+sl-textarea.form-input::part(base) {
   background-color:#bf9673;
   //border-color: $brand-color-3;
   border-color: #bf9673;
 }
 
-sl-input.add-pet-input::part(base) {
+sl-input.form-input::part(base) {
   background-color:#bf9673;
   border-color: #bf9673;
   color: #000;
 }
 
-sl-select.add-pet-input div[slot="trigger"] {
+sl-select.form-input div[slot="trigger"] {
   background-color: green;
   border-color: orange;
 
 }
 
-sl-select.add-pet-input::part(menu) {
+sl-select.form-input::part(menu) {
   background-color:#bf9673;
   border-color: #bf9673;
 }

@@ -3,33 +3,42 @@ import Vue from 'vue'
 
 // import views
 import fourOFourView from './views/pages/404'
-import signinView from './views/pages/signin'
-import signupView from './views/pages/signup'
-import profileView from './views/pages/profile'
-import editProfileView from './views/pages/editProfile'
-import Matches from './components/Matches.vue'
-import Home from './components/Home.vue'
-import Signin from './components/Signin.vue'
-import Signup from './components/Signup.vue'
-import Profile from './components/Profile.vue'
+// import signinView from './views/pages/signin'
+// import signupView from './views/pages/signup'
+// import profileView from './views/pages/profile'
+// import editProfileView from './views/pages/editProfile'
+import matches from './components/matches.vue'
+import home from './components/home.vue'
+import signin from './components/signin.vue'
+import signup from './components/signup.vue'
+import profile from './components/profile.vue'
 import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
+import editPet from './components/edit-pet.vue'
 import aboutYou from './components/about-you.vue'
+import petPreferences from './components/pet-preferences.vue'
+import editProfile from './components/edit-profile.vue'
+
+
 
 
 
 
 // define routes
 const routes = {
-	'/': Home,	
-	'/matches': Matches,
+	'/': home,	
+	'/matches': matches,
 	'/add': addPet,
+	'/editpet': editPet,
 	'/about': aboutYou,
+	'/edit': editProfile,
+	'/profile': profile,
+	'/preferences': petPreferences,
 	'404' : fourOFourView,
-	'/signin': Signin,
-	'/signup': Signup,
-	'/profile': Profile,
-	'/editProfile': editProfileView	
+	'/signin': signin,
+	'/signup': signup
+
+
 }
 
 class Router {

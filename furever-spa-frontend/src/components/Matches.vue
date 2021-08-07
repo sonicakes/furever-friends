@@ -12,9 +12,9 @@
 
 <script>
   import * as Auth from '../Auth.js'
-  import navbar from './Navbar.vue'
-  import blueFooter from './Footer.vue'
-  import matchesCards from './Matches-Cards.vue'
+  import navbar from './navbar.vue'
+  import blueFooter from './footer.vue'
+  import matchesCards from './matches-cards.vue'
 
   export default {
     name: 'matches',
