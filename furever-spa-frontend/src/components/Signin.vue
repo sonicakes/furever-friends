@@ -56,73 +56,58 @@ export default {
 </script>
 
 <style>
-
 /* https://jsfiddle.net/StartBootstrap/efvg9j7a/ */
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: 0.75rem;
 }
-
 .login,
 .image {
   min-height: 100vh;
 }
-
 .bg-image {
   background-image: url('https://images.unsplash.com/photo-1415369629372-26f2fe60c467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80');
   background-size: cover;
   background-position: center;
 }
-
 .login-heading {
   font-weight: 300;
 }
-
 .btn-login {
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
   border-radius: 2rem;
 }
-
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;
 }
-
 .form-label-group>input {
   padding: var(--input-padding-y) var(--input-padding-x);
   height: auto;
   border-radius: 2rem;
 }
-
 .form-label-group input::-webkit-input-placeholder {
   color: transparent;
 }
-
 .form-label-group input:-ms-input-placeholder {
   color: transparent;
 }
-
 .form-label-group input::-ms-input-placeholder {
   color: transparent;
 }
-
 .form-label-group input::-moz-placeholder {
   color: transparent;
 }
-
 .form-label-group input::placeholder {
   color: transparent;
 }
-
 .form-label-group input:not(:placeholder-shown) {
   padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
   padding-bottom: calc(var(--input-padding-y) / 3);
 }
-
 /* Fallback for Edge
 -------------------------------------------------- */
-
 @supports (-ms-ime-align: auto) {
   .form-label-group>label {
     display: none;
@@ -131,10 +116,8 @@ export default {
     color: #777;
   }
 }
-
 /* Fallback for IE
 -------------------------------------------------- */
-
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
   .form-label-group>label {
@@ -144,5 +127,4 @@ export default {
     color: #777;
   }
 }
-
 </style>
