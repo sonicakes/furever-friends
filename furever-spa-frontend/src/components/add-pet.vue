@@ -110,7 +110,7 @@
               <sl-textarea class="add-pet-input " resize="auto" label="Bio" help-text="Tell us about the pet">
               </sl-textarea>
               <label>Pet Image</label><br>          
-                <sl-image image="${App.apiBase}/images/${this.pet.image}"></sl-image>
+                <sl-image image="$App.apiBase/images/this.pet.image"></sl-image>
                 <input type="file" name="image" />
             </div>   
             <sl-button type="button" class="add-pet-submit submit-btn" submit>Add Pet</sl-button>
@@ -124,8 +124,8 @@
 </template>
 
 <script>
-  import navbar from './Navbar.vue'
-  import blueFooter from './Footer.vue'
+import navbar from './Navbar.vue'
+import blueFooter from './Footer.vue'
 import Auth from '../Auth.js'
 export default {
     methods: {
