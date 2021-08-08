@@ -4,6 +4,20 @@ const Utils = require('./../utils')
 const Pet = require('./../models/Pet')
 const path = require('path')
 
+// GET - collection
+router.get('/', (req, res) => {
+    Pet.find()
+        .then(data => {
+            res.json(data)
+        })
+        .catch(err => {
+            res.status(500).json({
+              message: "Could not fetch a list of pets",
+              error: err
+            })
+        });
+});
+
 // GET - get single pet -------------------------------------------------------
 router.get('/:petName', (req, res) => {
   if(req.pet.petName != req.params.petName){
