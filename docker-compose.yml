@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  backend:
+    image: node:14
+    volumes:
+      - ./furever-spa-backend:/srv/app:rw,cached
+    working_dir: /srv/app
+    command: 'sh -c "npm install; npm run dev"'
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+
+  frontend:
+    image: node:16
+    volumes:
+      - ./furever-spa-frontend:/srv/app:rw,cached
+    working_dir: /srv/app
+    command: 'sh -c "npm install; npm run dev"'
+    ports:
+      - target: 1234
+        published: 1234
+        protocol: tcp
