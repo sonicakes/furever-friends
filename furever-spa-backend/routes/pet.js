@@ -7,22 +7,36 @@ const path = require('path')
 // GET - get single pet -------------------------------------------------------
 router.get('/', (req, res) => {
   // validate request
-  if(Object.keys(req.body).length === 0){   
-    return res.status(400).send({message: "Pet name can not be empty"})
-  }
-  
-  Pet.findOne({petName: req.body.petName})
-  .then(pet => {
-      res.json(pet)
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json({
-        message: "Could not find pet",
-        error: err
+  if(Object.keys(req.body.petName).length === 0){   
+    return Pet.find()
+      .then(pets => {
+            if(pets == null){
+            return res.status(404).json({
+              message: "No pets found"
+            })
+          }
+          res.json(pets)
+        })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({
+          message: "Problem getting pets"
+        })
       })
-    })
-})
+    }
+
+    Pet.findOne({petName: req.body.petName})
+    .then(pet => {
+        res.json(pet)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({
+          message: "Could not find pet",
+          error: err
+        })
+      })
+  })
 
 
 // PUT - update pet ---------------------------------------------
