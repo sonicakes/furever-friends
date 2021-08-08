@@ -1,7 +1,9 @@
 import Vue from 'vue';
+import Vuex from 'vuex';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 
 Vue.use(BootstrapVue)
+Vue.use(Vuex);
 
 // import views
 import fourOFourView from './views/pages/404'
@@ -21,7 +23,7 @@ import Settings from './components/Settings.vue'
 import Pet from './components/Pet.vue'
 import error from './components/404.vue'
 
-
+import {store} from './store';
 
 
 // define routes
@@ -70,11 +72,17 @@ class Router {
 				document.querySelector('#app').appendChild(document.createElement('div'));
 			}
 
-			this.viewContainer = new Vue({ render: createElement => createElement(this.routes[window.location.pathname]) }).$mount('#app div');
+			this.viewContainer = new Vue({
+				render: createElement => createElement(this.routes[window.location.pathname]),
+				store: store,
+			}).$mount('#app div');
 
 		} else {			
 			// show 404 view instead
-			this.viewContainer = new Vue({ render: createElement => createElement(error) }).$mount('#app div');	
+			this.viewContainer = new Vue({
+				render: createElement => createElement(error),
+				store: store,
+			}).$mount('#app div');
 		}
 	}
 
