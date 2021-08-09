@@ -12,10 +12,10 @@
 
 <script>
   import {updateUser} from '../UserAPI.js';
-  import navbar from './Navbar.vue'
-  import carousel from './Image-Carousel.vue'
-  import frontVideo from './Video.vue'
-  import blueFooter from './Footer.vue'
+  import navbar from './navbar.vue'
+  import carousel from './image-carousel.vue'
+  import frontVideo from './video.vue'
+  import blueFooter from './footer.vue'
 
   export default {
     components: {

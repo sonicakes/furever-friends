@@ -2,7 +2,7 @@ import App from './App.js'
 
 
 // components (custom web components)
-import './components/fur-app-header'
+// import './components/fur-app-header'
 
 // styles
 import './scss/master.scss'

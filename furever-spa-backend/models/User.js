@@ -22,8 +22,26 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   avatar: {
-    type: String    
-  }
+    type: String,    
+  },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
+  // avatar: {
+  //   type: String,    
+  // },
 }, { timestamps: true })
 
 // encrypt password field on save
