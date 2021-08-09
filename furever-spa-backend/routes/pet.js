@@ -119,9 +119,7 @@ router.post('/', (req, res) => {
 
             if (req.files && req.files.image) {
                 const uploadPath = path.join(__dirname, '..', 'public', 'images');
-                await Utils.uploadFile(req.files.image, uploadPath, (uniqueFilename) => {
-                    imageFilename = uniqueFilename;
-                });
+                imageFilename = await Utils.uploadFile(req.files.image, uploadPath).then(f => f);
             }
 
             // create new pet
