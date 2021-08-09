@@ -9,6 +9,10 @@
             Age: {{ pet.age }}<br>
             Breed: {{ pet.breed }}<br>
             Colour: {{ pet.colour }}<br>
+
+            Image: <img src="https://via.placeholder.com/150">
+            <!-- todo -->
+<br>
             Activities
             <ul>
                 <li v-for="activities in pet.activities">{{ activities }}</li>
