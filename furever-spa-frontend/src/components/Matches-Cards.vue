@@ -15,7 +15,7 @@
                         <div>MORE INFO</div>
                     </h2>
                     <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
-                </div>
+                </div>  
             </WaterfallItem>
         </Waterfall>
     </div>
@@ -26,9 +26,9 @@ import {Waterfall, WaterfallItem} from 'vue2-waterfall';
 import PetAPI from '../PetAPI.js'
 export default {
     name: 'matchesCards',
-    data: function() {
+    data: function() {        
         return {
-            pet: PetAPI.getPet('Test1'),
+            pet: PetAPI.getPet(),
             images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')],
             options: {  columnWidth: '.grid-item',
                         itemSelector: '.grid-item'},

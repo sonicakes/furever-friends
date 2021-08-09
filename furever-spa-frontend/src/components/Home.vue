@@ -31,7 +31,7 @@
 <style scoped>
   #home {
     position: relative;
-    background-color: #EBDAD1;
+    background-color: #d9cdbf;
   }
 
   button {
