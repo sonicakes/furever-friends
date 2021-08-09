@@ -4,6 +4,13 @@ const Utils = require('./../utils')
 const User = require('./../models/User')
 const path = require('path')
 
+// GET - collection
+router.get('/', (req, res) => {
+  User.find()
+      .then(users => res.json(users))
+      .catch(err => res.status(500).json({error: err}));
+});
+
 // GET - get single user -------------------------------------------------------
 router.get('/:id', Utils.authenticateToken, (req, res) => {
   if(req.user._id != req.params.id){
@@ -25,6 +32,9 @@ router.get('/:id', Utils.authenticateToken, (req, res) => {
     })
 })
 
+router.patch('/:id', Utils.authenticateToken, async (req, res) => {
+  res.json(await User.findByIdAndUpdate(req.params.id, req.body, {new: true}));
+});
 
 // PUT - update user ---------------------------------------------
 router.put('/:id', Utils.authenticateToken, (req, res) => {
