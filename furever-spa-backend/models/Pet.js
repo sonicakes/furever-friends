@@ -48,6 +48,9 @@ const petSchema = new mongoose.Schema({
   bio: {
     type: String,
     require: true   
+  },
+  imageFilename: {
+    type: String,
   }
 }, { timestamps: true })
 
