@@ -74,4 +74,7 @@ export default {
 .pet {
   border: 1px solid red;
 }
+.photo img {
+  max-width: 200px;
+}
 </style>
