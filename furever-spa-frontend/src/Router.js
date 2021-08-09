@@ -19,7 +19,6 @@ import Profile from './components/Profile.vue'
 import { parseTwoDigitYear } from 'moment'
 import addPet from './components/add-pet.vue'
 import aboutYou from './components/about-you.vue'
-import Settings from './components/Settings.vue'
 import Pet from './components/Pet.vue'
 import error from './components/404.vue'
 
@@ -37,7 +36,6 @@ const routes = {
 	'/signup': Signup,
 	'/profile': Profile,
 	'/editProfile': editProfileView,
-	'/settings': Settings,
 	'/pet': Pet,
 }
 
