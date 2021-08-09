@@ -22,3 +22,6 @@ services:
       - target: 1234
         published: 1234
         protocol: tcp
+      - target: 5678
+        published: 5678
+        protocol: tcp
