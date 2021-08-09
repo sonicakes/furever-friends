@@ -1,41 +1,46 @@
 <template>
-    <div class="pets">
-        <div class="pet" v-for="pet in filteredPets()">
-            Name: {{ pet.petName }}<br>
-            Type: {{ pet.petType }}<br>
-            Preferred Family: {{ pet.preferredFamily }}<br>
-            Sex: {{ pet.sex }}<br>
-            Weight: {{ pet.weight }}<br>
-            Age: {{ pet.age }}<br>
-            Breed: {{ pet.breed }}<br>
-            Colour: {{ pet.colour }}<br>
-
-            Image: <img src="https://via.placeholder.com/150">
-            <!-- todo -->
-<br>
-            Activities
-            <ul>
-                <li v-for="activities in pet.activities">{{ activities }}</li>
-            </ul>
-            Personality
-            <ul>
-                <li v-for="personality in pet.personality">{{ personality }}</li>
-            </ul>
-            Preferred Living
-            <ul>
-                <li v-for="preferredLiving in pet.preferredLiving">{{ preferredLiving }}</li>
-            </ul>
-            Things to Avoid
-            <ul>
-                <li v-for="thingsToAvoid in pet.thingsToAvoid">{{ thingsToAvoid }}</li>
-            </ul>
-        </div>
+  <div class="pets">
+    <div class="pet" v-for="pet in filteredPets()">
+      <div class="photo" v-if="pet.imageFilename !== null">
+        <img :alt="pet.petName" :src="urlImage(pet.imageFilename)" />
+      </div>
+      <div class="stats">
+        Name: {{ pet.petName }}<br>
+        Type: {{ pet.petType }}<br>
+        Preferred Family: {{ pet.preferredFamily }}<br>
+        Sex: {{ pet.sex }}<br>
+        Weight: {{ pet.weight }}<br>
+        Age: {{ pet.age }}<br>
+        Breed: {{ pet.breed }}<br>
+        Colour: {{ pet.colour }}<br>
+        Activities
+        <ul>
+          <li v-for="activities in pet.activities">{{ activities }}</li>
+        </ul>
+        Personality
+        <ul>
+          <li v-for="personality in pet.personality">{{ personality }}</li>
+        </ul>
+        Preferred Living
+        <ul>
+          <li v-for="preferredLiving in pet.preferredLiving">{{ preferredLiving }}</li>
+        </ul>
+        Things to Avoid
+        <ul>
+          <li v-for="thingsToAvoid in pet.thingsToAvoid">{{ thingsToAvoid }}</li>
+        </ul>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
+import App from './../App';
 export default {
   methods: {
+    urlImage(imageFilename) {
+      return `${App.apiBase}/images/${imageFilename}`;
+    },
     filteredPets() {
       let filtered = this.$store.state.matches.results;
 
