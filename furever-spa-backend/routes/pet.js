@@ -3,6 +3,7 @@ const router = express.Router()
 const Utils = require('./../utils')
 const Pet = require('./../models/Pet')
 const path = require('path')
+const fs = require('fs');
 
 // DELETE
 // router.delete('/:petName', (req, res) => {
@@ -108,8 +109,6 @@ router.get('/:petName', (req, res) => {
 // POST - create new pet --------------------------------------
 router.post('/', (req, res) => {
 
-    let imageFilename = null;
-
     // validate request
     if (Object.keys(req.body).length === 0) {
         return res.status(400).send({message: "Pet content can not be empty"})
@@ -124,15 +123,15 @@ router.post('/', (req, res) => {
                 })
             }
 
-            if (req.files && req.files.image) {
-                const uploadPath = path.join(__dirname, '..', 'public', 'images');
-                imageFilename = await Utils.uploadFile(req.files.image, uploadPath).then(f => f);
-            }
-
-            // create new pet
             let newPet = new Pet(req.body)
 
-            newPet.imageFilename = imageFilename;
+            if (req.files && req.files.image) {
+                newPet.photoData = req.files.image.data;
+                newPet.photoContentType = req.files.image.mimetype;
+            } else {
+                newPet.photoData = null;
+                newPet.photoContentType = null;
+            }
 
             newPet.save()
                 .then(pet => {

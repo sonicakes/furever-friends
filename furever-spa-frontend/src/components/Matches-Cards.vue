@@ -1,8 +1,8 @@
 <template>
   <div class="pets">
     <div class="pet" v-for="pet in filteredPets()">
-      <div class="photo" v-if="pet.imageFilename !== null">
-        <img :alt="pet.petName" :src="urlImage(pet.imageFilename)" />
+      <div class="photo">
+        <img :alt="pet.petName" :src="srcImage(pet)" />
       </div>
       <div class="stats">
         Name: {{ pet.petName }}<br>
@@ -36,10 +36,23 @@
 
 <script>
 import App from './../App';
+import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
 export default {
   methods: {
-    urlImage(imageFilename) {
-      return `${App.apiBase}/images/${imageFilename}`;
+    srcImage(pet) {
+      let src;
+
+      if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
+        src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+
+      } else if(pet.petType === 'dog') {
+        src = imgSrcDog;
+
+      } else {
+        src = imgSrcCat;
+      }
+
+      return src;
     },
     filteredPets() {
       let filtered = this.$store.state.matches.results;

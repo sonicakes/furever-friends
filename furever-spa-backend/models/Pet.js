@@ -49,9 +49,12 @@ const petSchema = new mongoose.Schema({
     type: String,
     require: true   
   },
-  imageFilename: {
+  photoData: {
+    type: Buffer,
+  },
+  photoContentType: {
     type: String,
-  }
+  },
 }, { timestamps: true })
 
 // model
