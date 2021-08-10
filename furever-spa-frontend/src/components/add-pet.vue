@@ -107,7 +107,7 @@
               </sl-select>
             </div>
             <div class="input-group custom-input">
-              <sl-textarea class="form-input " resize="auto" label="Bio" help-text="Tell us about the pet">
+              <sl-textarea class="form-input" resize="auto" label="Bio" help-text="Tell us about the pet">
               </sl-textarea>
               <label>Pet Image</label><br>          
                 <sl-image image="$App.apiBase/images/this.pet.image"></sl-image>
@@ -115,12 +115,12 @@
             </div>   
             <sl-button type="button" class="form-submit submit-btn" submit>Add Pet</sl-button>
           </sl-form>
-                    </div>
+          </div>
           <p>Cancel add? <a href="/">Return Home</a></p>
         </div>
       </div>
-      <blueFooter/>
-      </div>
+    <blueFooter/>
+  </div>
 </template>
 
 <script>

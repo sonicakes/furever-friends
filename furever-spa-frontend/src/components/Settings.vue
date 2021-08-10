@@ -18,7 +18,8 @@
                         <div class="article-image-2">
                         </div>
                         <h2><div>MY IDEAL PET<br/> Questionnaire</div></h2>
-                    </div>
+                    </div>                 
+                    
                     <h3 style="padding-top: 10px; width: 75%; margin: auto;">You last completed this questionnaire on [DATE]</h3>
                     <p style="width: 75%; margin: auto;">If your details have changed, please feel free to update your information by retaking the questionnaire.</p>
                 </div>
@@ -29,8 +30,8 @@
 </template>
 
 <script>
-import navbar from './navbar.vue'
-import blueFooter from './footer.vue'
+import navbar from './Navbar.vue'
+import blueFooter from './Footer.vue'
 export default {
     components: {
         navbar,

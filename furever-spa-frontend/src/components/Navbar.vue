@@ -9,7 +9,7 @@
 				</div>
 			</a>
 			<ul class="dropdown-menu" id="dropdown" aria-labelledby="navbarDarkDropdownMenuLink" style="border-radius: 0px; background-color: rgb(255, 251, 248); border-color: rgb(255, 251, 248); position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 68px);">
-				<li onclick="$('sub-dropdown').toggleClass('display')" id="subDropdownLink"><a class="dropdown-item">Account</a></li>
+				<li><a class="dropdown-item" href="#">Action</a></li>
 				<li><a class="dropdown-item" href="#">Another action</a></li>
 				<li><a class="dropdown-item" v-on:click="logout">Logout</a></li>
 			</ul>
@@ -60,12 +60,6 @@
         },
 		data: {listOne:   false},
 		mounted() {
-
-			$('#subDropdownLink').on('click', function() {
-				e.preventDefault();
-				$('#subDropdown').toggleClass('display');
-			})
-
 			$('#navbarDarkDropdownMenuLink').on('show.bs.dropdown', function () {
 				$('.navTrigger').addClass('active');
 			})

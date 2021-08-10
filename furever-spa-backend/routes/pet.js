@@ -5,25 +5,38 @@ const Pet = require('./../models/Pet')
 const path = require('path')
 
 // GET - get single pet -------------------------------------------------------
-router.get('/:petName', (req, res) => {
-  if(req.pet.petName != req.params.petName){
-    return res.status(401).json({
-      message: "Not authorised"
-    })
-  }
-
-  Pet.find(req.params.petName)
-    .then(pet => {
-      res.json(pet)
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json({
-        message: "Couldn't get pet",
-        error: err
+router.get('/', (req, res) => {
+  // validate request
+  if(Object.keys(req.body.petName).length === 0){   
+    return Pet.find()
+      .then(pets => {
+            if(pets == null){
+            return res.status(404).json({
+              message: "No pets found"
+            })
+          }
+          res.json(pets)
+        })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({
+          message: "Problem getting pets"
+        })
       })
-    })
-})
+    }
+
+    Pet.findOne({petName: req.body.petName})
+    .then(pet => {
+        res.json(pet)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({
+          message: "Could not find pet",
+          error: err
+        })
+      })
+  })
 
 
 // PUT - update pet ---------------------------------------------
