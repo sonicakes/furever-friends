@@ -134,6 +134,7 @@
 <script>
 import App from './../App';
 import Auth from '../Auth.js'
+import Router from '../Router';
 import navbar from './Navbar.vue'
 import blueFooter from './Footer.vue'
 
@@ -180,7 +181,7 @@ export default {
         },
         body: JSON.stringify(data),
       }).then(r => r.json()).then(j => {
-        // TODO show "saved details" confirmation
+        Router.gotoRoute('/matches');
       })
     },
   },
