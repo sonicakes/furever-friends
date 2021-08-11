@@ -1,35 +1,40 @@
 <template>
-  <div class="pets">
-    <div class="pet" v-for="pet in filteredPets()">
-      <div class="photo">
-        <img :alt="pet.petName" :src="srcImage(pet)" />
-      </div>
-      <div class="stats">
-        Name: {{ pet.petName }}<br>
-        Type: {{ pet.petType }}<br>
-        Preferred Family: {{ pet.preferredFamily }}<br>
-        Sex: {{ pet.sex }}<br>
-        Weight: {{ pet.weight }}<br>
-        Age: {{ pet.age }}<br>
-        Breed: {{ pet.breed }}<br>
-        Colour: {{ pet.colour }}<br>
-        Activities
-        <ul>
-          <li v-for="activities in pet.activities">{{ activities }}</li>
-        </ul>
-        Personality
-        <ul>
-          <li v-for="personality in pet.personality">{{ personality }}</li>
-        </ul>
-        Preferred Living
-        <ul>
-          <li v-for="preferredLiving in pet.preferredLiving">{{ preferredLiving }}</li>
-        </ul>
-        Things to Avoid
-        <ul>
-          <li v-for="thingsToAvoid in pet.thingsToAvoid">{{ thingsToAvoid }}</li>
-        </ul>
-      </div>
+  <div>
+    <div class="info">
+      Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend.
+    </div>
+    <div class="pets">
+      <div class="pet" v-for="pet in filteredPets()">
+        <div class="photo">
+          <img :alt="pet.petName" :src="srcImage(pet)" />
+        </div>
+        <div class="stats">
+          Name: {{ pet.petName }}<br>
+          Type: {{ pet.petType }}<br>
+          Preferred Family: {{ pet.preferredFamily }}<br>
+          Sex: {{ pet.sex }}<br>
+          Weight: {{ pet.weight }}<br>
+          Age: {{ pet.age }}<br>
+          Breed: {{ pet.breed }}<br>
+          Colour: {{ pet.colour }}<br>
+          Activities
+          <ul>
+            <li v-for="activities in pet.activities">{{ activities }}</li>
+          </ul>
+          Personality
+          <ul>
+            <li v-for="personality in pet.personality">{{ personality }}</li>
+          </ul>
+          Preferred Living
+          <ul>
+            <li v-for="preferredLiving in pet.preferredLiving">{{ preferredLiving }}</li>
+          </ul>
+          Things to Avoid
+          <ul>
+            <li v-for="thingsToAvoid in pet.thingsToAvoid">{{ thingsToAvoid }}</li>
+          </ul>
+        </div>
+  </div>
     </div>
   </div>
 </template>
