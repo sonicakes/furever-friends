@@ -7,10 +7,11 @@ const path = require('path')
 // GET - get single pet -------------------------------------------------------
 router.get('/', (req, res) => {
   // validate request
-  if(Object.keys(req.body.petName).length === 0){   
+  console.log(req.body)
+  if(Object.keys(req.body).length === 0) {   
     return Pet.find()
       .then(pets => {
-            if(pets == null){
+            if(pets == null) {
             return res.status(404).json({
               message: "No pets found"
             })
@@ -26,6 +27,23 @@ router.get('/', (req, res) => {
     }
 
     Pet.findOne({petName: req.body.petName})
+    .then(pet => {
+        res.json(pet)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json({
+          message: "Could not find pet",
+          error: err
+        })
+      })
+  })
+
+  // GET - get single pet -------------------------------------------------------
+  router.get('/:petName', (req, res) => {
+  // validate request
+  console.log(req.params.petName)
+    Pet.findOne({petName: req.params.petName})
     .then(pet => {
         res.json(pet)
       })

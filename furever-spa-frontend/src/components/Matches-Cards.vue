@@ -1,20 +1,21 @@
 <template>
     <div id="main" style="padding: 50px; padding-top: 118px; columns: 250px; column-gap: 20px; " min-height="100vh">
         <Waterfall>
-            <WaterfallItem v-for="image in images"
-                :key="image">
+            <WaterfallItem v-for="pet in pets"
+                :key="pet"  >
                 <div class='grid-item' style="position: relative;">
                     <img 
-                        :src="image"
+                        :src="pet.imageFilename"
                         alt="A kitten walks towards camera on top of pallet."
                         
                     >
                     <h2>
-                        <div style="font-size: 3vh">Max</div>
-                        <div>2 years old</div>
+                        <div style="font-size: 3vh">{{ pet.petName }}</div>
+                        <div>{{ pet.age }} years old</div>
+                        <div>Breed: {{ pet.breed }}</div>
                         <div>MORE INFO</div>
                     </h2>
-                    <p id="match" onClick="$(this).toggleClass('matchClick');"></p>
+                    <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
                 </div>
             </WaterfallItem>
         </Waterfall>
@@ -26,16 +27,22 @@ import {Waterfall, WaterfallItem} from 'vue2-waterfall';
 import PetAPI from '../PetAPI.js'
 export default {
     name: 'matchesCards',
-    data: function() {        
-        return {
-            pet: PetAPI.getPet('Test1'),
-            images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')],
-            options: {  columnWidth: '.grid-item',
-                        itemSelector: '.grid-item'},
-            // images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-2.jpg')]
-        };
+    data() {
+      return {
+        pets: PetAPI.getPets(),
+        images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')],
+        options: {  columnWidth: '.grid-item',
+                    itemSelector: '.grid-item'
+                }
+      };
     },
     mounted() {
+        var self = this;
+        var petPromise = PetAPI.getPets();
+        petPromise.then(function(response) {
+            self.pets = response
+            console.log(response)
+        })
     },
 }
 </script>

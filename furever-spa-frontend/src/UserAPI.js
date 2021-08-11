@@ -31,7 +31,7 @@ class UserAPI {
     return data
   }
 
-  async getUser(userId){
+  async getUser(userId) {
     // validate
     if(!userId) return
     

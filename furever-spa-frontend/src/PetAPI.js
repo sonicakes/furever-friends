@@ -52,7 +52,7 @@ class PetAPI {
     console.log(response.json())
     // convert response payload into json - store as data
     const data = await response.json()
-    
+    console.log(data) 
     // return data
     return data
   }
