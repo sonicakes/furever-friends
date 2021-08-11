@@ -1,24 +1,26 @@
 <template>
   <div id="home" class="small-container" style="  position: relative;
   min-height: 100vh;">
-  <div id="content-wrap" style="padding-bottom: 2.5rem; ">
+  <div id="content-wrap" style="padding-bottom: 2.5rem;">
       <navbar/>
-      <div>{{ currentUser }}</div>
-      <matchesCards/>        
-    </div>
+      <matchesFilters/>
+      <matchesCards/>
     <blueFooter/>
   </div>
+      </div>
 </template>
 
 <script>
   import * as Auth from '../Auth.js'
-  import navbar from './navbar.vue'
-  import blueFooter from './footer.vue'
-  import matchesCards from './matches-cards.vue'
+  import navbar from './Navbar.vue'
+  import blueFooter from './Footer.vue'
+  import matchesCards from './Matches-Cards.vue'
+  import matchesFilters from './matches/Filters'
+  import App from "../App";
 
   export default {
     name: 'matches',
-    data() {
+    data: function () {
       return {
         currentUser: `${Auth.currentUser}`
       }
@@ -26,8 +28,19 @@
     components: {
       navbar,
       matchesCards,
-      blueFooter
+      blueFooter,
+      matchesFilters,
     },
+    created () {
+      this.fetchData();
+    },
+    methods: {
+      fetchData () {
+        fetch(`${App.apiBase}/pet/`).then(r => r.json()).then(j => {
+          this.$store.commit('setMatchesResults', j);
+        })
+      }
+    }
   }
 
 </script>
@@ -47,5 +60,4 @@
     border-color: #f2a2b1;
     margin-bottom: 30px;
   }
-
 </style>

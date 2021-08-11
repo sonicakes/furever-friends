@@ -17,8 +17,8 @@
         <li style="display:inline-block"><img class="navbar-img" src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
 
 
-        <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused'); }">
-          <a class="nav-item top-navbar" exact href="/settings">
+        <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused');" >
+          <a class="nav-item top-navbar" href="/about">
             <div class="three-cogs fa-1x">
               <i class="fa fa-cog fa-2x fa-fw spin" id="cog1"></i>
               <i class="fa fa-cog fa-1x fa-fw spin-back" id="cog2"></i>
@@ -27,13 +27,13 @@
         </li>
 
         <li style="float:right">
-          <a href="/profile" class="nav-item top-navbar" exact>
+          <a href="/profile" class="nav-item top-navbar">
             <i class="fas fa-user" style="margin-top: 10px"></i>
           </a>
         </li> 	
 
         <li style="float:right">
-          <a href="/matches" class="nav-item top-navbar" exact id="heart">
+          <a href="/matches" class="nav-item top-navbar" id="heart">
             <i class="fas fa-heart heart" style="margin-top: 10px;scale: 1.25;"></i>
           </a>
         </li>
@@ -72,37 +72,6 @@
 </script>
 
 <style scoped>
-.dropdown-submenu{
-    position: relative;
-}
-.dropdown-submenu a::after{
-    transform: rotate(-90deg);
-    position: absolute;
-    right: 3px;
-    top: 40%;
-}
-.dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
-    display: flex;
-    flex-direction: column;
-    position: absolute !important;
-    margin-top: -30px;
-    left: 100%;
-}
-
-
-@media (max-width: 992px) {
-    .dropdown-menu{
-        width: 50%;
-    }
-    .dropdown-menu .dropdown-submenu{
-        width: auto;
-    }
-}
-
-.display {
-	display: none;
-}
-
 .dropdown-toggle::after {
 	content: none;
 }
@@ -143,7 +112,6 @@
     transform: scale( 1.25 );
   }
 }
-
 .cogs:hover .spin, .cogs:hover .spin-back {
   animation-play-state: running;
 }

@@ -22,26 +22,38 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   avatar: {
-    type: String,    
+    type: String    
   },
-  // avatar: {
-  //   type: String,    
-  // },
-  // avatar: {
-  //   type: String,    
-  // },
-  // avatar: {
-  //   type: String,    
-  // },
-  // avatar: {
-  //   type: String,    
-  // },
-  // avatar: {
-  //   type: String,    
-  // },
-  // avatar: {
-  //   type: String,    
-  // },
+  questionBuildingType: {
+    type: String,
+  },
+  questionYardSize: {
+    type: String,
+  },
+  questionHasOtherPets: {
+    type: String,
+  },
+  questionOtherPetTemperament: {
+    type: String,
+  },
+  questionHasChildren: {
+    type: String,
+  },
+  questionYoungestChild: {
+    type: String,
+  },
+  questionFilterAnimal: {
+    type: String,
+  },
+  questionFilterSex: {
+    type: String,
+  },
+  questionFilterFamily: {
+    type: String,
+  },
+  questionFilterAge: {
+    type: String,
+  }
 }, { timestamps: true })
 
 // encrypt password field on save

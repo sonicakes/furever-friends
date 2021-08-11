@@ -2,18 +2,19 @@
     <div id="main" style="padding: 50px; padding-top: 118px; columns: 250px; column-gap: 20px; " min-height="100vh">
         <Waterfall>
             <WaterfallItem v-for="pet in pets"
-                :key="pet"  >
+                :key="pet" style="position: relative; margin: auto;">
                 <div class='grid-item' style="position: relative;">
                     <img 
-                        :src="pet.imageFilename"
-                        alt="A kitten walks towards camera on top of pallet."
-                        
+                        :src="srcImage(pet)"
                     >
                     <h2>
                         <div style="font-size: 3vh">{{ pet.petName }}</div>
                         <div>{{ pet.age }} years old</div>
                         <div>Breed: {{ pet.breed }}</div>
-                        <div>MORE INFO</div>
+                        <div class="button" id="button-6">
+                            <div id="spin"></div>
+                            <a href="/pet" v-on:click="setCurrentPet(pet.petName)">MORE INFO</a>
+                        </div>
                     </h2>
                     <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
                 </div>
@@ -23,8 +24,9 @@
 </template>
 
 <script>
-import {Waterfall, WaterfallItem} from 'vue2-waterfall';
+import App from './../App';
 import PetAPI from '../PetAPI.js'
+import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
 export default {
     name: 'matchesCards',
     data() {
@@ -44,22 +46,61 @@ export default {
             console.log(response)
         })
     },
+    methods: {
+        setCurrentPet(petName) {
+            localStorage.setItem("currentPet", petName)
+        },
+        
+        srcImage(pet) {
+      let src;
+
+      if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
+        src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+
+      } else if(pet.petType === 'dog') {
+        src = imgSrcDog;
+
+      } else {
+        src = imgSrcCat;
+      }
+
+      return src;
+    },
+    filteredPets() {
+      let filtered = this.$store.state.matches.results;
+
+      if (this.$store.state.matches.filters.animal !== 'any') {
+        filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
+      }
+
+      if (this.$store.state.matches.filters.sex !== 'any') {
+        filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
+      }
+
+      if (this.$store.state.matches.filters.age !== 'any') {
+        filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
+      }
+
+      if (this.$store.state.matches.filters.family !== 'any') {
+        filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
+      }
+
+      return filtered;
+    }
+  }
 }
 </script>
 
 <style scoped>
-
 img {
     width: 100%;
     height: 100%;
 }
-
 h2 > div {
     width: max-content;
     margin: auto;
     border: 4px solid transparent;
 }
-
  h2 {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
@@ -74,46 +115,23 @@ h2 > div {
     text-align: center;
     transition: .4s ease-in-out;
 }
-
-
 .grid-item {
     overflow: hidden;
     padding-bottom: 5vw;
 }
-
 .grid-item:hover img {
     -webkit-filter: grayscale(50%) blur(10px);
     filter: brightness(50%) blur(2px);
     transition: .4s ease-in-out;
 }
-
 .grid-item:hover > h2 > div {
     display: block;
 }
-
 .grid-item h2 > div {
     display: none;
 }
-
     * {
 	box-sizing: border-box;
-}
-
-img {
-    width: 100%;
-}
-
-article {
-	column-width: auto;
-	column-gap: 0.5em;
-}
-
-section {
-	display: inline-block;
-	margin:  0.25rem;
-	padding:  1rem;
-	width:  100%; 
-	border: 0.1em solid black;
 }
 
 .matchClick {
@@ -121,7 +139,6 @@ section {
     transition: background 1s steps(28) !important;
     background-position: right center !important; 
 }
-
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
         width: 10vw;
@@ -140,19 +157,18 @@ section {
     }
     
     @keyframes fave-heart {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: left center;
-    }
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: left center;
+        }
     }
 
     .card-image {
         max-width: 250px;
         margin: 10px;
     }
-
     .animal-img {
         height: 100%;
         width: 300px;

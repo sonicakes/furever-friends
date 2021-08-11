@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html",
+    "dev": "parcel src/index.html --hmr-port=5678",
     "prod": "parcel build src/index.html"
   },
   "keywords": [],
@@ -33,7 +33,8 @@
     "vue-slick-carousel": "^1.0.6",
     "vue2-waterfall": "^3.0.1",
     "vueify": "^9.4.1",
-    "vueperslides": "^2.15.2"
+    "vueperslides": "^2.15.2",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.2.2",
