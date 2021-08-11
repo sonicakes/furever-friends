@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="saved" class="saved">
+      <div>Preferences Saved</div>
+    </div>
     <navbar/>
     <div style="background-color: #d9cdbf">
       <div class="container" style="padding-top: 100px; height: 100vh">
@@ -141,6 +144,7 @@ import blueFooter from './Footer.vue'
 export default {
   data() {
     return {
+      saved: false,
       loaded: false,
       questions: {
         buildingType: 'suburban-home',
@@ -181,7 +185,8 @@ export default {
         },
         body: JSON.stringify(data),
       }).then(r => r.json()).then(j => {
-        Router.gotoRoute('/matches');
+        this.saved = true;
+        setTimeout(() => Router.gotoRoute('/matches'), 1500);
       })
     },
   },
@@ -208,3 +213,19 @@ export default {
   },
 }
 </script>
+
+<style>
+.saved {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #EBDAD1;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+</style>
