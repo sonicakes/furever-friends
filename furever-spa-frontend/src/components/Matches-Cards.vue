@@ -1,7 +1,7 @@
 <template>
     <div id="main" style="padding: 50px; padding-top: 118px; columns: 250px; column-gap: 20px; " min-height="100vh">
         <Waterfall>
-            <WaterfallItem v-for="pet in pets"
+            <WaterfallItem v-for="pet in filteredPets()"
                 :key="pet" style="position: relative; margin: auto;">
                 <div class='grid-item' style="position: relative;">
                     <img 

@@ -22,6 +22,7 @@
     name: 'matches',
     data: function () {
       return {
+        loading: true,
         currentUser: `${Auth.currentUser}`
       }
     },
@@ -38,6 +39,7 @@
       fetchData () {
         fetch(`${App.apiBase}/pet/`).then(r => r.json()).then(j => {
           this.$store.commit('setMatchesResults', j);
+          setTimeout(() => this.loading = false, 1500);
         })
       }
     }
@@ -59,5 +61,18 @@
     width: 10vw;
     border-color: #f2a2b1;
     margin-bottom: 30px;
+  }
+  .loading {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: #EBDAD1;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
   }
 </style>
