@@ -2,8 +2,8 @@
     <div>
         <navbar/>
         <div class="page-content" style="background-color: #d9cdbf">
-            <div class="row h-100" style="margin: auto;top: 10%">
-                <div class="col-5 my-auto" style="align: right; position: relative;">
+            <div class="row" style="margin: auto;top: 10%">
+                <!-- <div class="col-5 my-auto" style="align: right; position: relative;"> -->
                     <!-- <vueper-slides autoplay :slide-ratio="3 / 2" margin="auto" :bullets="false" style="right: 0px; width:20vw; position: absolute; margin-right: 5vw;" fixed-height="60vh">
                     <template #arrow-right>
                         <i class="fas fa-chevron-right" style="right: 10px; position: absolute; color: black;"></i>
@@ -17,11 +17,13 @@
                         :image = "image"/>
 
                     </vueper-slides> -->
-                    <img :src="srcImage(pet)" style="height: 40vh; position: relative; margin: auto;">
-                </div>
-                <div class="col-6 my-auto" style="align: left;">
-                        <h1 style="text-align: center;">Meet {{ pet.petName }}!</h1>
-                        <p>Weight: {{ pet.weight }}kg</p>
+                <img :src="srcImage(pet)" style="height: 40vh; width: auto; position: relative; margin: auto;">
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-8">
+                    <h1 style="text-align: center;">Meet {{ pet.petName }}!</h1>
+                    <p>{{ pet.bio }}</p>
                 </div>
                 <div class="col"></div>
             </div>
@@ -81,5 +83,9 @@ export default {
 p {
     font-size: 15px;
     color: black;
+}
+
+h1 {
+    padding: 10px;
 }
 </style> 

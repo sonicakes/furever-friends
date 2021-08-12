@@ -14,27 +14,32 @@
 				<li><a class="dropdown-item" v-on:click="logout">Logout</a></li>
 			</ul>
 		</li>
-        <li style="display:inline-block"><img class="navbar-img" src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"><li>
+        <li style="display:inline-block"><a href="/"><img class="navbar-img" src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"></a><li>
 
 
-        <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused');" >
+        <!-- <li class="cogs" style="float:right" onmouseover="function() { $('#cog1').removeClass('paused'); $('#cog1').addClass() }" onmouseout="function() { $('#cog1').addClass('paused');" >
           <a class="nav-item top-navbar" href="/about">
             <div class="three-cogs fa-1x">
               <i class="fa fa-cog fa-2x fa-fw spin" id="cog1"></i>
               <i class="fa fa-cog fa-1x fa-fw spin-back" id="cog2"></i>
             </div>
           </a>
-        </li>
+        </li> -->
 
         <li style="float:right">
           <a href="/profile" class="nav-item top-navbar">
-            <i class="fas fa-user" style="margin-top: 10px"></i>
+            <img src="../assets/user.png" height="100%">
           </a>
         </li> 	
 
         <li style="float:right">
           <a href="/matches" class="nav-item top-navbar" id="heart">
-            <i class="fas fa-heart heart" style="margin-top: 10px;scale: 1.25;"></i>
+            <img src="../assets/heart-icon.png" class="heart" style="height: 80%">
+          </a>
+        </li>
+		<li style="float:right">
+          <a href="/saved" class="nav-item top-navbar" id="kennel">
+            <img src="../assets/kennel.png" class="heart" style="height: 100%">
           </a>
         </li>
     </ul> 

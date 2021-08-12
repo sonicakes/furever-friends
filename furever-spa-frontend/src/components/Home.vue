@@ -4,7 +4,10 @@
     <frontVideo/>
     <carousel/>
     <div style="width: 100%; text-align: center;">
-      <button>Find a Match</button>
+      <div class="button" id="button-2">
+        <div id="slide"></div>
+        <a href="/matches">Find your Match</a>
+      </div> 
     </div>
     <blueFooter></blueFooter>
   </div>
@@ -34,15 +37,61 @@
     background-color: #d9cdbf;
   }
 
-  button {
-    background-color: #FFFBF8;
-    border-radius: 40px;
-    height: 5vh;
-    width: auto;
-    padding-right: 40px;
-    padding-left: 40px;
-    border-color: #f2a2b1;
-    margin-bottom: 8vh;
-  }
+
+.button {
+  display: inline-flex;
+  height: 40px;
+  width: 150px;
+  border: 2px solid #637365;
+  margin: 20px 20px 20px 20px;
+  color: #637365;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+
+a {
+  color: #637365;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+
+/* Second Button */
+
+#button-2 {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#button-2 a {
+  position: relative;
+  transition: all .35s ease-Out;
+}
+
+#slide {
+  width: 100%;
+  height: 100%;
+  left: -200px;
+  background: #637365;
+  position: absolute;
+  transition: all .35s ease-Out;
+  bottom: 0;
+}
+
+#button-2:hover #slide {
+  left: 0;
+}
+
+#button-2:hover a {
+  color: #ffffff;
+}
+
 
 </style>

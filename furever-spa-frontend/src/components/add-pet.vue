@@ -1,7 +1,7 @@
 <template>
 <div>
   <navbar/>
-  <div class="page-centered" style="position: relative;">      
+  <div class="page-centered" style="position: relative; background-color: #d9cdbf">      
         <div class="form-box">
           <h1>Add Pet</h1>
           <div class="bg-container">
@@ -16,7 +16,7 @@
               </sl-select>
             </div>
             <div class="input-group custom-input">
-              <sl-select class="form-input" label="Age" name="age" type="number" placeholder="0-1" required>
+              <sl-select class="form-input" label="Age" name="age" type="number" placeholder="Please select an age" required>
                 <sl-menu-item value="0-1">0-1</sl-menu-item>
                 <sl-menu-item value="1-4">1-4</sl-menu-item>
                 <sl-menu-item value="4-8">4-8</sl-menu-item>
@@ -27,13 +27,13 @@
               <sl-input class="form-input" label="Breed" name="breed" type="text" placeholder="Ragdoll" required></sl-input>
             </div>
             <div class="input-group custom-input">
-              <sl-select class="form-input" label="Sex" name="sex" type="text" placeholder="Male / Female" required>
+              <sl-select class="form-input" label="Sex" name="sex" type="text" placeholder="Please select a gender" required>
                 <sl-menu-item value="male">Male</sl-menu-item>
                 <sl-menu-item value="female">Female</sl-menu-item>
               </sl-select>
             </div>  
             <div class="input-group custom-input">
-              <sl-select class="form-input" label="Weight (kg)" name="weight" type="text" placeholder="<5" required>
+              <sl-select class="form-input" label="Weight (kg)" name="weight" type="text" placeholder="Please select a weight" required>
                 <sl-menu-item value="<5">&#62;5</sl-menu-item>
                 <sl-menu-item value="5-10">5-10</sl-menu-item>
                 <sl-menu-item value="10-20">10-20</sl-menu-item>
@@ -42,10 +42,10 @@
               </sl-select>
             </div>  
             <div class="input-group custom-input">
-              <sl-input label="Colour" name="colour" type="text" placeholder="Brindle" required></sl-input>
+              <sl-input label="Colour" name="colour" type="text" placeholder="Colour" required></sl-input>
             </div>  
             <div class="input-group custom-input">
-              <sl-select class="form-input" multiple clearable label="Activities" name="activities" type="text" placeholder="Sleeping, Playing with toys" required>
+              <sl-select class="form-input" multiple clearable label="Activities" name="activities" type="text" placeholder="Please select activities" required>
                 <sl-menu-item value="running">Running</sl-menu-item>
                 <sl-menu-item value="walking">Walking</sl-menu-item>
                 <sl-menu-item value="sleeping">Sleeping</sl-menu-item>
@@ -60,7 +60,7 @@
               </sl-select>
             </div>  
             <div class="input-group custom-input">
-              <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" placeholder="Confident, Friendly" required>
+              <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" placeholder="Please select personalities" required>
                 <sl-menu-item value="confident">Confident</sl-menu-item>
                 <sl-menu-item value="friendly">Friendly</sl-menu-item>
                 <sl-menu-item value="needsTraining">Needs Training</sl-menu-item>
@@ -107,7 +107,7 @@
               </sl-select>
             </div>
             <div class="input-group custom-input">
-              <sl-textarea class="form-input" name=“bio” resize="auto" label="Bio" help-text="Tell us about the pet">
+              <sl-textarea class="form-input" name="bio" resize="auto" label="Bio" help-text="Tell us about the pet">
               </sl-textarea>
               <label>Pet Image</label><br>          
                 <sl-image image="$App.apiBase/images/this.pet.image"></sl-image>

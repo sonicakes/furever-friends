@@ -49,7 +49,7 @@
                                         <label>Phone</label>
                                     </div>
                                     <div class="col-9">
-                                        <p>040000000</p>
+                                        <p>{{ user.phone }}</p>
                                     </div>
                                 </div>
 
@@ -58,7 +58,7 @@
                                         <label>Children</label>
                                     </div>
                                     <div class="col-9">
-                                        <p>3</p>
+                                        <p></p>
                                     </div>
                                 </div>
 

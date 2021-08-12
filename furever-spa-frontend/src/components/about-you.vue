@@ -83,7 +83,7 @@
           </div>
           <div class="row">
             <div class="col-12 py-2">
-              <label for="input-questionFilterAnimal" class="form-label">Animal</label>
+              <label for="input-questionFilterAnimal" class="form-label">Animal Species</label>
               <select class="form-control" id="input-questionFilterAnimal" v-model="questions.filterAnimal">
                 <option value="any">Any</option>
                 <option value="dog">Dog</option>
@@ -91,7 +91,7 @@
               </select>
             </div>
             <div class="col-12 py-2">
-              <label for="input-questionFilterSex" class="form-label">Animal</label>
+              <label for="input-questionFilterSex" class="form-label">Animal Gender</label>
               <select class="form-control" id="input-questionFilterSex" v-model="questions.filterSex">
                 <option value="any">Any</option>
                 <option value="male">Male</option>
@@ -99,7 +99,7 @@
               </select>
             </div>
             <div class="col-12 py-2">
-              <label for="input-questionFilterFamily" class="form-label">Animal</label>
+              <label for="input-questionFilterFamily" class="form-label">Animal Size</label>
               <select class="form-control" id="input-questionFilterFamily" v-model="questions.filterFamily">
                 <option value="any">Any</option>
                 <option value="small">Small</option>
@@ -108,7 +108,7 @@
               </select>
             </div>
             <div class="col-12 py-2">
-              <label for="input-questionFilterAge" class="form-label">Animal</label>
+              <label for="input-questionFilterAge" class="form-label">Animal Age</label>
               <select class="form-control" id="input-questionFilterAge" v-model="questions.filterAge">
                 <option value="any">Any</option>
                 <option value="0-1">0-1</option>
