@@ -57,10 +57,12 @@ class Router {
 	}
 	
 	route(fullPathname){
-		// extract path without params
-		const pathname = fullPathname.split('?')[0]
+		// extract path without params, support / args
+		const pathname = '/' + fullPathname.split('/')[1];
+		// Keep pathname in Vuex store for use in other components
+		store.commit('setPathName', fullPathname);
 		const route = this.routes[pathname]
-		
+
 		if(route){
 			// See https://forum.vuejs.org/t/add-component-to-dom-programatically/7308/12
 			if (null !== this.viewContainer) {
@@ -71,7 +73,7 @@ class Router {
 			}
 
 			this.viewContainer = new Vue({
-				render: createElement => createElement(this.routes[window.location.pathname]),
+				render: createElement => createElement(route),
 				store: store,
 			}).$mount('#app div');
 
