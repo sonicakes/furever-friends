@@ -1,93 +1,229 @@
 <template>
-  <div class="pets">
-    <div class="pet" v-for="pet in filteredPets()">
-      <div class="photo">
-        <img :alt="pet.petName" :src="srcImage(pet)" />
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend.
       </div>
-      <div class="stats">
-        Name: {{ pet.petName }}<br>
-        Type: {{ pet.petType }}<br>
-        Preferred Family: {{ pet.preferredFamily }}<br>
-        Sex: {{ pet.sex }}<br>
-        Weight: {{ pet.weight }}<br>
-        Age: {{ pet.age }}<br>
-        Breed: {{ pet.breed }}<br>
-        Colour: {{ pet.colour }}<br>
-        Activities
-        <ul>
-          <li v-for="activities in pet.activities">{{ activities }}</li>
-        </ul>
-        Personality
-        <ul>
-          <li v-for="personality in pet.personality">{{ personality }}</li>
-        </ul>
-        Preferred Living
-        <ul>
-          <li v-for="preferredLiving in pet.preferredLiving">{{ preferredLiving }}</li>
-        </ul>
-        Things to Avoid
-        <ul>
-          <li v-for="thingsToAvoid in pet.thingsToAvoid">{{ thingsToAvoid }}</li>
-        </ul>
+      <div class="col-12">
+        <div id="main" style="columns: 250px; column-gap: 20px;">
+            <div v-for="pet in filteredPets()" style="position: relative; margin: auto;">
+              <div class='grid-item' style="position: relative;">
+                <img :alt="pet.petName" :src="srcImage(pet)">
+                <div class="pet">
+                  <div style="font-size: 3vh">{{ pet.petName }}</div>
+                  <div>{{ pet.age }} years old</div>
+                  <div>Breed: {{ pet.breed }}</div>
+                  <div class="button" id="button-6">
+                    <div id="spin"></div>
+                    <a :href="`/pet/${pet.petName}`">More Info</a>
+                  </div>
+                </div>
+                <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
+  
 <script>
-import App from './../App';
-import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
-export default {
-  methods: {
-    srcImage(pet) {
-      let src;
+  import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
+  export default {
+      name: 'matchesCards',
+      methods: {
+        srcImage(pet) {
+          let src;
 
-      if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
-        src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+          if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
+            src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
 
-      } else if(pet.petType === 'dog') {
-        src = imgSrcDog;
+          } else if(pet.petType === 'dog') {
+            src = imgSrcDog;
 
-      } else {
-        src = imgSrcCat;
-      }
+          } else {
+            src = imgSrcCat;
+          }
 
-      return src;
-    },
-    filteredPets() {
-      let filtered = this.$store.state.matches.results;
+          return src;
+        },
+        filteredPets() {
+          let filtered = this.$store.state.matches.results;
 
-      if (this.$store.state.matches.filters.animal !== 'any') {
-        filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
-      }
+          if (this.$store.state.matches.filters.animal !== 'any') {
+            filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
+          }
 
-      if (this.$store.state.matches.filters.sex !== 'any') {
-        filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
-      }
+          if (this.$store.state.matches.filters.sex !== 'any') {
+            filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
+          }
 
-      if (this.$store.state.matches.filters.age !== 'any') {
-        filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
-      }
+          if (this.$store.state.matches.filters.age !== 'any') {
+            filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
+          }
 
-      if (this.$store.state.matches.filters.family !== 'any') {
-        filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
-      }
+          if (this.$store.state.matches.filters.family !== 'any') {
+            filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
+          }
 
-      return filtered;
+          return filtered;
+        }
     }
   }
-}
 </script>
-
-<style scoped>
-.pets {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.pet {
-  border: 1px solid red;
-}
-.photo img {
-  max-width: 200px;
-}
-</style>
+  
+  <style scoped>
+  
+  
+  .button {
+    display: inline-flex;
+    height: 40px;
+    width: 150px;
+    border: 2px solid #ffffff;
+    margin: 20px 20px 20px 20px;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+  
+  
+  /* Sixth Button */
+  
+  #button-6 {
+    margin: auto;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  #button-6 a {
+    top: 9px;
+    position: relative;
+    transition: all .45s ease-Out;
+  }
+  
+  #spin {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    left: 70px;
+    top: 20px;
+    transform: rotate(0deg);
+    background: none;
+    position: absolute;
+    transition: all .5s ease-Out;
+  }
+  
+  #button-6:hover #spin {
+    width: 200%;
+    height: 500%;
+    opacity: 1;
+    left: -70px;
+    top: -70px;
+    background: #ffffff;
+    transform: rotate(80deg);
+  }
+  
+  #button-6:hover a {
+    color: #2D3142;
+  }
+  
+  
+  
+  img {
+      width: 100%;
+      height: 100%;
+  }
+  div.pet > div {
+      width: max-content;
+      margin: auto;
+      border: 4px solid transparent;
+  }
+   div.pet {
+     padding-top: 20%;
+      font-family: 'Montserrat', sans-serif;
+      position: absolute;
+      top: 0;
+      display: block;
+      color: #ffffff;
+      font-size: 2vh;
+      font-weight: bold;
+      z-index: 999999;
+      right: 0;
+      left: 0;
+      text-align: center;
+      transition: .4s ease-in-out;
+  }
+  .grid-item {
+      overflow: hidden;
+      padding-bottom: 5vw;
+  }
+  .grid-item:hover img {
+      -webkit-filter: grayscale(50%) blur(10px);
+      filter: brightness(50%) blur(2px);
+      transition: .4s ease-in-out;
+  }
+  .grid-item:hover > div.pet > div, .grid-item:active > div.pet > div  {
+      display: block;
+  }
+  .grid-item div.pet > div {
+      display: none;
+  }
+      * {
+    box-sizing: border-box;
+  }
+  
+  .matchClick {
+      animation-play-state: running !important;
+      transition: background 1s steps(28) !important;
+      background-position: right center !important; 
+  }
+      /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
+      #match {
+          width: 131px;
+          height: 131px;
+          position: absolute;
+          left: 50%;
+          right: 50%;
+          background-size: cover;
+          transform: translate(-50%, -50%);
+          background-image: url('../assets/heart.png');
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          cursor: pointer;
+          animation-play-state: paused;
+          animation: fave-heart 1s steps(28);
+      }
+      
+      @keyframes fave-heart {
+          0% {
+              background-position: 0 0;
+          }
+          100% {
+              background-position: left center;
+          }
+      }
+  
+      .card-image {
+          max-width: 250px;
+          margin: 10px;
+      }
+      .animal-img {
+          height: 100%;
+          width: 300px;
+          
+      }
+  </style>
+  

@@ -58,7 +58,11 @@
 				Auth.signOut();
 			}
         },
-		data: {listOne:   false},
+		data() {
+ 	     return {
+ 	       listOne: false
+       };
+    },
 		mounted() {
 			$('#navbarDarkDropdownMenuLink').on('show.bs.dropdown', function () {
 				$('.navTrigger').addClass('active');

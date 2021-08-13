@@ -15,15 +15,8 @@ const fs = require('fs');
 // GET - collection
 router.get('/', (req, res) => {
     Pet.find()
-        .then(data => {
-            res.json(data)
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: "Could not fetch a list of pets",
-                error: err
-            })
-        });
+        .then(users => res.json(users))
+        .catch(err => res.status(500).json({error: err}));
 });
 
 // GET - get single pet -------------------------------------------------------
