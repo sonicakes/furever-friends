@@ -2,7 +2,7 @@
   <div style="padding-top: 100px">
 
     <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" v-on:click="closeNav()">&times;</a>
+    <a class="closebtn" v-on:click="closeNav()">&times;</a>
     <div v-if="!loaded">
       <div class="container">
         <div class="row">
@@ -13,15 +13,14 @@
       </div>
     </div>
     <div v-else class="filters">
-      <div class="filter" v-for="filter in filters" :key="filter">
+      <div class="filter" v-for="filter in filters">
         <div class="filter-name">
           {{ filter.name }}
         </div><br>
-        <select  @change="updateFilter" :name="filter.name">
-          <option  v-for="filterValue in filter.values" :key="filterValue" :value="filterValue.value"
+        <select @change="updateFilter" :name="filter.name" :data-commit-method="filter.commitMethod">
+          <option v-for="filterValue in filter.values" :value="filterValue.value"
                  :name="filter.key"
                  :id="'input-' + filter.key + '-' + filterValue.value"
-                 :data-commit-method="filter.commitMethod"
                  :selected="state.matches.filters[filter.key] === filterValue.value">{{ filterValue.label }}
           </option>
         </select>
@@ -30,14 +29,15 @@
     </div>
 
     <div id="main">
-      <button class="openbtn" v-on:click="changeNav()"><i class="fas fa-filter"></i>    <span>Filter<span></button>
-      <matchesCards/>
+      <button class="openbtn" v-on:click="changeNav()">
+        <i class="fas fa-filter"></i>
+        <span>Filter</span>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-  import matchesCards from '../Matches-Cards.vue'
 import filterConfig from './config';
 import App from "../../App";
 import Auth from "../../Auth";
@@ -65,14 +65,13 @@ export default {
       document.getElementById("main").style.marginLeft = "0";
     },
     changeNav() {
-      if (document.getElementById("mySidebar").classList == "sidebar active")
+      if (document.getElementById("mySidebar").classList === "sidebar active")
         this.closeNav()
       else
         this.openNav()
     },
     updateFilter(e) {
-      console.log(e.target.options[e.target.selectedIndex].dataset.commitMethod)
-      const method = 'setMatchesFilter' + e.target.options[e.target.selectedIndex].dataset.commitMethod;
+      const method = 'setMatchesFilter' + e.target.dataset.commitMethod;
       this.$store.commit(method, e.target.value);
     },
   },
@@ -95,12 +94,8 @@ export default {
       })
 
       this.loaded = true;
-          console.log(this.filters)
     })
   },
-  components: {
-    matchesCards
-  }
 }
 </script>
 
@@ -190,6 +185,7 @@ option {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  cursor: pointer;
 }
 
 .active {
