@@ -91,7 +91,7 @@ class Auth {
     // check local token is there
     if(null === localStorage.getItem('accessToken')){
       // no local token!
-      Toast.show("Please sign in")
+      Toast.show("You are not signed in")
 
 
       // User is not logged in, but they are trying to visit
@@ -99,7 +99,8 @@ class Auth {
       switch (window.location.pathname) {
         case '/login':
         case '/signup':
-          success();
+        case '/':
+            success();
           return;
       }
 
