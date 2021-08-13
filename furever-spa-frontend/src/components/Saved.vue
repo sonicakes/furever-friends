@@ -4,6 +4,7 @@
   <div id="content-wrap" style="padding-bottom: 2.5rem;">
       <navbar/>
       <matchesFilters/>
+      <matchesCards/>
     <blueFooter/>
   </div>
       </div>
@@ -41,13 +42,12 @@
           setTimeout(() => this.loading = false, 1500);
         })
       }
-    },
+    }
   }
 
 </script>
 
 <style>
-
   #home {
     min-height: 100vh;
     background-color: #D9CDBF;

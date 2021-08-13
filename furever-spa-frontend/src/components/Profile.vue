@@ -2,100 +2,123 @@
   <div>
     <navbar />
     <div class="page-content calign" style="background-color: #d9cdbf">
-      <div class="container emp-profile">
-
-        <form method="post">
+      <div class="container emp-profile" style="position: relative;">
           <div class="row">
+            <div class="button_cont" align="center"><a class="example_b" href="/edit">Edit Profile</a></div>
             <div class="col-md-4">
               <div class="profile-img">
-                <img :src="image" alt="" />
-                <div class="file btn btn-lg btn-primary">
-                  Change Photo
-                  <input type="file" name="file" />
+                <img src="../assets/user.png" alt="" />
+                <div>
                 </div>
               </div>
             </div>
             <div class="col-md-8">
+              
               <div class="profile-head">
                 <h5>
                   {{ currentUser }}
                 </h5>
                 <h6></h6>
-                <p class="proile-rating"></p>
                 <div>
 
                     <div>
                         <b-tabs content-class="mt-3">
                             <b-tab title="About" active>
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <label>Name</label>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-8" style="margin-bottom: 5px;">
                                         <p>{{ currentUser }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <label>Email</label>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-8" style="margin-bottom: 5px;">
                                         <p>{{ user.email }}</p>
                                     </div>
                                 </div>
-                            
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label>Phone</label>
-                                    </div>
-                                    <div class="col-9">
-                                        <p>{{ user.phone }}</p>
-                                    </div>
-                                </div>
 
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4" style="margin-bottom: 5px;">
                                         <label>Children</label>
                                     </div>
-                                    <div class="col-9">
-                                        <p></p>
+                                    <div class="col-8">
+                                      <p>{{ questions.hasChildren }}</p>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4" style="margin-bottom: 5px;">
                                         <label>Youngest Child's Age</label>
                                     </div>
-                                    <div class="col-9">
-                                        <p>1</p>
+                                    <div class="col-8">
+                                        <p>{{ questions.youngestChild }}</p>
                                     </div>
                                 </div>
 
                                  <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4" style="margin-bottom: 5px;">
                                         <label>Home Type</label>
                                     </div>
-                                    <div class="col-9">
-                                        <p>Suburban</p>
+                                    <div class="col-8">
+                                        <p>{{ questions.buildingType }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 5px;">
+                                    <div class="col-4">
+                                        <label>Yard Space</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>{{ questions.yardSize }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 5px;">
+                                    <div class="col-4">
+                                        <label>Other Animals</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>{{ questions.hasOtherPets }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 5px;">
+                                    <div class="col-4">
+                                        <label>Existing Pet Temperament</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>{{ questions.otherPetTemperament }}</p>
                                     </div>
                                 </div>
                             </b-tab>
                             <b-tab title="Ideal Pet">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4" style="margin-bottom: 5px;">
                                         <label>Species</label>
                                     </div>
-                                    <div class="col-9">
-                                        <p>Cat</p>
+                                    <div class="col-8">
+                                        <p>{{ questions.filterAnimal }}</p>
                                     </div>
                                 </div>
 
-                                 <div class="row">
-                                    <div class="col-3">
-                                        <label>Color</label>
+                                 <div class="row" style="margin-bottom: 5px;">
+                                    <div class="col-4">
+                                        <label>Animal Gender</label>
                                     </div>
-                                    <div class="col-9">
-                                        <p></p>
+                                    <div class="col-8">
+                                      <p>{{ questions.filterSex }}</p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 5px;">
+                                    <div class="col-4">
+                                        <label>Animal Age</label>
+                                    </div>
+                                    <div class="col-8">
+                                      <p>{{ questions.filterAge }}</p>
                                     </div>
                                 </div>
                             </b-tab>
@@ -103,12 +126,7 @@
                     </div>
                 </div>
               </div>
-              
-            <!-- <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    </div> -->
           </div>
-        </form>
       </div>
     </div>
     <blueFooter />
@@ -116,18 +134,48 @@
 </template>
 
 <script>
+import App from '../App'
+import Auth from '../Auth'
 import { BootstrapVue } from 'bootstrap-vue'
 import navbar from './Navbar.vue'
 import blueFooter from './Footer.vue'
 export default {
-    data: function() {
-        return {
-            // userImage: JSON.parse(localStorage.user).
-            currentUser: JSON.parse(localStorage.user).firstName +  " " + JSON.parse(localStorage.user).lastName,
-            user: JSON.parse(localStorage.user),
-            image: require('../assets/cat-4.jpg'),
+    data() {
+    return {
+      currentUser: JSON.parse(localStorage.user).firstName +  " " + JSON.parse(localStorage.user).lastName,
+      user: JSON.parse(localStorage.user),
+      loaded: false,
+      questions: {
+        buildingType: 'suburban-home',
+        yardSize: 'non-existent',
+        hasOtherPets: 'no',
+        otherPetTemperament: 'na',
+        hasChildren: 'no',
+        youngestChild: 'na',
+        filterAnimal: 'any',
+        filterSex: 'any',
+        filterFamily: 'any',
+        filterAge: 'any',
+      }
+    }
+  }, 
+  mounted() {
+    const url = App.apiBase + '/user/' + Auth.currentUser._id;
+
+    fetch(url, {
+      headers: {
+        'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+      },
+    }).then(r => r.json()).then(j => {
+      for (const question in this.questions) {
+        const key = 'question' + question.charAt(0).toUpperCase() + question.slice(1);
+        if (j.hasOwnProperty(key)) {
+          this.questions[question] = j[key];
         }
-    },
+      }
+      this.loaded = true;
+    })
+  },
     components: {
         navbar,
         blueFooter
@@ -135,7 +183,28 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.example_b {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #60a3bc;
+	padding: 10px;
+	border-radius: 50px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+}
+
+.example_b:hover {
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+}
+
 label{
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
@@ -150,6 +219,10 @@ p {
     text-align: left;
     font-size: 1rem;
 }
+
+
+
+
 .profile-head .nav-tabs .nav-link.active {
   border: none;
   border-bottom: 2px solid #0062cc;

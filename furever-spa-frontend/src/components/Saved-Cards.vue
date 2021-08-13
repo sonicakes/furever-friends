@@ -1,29 +1,25 @@
 <template>
-<div class="row">
-          <div class="col">
-            <div id="main" style="columns: 250px; column-gap: 20px; " min-height="100vh">
-              <Waterfall>
-                  <WaterfallItem v-for="pet in filteredPets()"
-                      :key="pet" style="position: relative; margin: auto;">
-                      <div class='grid-item' style="position: relative;" onclick="window.location.href = '/pet';" v-on:click="setCurrentPet(pet.petName)">
-                          <img 
-                              :src="srcImage(pet)"
-                          >
-                          <h2>
-                              <div style="font-size: 3vh">{{ pet.petName }}</div>
-                              <div>{{ pet.age }} years old</div>
-                              <div>Breed: {{ pet.breed }}</div>
-                                  <div class="button" id="button-6">
-                                    <div id="spin"></div>
-                                    <a href="/pet" v-on:click="setCurrentPet(pet.petName)">More Info</a>
-                                  </div>
-                          </h2>
-                          <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
-                      </div>
-                  </WaterfallItem>
-                </Waterfall>
-            </div>
-        </div>
+    <div id="main" style="padding: 50px; padding-top: 118px; columns: 250px; column-gap: 20px; " min-height="100vh">
+        <Waterfall>
+            <WaterfallItem v-for="pet in filteredPets()"
+                :key="pet" style="position: relative; margin: auto;">
+                <div class='grid-item' style="position: relative;">
+                    <img 
+                        :src="srcImage(pet)"
+                    >
+                    <h2>
+                        <div style="font-size: 3vh">{{ pet.petName }}</div>
+                        <div>{{ pet.age }} years old</div>
+                        <div>Breed: {{ pet.breed }}</div>
+                            <div class="button" id="button-6">
+                              <div id="spin"></div>
+                              <a href="/pet" v-on:click="setCurrentPet(pet.petName)">More Info</a>
+                            </div>
+                    </h2>
+                    <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
+                </div>
+            </WaterfallItem>
+        </Waterfall>
     </div>
 </template>
 
@@ -51,7 +47,6 @@ export default {
         })
     },
     methods: {
-
         setCurrentPet(petName) {
             localStorage.setItem("currentPet", petName)
         },
@@ -199,7 +194,7 @@ h2 > div {
     filter: brightness(50%) blur(2px);
     transition: .4s ease-in-out;
 }
-.grid-item:hover > h2 > div, .grid-item:active > h2 > div  {
+.grid-item:hover > h2 > div {
     display: block;
 }
 .grid-item h2 > div {

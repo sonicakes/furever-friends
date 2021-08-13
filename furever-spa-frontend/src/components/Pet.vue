@@ -17,7 +17,7 @@
                         :image = "image"/>
 
                     </vueper-slides> -->
-                <img :src="srcImage(pet)" style="height: 40vh; width: auto; position: relative; margin: auto;">
+                <img :src="srcImage(pet)" style="height: 40vh; width: auto; position: relative; margin: auto; border-radius: 30px;">
             </div>
             <div class="row">
                 <div class="col"></div>
@@ -83,6 +83,7 @@ export default {
 p {
     font-size: 15px;
     color: black;
+    text-align: center;
 }
 
 h1 {

@@ -20,6 +20,7 @@
         background-color: #637365;
         text-align: center;
         right: 0;
+        z-index: 1000000;
     }
 
     p {

@@ -3,19 +3,16 @@
     <navbar />
     <div class="page-content calign" style="background-color: #d9cdbf">
       <div class="container emp-profile">
-
         <sl-form>
           <div class="row">
-            <!-- <div class="col-md-4">
+            <div class="col-md-4">
               <div class="profile-img">
-                <img :src="image" alt="" />
-                <div class="file btn btn-lg btn-primary">
-                  Change Photo
-                  <input type="file" name="file" />
+                <img src="../assets/user.png" alt="" />
+                <div>
                 </div>
               </div>
-            </div> -->
-            <div class="col-md-12">
+              </div>
+            <div class="col-md-8">
               <div class="profile-head">
                 <h5>
                   {{ currentUser }}
@@ -150,7 +147,7 @@
 
                                 <div class="row" style="margin-bottom: 5px;">
                                     <div class="col-4">
-                                        <label>Animal Size</label>
+                                        <label>Animal Family Size</label>
                                     </div>
                                     <div class="col-8">
                                         <select class="form-control" id="input-questionFilterFamily" v-model="questions.filterFamily">
@@ -176,11 +173,8 @@
                                       </select>
                                     </div>
                                 </div>
-
                             </b-tab>
                         </b-tabs>
-
-
                     </div>
                 </div>
               </div>
@@ -248,7 +242,7 @@ export default {
         },
         body: JSON.stringify(data),
       }).then(r => r.json()).then(j => {
-        Router.gotoRoute('/matches');
+        Router.gotoRoute('/profile');
       })
     },
   },
