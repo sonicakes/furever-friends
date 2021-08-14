@@ -34,7 +34,10 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col"></div>
+                <div class="col">
+                  Bio<br>
+                  {{pet.bio}}
+                </div>
             </div>
         </div>
         <blueFooter/>
