@@ -2,6 +2,9 @@
   <div id="home" class="small-container" style="  position: relative;
   min-height: 100vh;">
   <div id="content-wrap" style="padding-bottom: 2.5rem;">
+    <div v-if="loading">
+              <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"></div>
+      </div>
       <navbar/>
       <matchesFilters/>
     <blueFooter/>

@@ -16,6 +16,7 @@ const fs = require('fs');
 router.get('/', (req, res) => {
     Pet.find()
         .then(data => {
+            console.log(data)
             res.json(data)
         })
         .catch(err => {

@@ -1,16 +1,17 @@
 <template>
-<div class="row">
+<div class="row"> 
           <div class="col">
             <div id="main" style="columns: 250px; column-gap: 20px; " min-height="100vh">
-              <Waterfall>
-                  <WaterfallItem v-for="pet in filteredPets()"
-                      :key="pet" style="position: relative; margin: auto;">
-                      <div class='grid-item' style="position: relative;" onclick="window.location.href = '/pet';" v-on:click="setCurrentPet(pet.petName)">
+              <div>
+                  <div v-for="pet in filteredPets()"
+                      :key="pet.petName" style="position: relative; margin: auto;">
+                      <div class='grid-item' style="position: relative;" >
+                        <div style="position: relative;">
                           <img 
                               :src="srcImage(pet)"
                           >
-                          <h2>
-                              <div style="font-size: 3vh">{{ pet.petName }}</div>
+                          <h2 style="margin: autp" onclick="window.location.href = '/pet';" v-on:click="setCurrentPet(pet.petName)">
+                              <div style="font-size: 3vh;">{{ pet.petName }}</div>
                               <div>{{ pet.age }} years old</div>
                               <div>Breed: {{ pet.breed }}</div>
                                   <div class="button" id="button-6">
@@ -18,11 +19,16 @@
                                     <a href="/pet" v-on:click="setCurrentPet(pet.petName)">More Info</a>
                                   </div>
                           </h2>
-                          <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
+                        </div>
+                          
+                          <p id="match" onclick="$(this).toggleClass('matchClick'); " v-on:click="likePet(pet)"></p>
                       </div>
-                  </WaterfallItem>
-                </Waterfall>
+                  </div>
+                </div>
             </div>
+        </div>
+        <div class="info">
+          Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend
         </div>
     </div>
 </template>
@@ -47,14 +53,32 @@ export default {
         var petPromise = PetAPI.getPets();
         petPromise.then(function(response) {
             self.pets = response
-            console.log(response)
         })
     },
     methods: {
+      likePet(pet) {
+        var liked;
+        console.log(localStorage.getItem("liked"))
+          if (localStorage.getItem("liked") === null) {
+            liked = new Array();
+          } else {
+            liked = JSON.parse(localStorage.getItem('liked'))       
+            console.log(liked)
+          }
+          if (liked.includes(pet)) {
+            liked.splice(liked.indexOf(pet), 1)
+          } else {
+            liked.push(pet)
+          }
+          localStorage.setItem('liked', JSON.stringify(liked))
+           console.log(localStorage.getItem('liked'))       
+        
 
-        setCurrentPet(petName) {
-            localStorage.setItem("currentPet", petName)
-        },
+      },
+
+      setCurrentPet(petName) {
+        localStorage.setItem("currentPet", petName)
+      },
         
         srcImage(pet) {
       let src;
@@ -97,7 +121,10 @@ export default {
 </script>
 
 <style scoped>
+.info {
+  text-align: center;
 
+}
 
 .button {
   display: inline-flex;
@@ -175,8 +202,8 @@ h2 > div {
     margin: auto;
     border: 4px solid transparent;
 }
- h2 {
-   padding-top: 20%;
+
+h2 {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
     top: 0;
@@ -199,10 +226,10 @@ h2 > div {
     filter: brightness(50%) blur(2px);
     transition: .4s ease-in-out;
 }
-.grid-item:hover > h2 > div, .grid-item:active > h2 > div  {
+.grid-item:hover > div > h2 > div, .grid-item:active > div > h2 > div  {
     display: block;
 }
-.grid-item h2 > div {
+.grid-item > div > h2 > div {
     display: none;
 }
     * {

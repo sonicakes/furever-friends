@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import VueTreeNavigation from 'vue-tree-navigation';
 
+Vue.use(VueTreeNavigation);
 Vue.use(BootstrapVue)
 Vue.use(Vuex);
 

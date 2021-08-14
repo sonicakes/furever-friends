@@ -40,14 +40,14 @@ sl-button.form-submit::part(base) {
 }
 
 sl-textarea.form-input::part(base) {
-  background-color:#bf9673;
+  background-color:#fff;
   //border-color: $brand-color-3;
-  border-color: #bf9673;
+  border-color: #000;
 }
 
 sl-input.form-input::part(base) {
-  background-color:#bf9673;
-  border-color: #bf9673;
+  background-color:#fff;
+  border-color: #d1d5db;
   color: #000;
 }
 

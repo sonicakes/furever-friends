@@ -128,6 +128,7 @@ import navbar from './navbar.vue'
 import blueFooter from './footer.vue'
 import Auth from '../Auth.js'
 export default {
+  name: 'add',
     methods: {
         addPetSubmitHandler: function(event){
             console.log("I'm here")
