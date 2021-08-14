@@ -35,8 +35,8 @@
         srcImage(pet) {
           let src;
 
-          if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
-            src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+          if (typeof(pet.photoBase64) !== 'undefined' && pet.photoBase64 !== null) {
+            src = 'data:' + pet.photoContentType + ';base64,' + pet.photoBase64;
 
           } else if(pet.petType === 'dog') {
             src = imgSrcDog;

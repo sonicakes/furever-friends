@@ -49,8 +49,8 @@ const petSchema = new mongoose.Schema({
     type: String,
     require: true   
   },
-  photoData: {
-    type: Buffer,
+  photoBase64: {
+    type: String,
   },
   photoContentType: {
     type: String,
