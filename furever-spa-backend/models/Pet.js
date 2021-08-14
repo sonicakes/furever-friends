@@ -54,7 +54,10 @@ const petSchema = new mongoose.Schema({
   },
   photoContentType: {
     type: String,
-  },
+  }, 
+  user: {
+    type: mongoose.Types.ObjectId,
+  }
 }, { timestamps: true })
 
 // model
