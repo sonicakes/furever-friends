@@ -24,7 +24,7 @@
 						<template slot="btn"><img src="../assets/user.png" style="height: 20px; padding-right: 7px;">Account</template>
 						<template slot="body">
 							<ul>
-							<li class="padded"><a href="/profile">Profile</a></li>
+							<li class="padded"><a style="text-decoration: none !important;" href="/profile">Profile</a></li>
 							</ul>
 						</template>
 						</dropdown>
