@@ -81,17 +81,16 @@ export default {
       },
         
         srcImage(pet) {
-      let src;
+          let src;
+          console.log(pet)
 
-      if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
-        src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
-
-      } else if(pet.petType === 'dog') {
-        src = imgSrcDog;
-
-      } else {
-        src = imgSrcCat;
-      }
+          if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
+            src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+          } else if(pet.petType === 'dog') {
+            src = imgSrcDog;  
+          } else {
+            src = imgSrcCat;
+          }
 
       return src;
     },

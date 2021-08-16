@@ -30,7 +30,6 @@ router.get('/', (req, res) => {
 // GET - get single pet -------------------------------------------------------
 router.get('/', (req, res) => {
   // validate request
-  console.log(req.body)
   if(Object.keys(req.body).length === 0) {   
     return Pet.find()
       .then(pets => {
@@ -65,7 +64,7 @@ router.get('/', (req, res) => {
   // GET - get single pet -------------------------------------------------------
   router.get('/:petName', (req, res) => {
   // validate request
-  console.log(req.params.petName)
+  
     Pet.findOne({petName: req.params.petName})
     .then(pet => {
         res.json(pet)
