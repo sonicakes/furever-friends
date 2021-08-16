@@ -53,7 +53,10 @@ const userSchema = new mongoose.Schema({
   },
   questionFilterAge: {
     type: String,
-  }
+  },
+  favouritePets: [ {
+    type: Schema.ObjectId, ref: 'pets'
+  } ]
 }, { timestamps: true })
 
 // encrypt password field on save

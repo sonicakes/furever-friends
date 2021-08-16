@@ -18,7 +18,8 @@
                     <a :href="`/pet/${pet.petName}`">More Info</a>
                   </div>
                 </div>
-                <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
+                <input type="hidden" name="petId" v-on:value="pet._id" />
+                <p id="match" @click="(this).toggleClass('matchClick'); this.addFavHandler.bind(this)" ></p>
               </div>
             </div>
         </div>
@@ -67,6 +68,15 @@
           }
 
           return filtered;
+        },
+
+      async addFavHandler(){    
+          try {
+            UserAPI.addFavPet(this.petId)
+            Toast.show('Pet added to favourites')
+          }catch(err){
+            Toast.show(err, 'error')
+          }
         }
     }
   }
