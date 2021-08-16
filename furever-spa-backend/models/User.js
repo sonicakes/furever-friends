@@ -53,6 +53,9 @@ const userSchema = new mongoose.Schema({
   },
   questionFilterAge: {
     type: String,
+  }, 
+  accessLevel: {
+    type: Number,
   }
 }, { timestamps: true })
 

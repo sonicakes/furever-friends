@@ -6,6 +6,7 @@
           <h1>Add Pet</h1>
           <div class="bg-container">
           <sl-form class="form" v-on:sl-submit.prevent="addPetSubmitHandler">
+          <input type="hidden" name="user" :value='currentUser' />
             <div class="input-group custom-input">
               <sl-input class="form-input" label="Name" name="petName" type="text" placeholder="Pet Name" required></sl-input>
             </div>
@@ -129,6 +130,13 @@ import blueFooter from './footer.vue'
 import Auth from '../Auth.js'
 export default {
   name: 'add',
+
+    data() {
+    return {
+      currentUser: JSON.parse(localStorage.user)._id,
+      }
+    },
+
     methods: {
         addPetSubmitHandler: function(event){
             console.log("I'm here")
