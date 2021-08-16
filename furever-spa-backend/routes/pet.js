@@ -15,16 +15,8 @@ const fs = require('fs');
 // GET - collection
 router.get('/', (req, res) => {
     Pet.find()
-        .then(data => {
-            console.log(data)
-            res.json(data)
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: "Could not fetch a list of pets",
-                error: err
-            })
-        });
+        .then(users => res.json(users))
+        .catch(err => res.status(500).json({error: err}));
 });
 
 // GET - get single pet -------------------------------------------------------
@@ -162,10 +154,10 @@ router.post('/', (req, res) => {
             let newPet = new Pet(req.body)
 
             if (req.files && req.files.image) {
-                newPet.photoData = req.files.image.data;
+                newPet.photoBase64 = Buffer.from(req.files.image.data).toString('base64')
                 newPet.photoContentType = req.files.image.mimetype;
             } else {
-                newPet.photoData = null;
+                newPet.photoBase64 = null;
                 newPet.photoContentType = null;
             }
 

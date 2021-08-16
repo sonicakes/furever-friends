@@ -6,17 +6,17 @@
                   <div v-for="pet in filteredPets()"
                       :key="pet.petName" style="position: relative; margin: auto;">
                       <div class='grid-item' style="position: relative;" >
-                        <div style="position: relative;">
+                        <div style="position: relative; display: table; height: 100%;">
                           <img 
                               :src="srcImage(pet)"
                           >
-                          <h2 style="margin: autp" onclick="window.location.href = '/pet';" v-on:click="setCurrentPet(pet.petName)">
+                          <h2 style="margin: auto; vertical-align: middle;" onclick="window.location.href = '/pet';" v-on:click="setCurrentPet(pet.petName)">
                               <div style="font-size: 3vh;">{{ pet.petName }}</div>
                               <div>{{ pet.age }} years old</div>
                               <div>Breed: {{ pet.breed }}</div>
                                   <div class="button" id="button-6">
                                     <div id="spin"></div>
-                                    <a href="/pet" v-on:click="setCurrentPet(pet.petName)">More Info</a>
+                                    <a :href="`/pet/${pet.petName}`">More Info</a>
                                   </div>
                           </h2>
                         </div>
@@ -32,91 +32,50 @@
         </div>
     </div>
 </template>
-
+  
 <script>
-import App from './../App';
-import PetAPI from '../PetAPI.js'
-import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
-export default {
-    name: 'matchesCards',
-    data() {
-      return {
-        pets: PetAPI.getPets(),
-        images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')],
-        options: {  columnWidth: '.grid-item',
-                    itemSelector: '.grid-item'
-                }
-      };
-    },
-    mounted() {
-        var self = this;
-        var petPromise = PetAPI.getPets();
-        petPromise.then(function(response) {
-            self.pets = response
-        })
-    },
-    methods: {
-      likePet(pet) {
-        var liked;
-        console.log(localStorage.getItem("liked"))
-          if (localStorage.getItem("liked") === null) {
-            liked = new Array();
-          } else {
-            liked = JSON.parse(localStorage.getItem('liked'))       
-            console.log(liked)
-          }
-          if (liked.includes(pet)) {
-            liked.splice(liked.indexOf(pet), 1)
-          } else {
-            liked.push(pet)
-          }
-          localStorage.setItem('liked', JSON.stringify(liked))
-           console.log(localStorage.getItem('liked'))       
-        
-
-      },
-
-      setCurrentPet(petName) {
-        localStorage.setItem("currentPet", petName)
-      },
-        
+  import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
+  export default {
+      name: 'matchesCards',
+      methods: {
         srcImage(pet) {
           let src;
-          console.log(pet)
 
-          if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
-            src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+          if (typeof(pet.photoBase64) !== 'undefined' && pet.photoBase64 !== null) {
+            src = 'data:' + pet.photoContentType + ';base64,' + pet.photoBase64;
+
           } else if(pet.petType === 'dog') {
-            src = imgSrcDog;  
+            src = imgSrcDog;
+
           } else {
             src = imgSrcCat;
           }
 
-      return src;
-    },
-    filteredPets() {
-      let filtered = this.$store.state.matches.results;
+          return src;
+        },
+        filteredPets() {
+          let filtered = this.$store.state.matches.results;
 
-      if (this.$store.state.matches.filters.animal !== 'any') {
-        filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
-      }
+          if (this.$store.state.matches.filters.animal !== 'any') {
+            filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
+          }
 
-      if (this.$store.state.matches.filters.sex !== 'any') {
-        filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
-      }
+          if (this.$store.state.matches.filters.sex !== 'any') {
+            filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
+          }
 
-      if (this.$store.state.matches.filters.age !== 'any') {
-        filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
-      }
+          if (this.$store.state.matches.filters.age !== 'any') {
+            filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
+          }
 
-      if (this.$store.state.matches.filters.family !== 'any') {
-        filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
-      }
+          if (this.$store.state.matches.filters.family !== 'any') {
+            filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
+          }
 
-      return filtered;
+          return filtered;
+        }
     }
   }
-}
 </script>
 
 <style scoped>

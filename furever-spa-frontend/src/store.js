@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        pathName: null,
         matches: {
             results: [],
             filters: {
@@ -16,6 +17,9 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        setPathName (state, payload) {
+            state.pathName = payload;
+        },
         setMatchesResults (state, payload) {
             state.matches.results = payload;
         },

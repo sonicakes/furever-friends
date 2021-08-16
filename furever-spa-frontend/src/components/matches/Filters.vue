@@ -1,7 +1,8 @@
 <template>
   <div style="padding-top: 100px">
+
     <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" v-on:click="closeNav()">&times;</a>
+    <a class="closebtn" v-on:click="closeNav()">&times;</a>
     <div v-if="!loaded">
       <div class="container">
         <div class="row">
@@ -16,11 +17,10 @@
         <div class="filter-name">
           {{ filter.name }}
         </div><br>
-        <select  @change="updateFilter" :name="filter.name">
-          <option  v-for="filterValue in filter.values" :value="filterValue.value"
+        <select @change="updateFilter" :name="filter.name" :data-commit-method="filter.commitMethod">
+          <option v-for="filterValue in filter.values" :value="filterValue.value"
                  :name="filter.key"
                  :id="'input-' + filter.key + '-' + filterValue.value"
-                 :data-commit-method="filter.commitMethod"
                  :selected="state.matches.filters[filter.key] === filterValue.value">{{ filterValue.label }}
           </option>
         </select>
@@ -208,14 +208,13 @@ export default {
       document.getElementById("main").style.marginLeft = "0";
     },
     changeNav() {
-      if (document.getElementById("mySidebar").classList == "sidebar active")
+      if (document.getElementById("mySidebar").classList === "sidebar active")
         this.closeNav()
       else
         this.openNav()
     },
     updateFilter(e) {
-      console.log(e.target.options[e.target.selectedIndex].dataset.commitMethod)
-      const method = 'setMatchesFilter' + e.target.options[e.target.selectedIndex].dataset.commitMethod;
+      const method = 'setMatchesFilter' + e.target.dataset.commitMethod;
       this.$store.commit(method, e.target.value);
     },
   },
@@ -395,6 +394,7 @@ option {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  cursor: pointer;
 }
 
 .active {
