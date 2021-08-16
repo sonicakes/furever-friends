@@ -4,7 +4,7 @@ import Toast from './Toast'
 
 class ShelterAPI {
 
-  async getShelterPets(){
+  async getShelterPets() {
     
     // fetch the json data
     const response = await fetch(`${App.apiBase}/shelter`, {

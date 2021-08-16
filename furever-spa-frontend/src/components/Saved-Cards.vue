@@ -1,98 +1,88 @@
 <template>
-    <div id="main" style="padding: 50px; padding-top: 118px; columns: 250px; column-gap: 20px; " min-height="100vh">
-        <Waterfall>
-            <WaterfallItem v-for="pet in filteredPets()"
-                :key="pet" style="position: relative; margin: auto;">
-                <div class='grid-item' style="position: relative;">
-                    <img 
-                        :src="srcImage(pet)"
-                    >
-                    <h2>
-                        <div style="font-size: 3vh">{{ pet.petName }}</div>
-                        <div>{{ pet.age }} years old</div>
-                        <div>Breed: {{ pet.breed }}</div>
-                            <div class="button" id="button-6">
-                              <div id="spin"></div>
-                              <a href="/pet" v-on:click="setCurrentPet(pet.petName)">More Info</a>
-                            </div>
-                    </h2>
-                    <p id="match" onClick="$(this).toggleClass('matchClick'); "></p>
+<div class="row"> 
+          <div class="col">
+            <div id="main" style="columns: 250px; column-gap: 20px; " min-height="100vh">
+              <div>
+                  <div v-for="pet in filteredPets()"
+                      :key="pet.petName" style="position: relative; margin: auto;">
+                      <div class='grid-item' style="position: relative;" >
+                        <div style="position: relative; display: table; height: 100%;">
+                          <img 
+                              :src="srcImage(pet)"
+                          >
+                          <h2 style="margin: auto; vertical-align: middle;" onclick="window.location.href = '/pet';" v-on:click="setCurrentPet(pet.petName)">
+                              <div style="font-size: 3vh;">{{ pet.petName }}</div>
+                              <div>{{ pet.age }} years old</div>
+                              <div>Breed: {{ pet.breed }}</div>
+                                  <div class="button" id="button-6">
+                                    <div id="spin"></div>
+                                    <a :href="`/pet/${pet.petName}`">More Info</a>
+                                  </div>
+                          </h2>
+                        </div>
+                          
+                          <p id="match" onclick="$(this).toggleClass('matchClick'); " v-on:click="likePet(pet)"></p>
+                      </div>
+                  </div>
                 </div>
-            </WaterfallItem>
-        </Waterfall>
+            </div>
+        </div>
+        <div class="info">
+          Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend
+        </div>
     </div>
 </template>
-
+  
 <script>
-import App from './../App';
-import PetAPI from '../PetAPI.js'
-import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
-export default {
-    name: 'matchesCards',
-    data() {
-      return {
-        pets: PetAPI.getPets(),
-        images: [require('../assets/resized/cat-2.jpg'), require('../assets/resized/cat-1.jpg'), require('../assets/resized/cat-3.jpg'), require('../assets/cat-4.jpg'),  require('../assets/resized/cat-5.jpg'), require('../assets/resized/dog-1.jpg'), require('../assets/dog-3.jpg')],
-        options: {  columnWidth: '.grid-item',
-                    itemSelector: '.grid-item'
-                }
-      };
-    },
-    mounted() {
-        var self = this;
-        var petPromise = PetAPI.getPets();
-        petPromise.then(function(response) {
-            self.pets = response
-            console.log(response)
-        })
-    },
-    methods: {
-        setCurrentPet(petName) {
-            localStorage.setItem("currentPet", petName)
-        },
-        
+  import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
+  export default {
+      name: 'matchesCards',
+      methods: {
         srcImage(pet) {
-      let src;
+          let src;
 
-      if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
-        src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+          if (typeof(pet.photoBase64) !== 'undefined' && pet.photoBase64 !== null) {
+            src = 'data:' + pet.photoContentType + ';base64,' + pet.photoBase64;
 
-      } else if(pet.petType === 'dog') {
-        src = imgSrcDog;
+          } else if(pet.petType === 'dog') {
+            src = imgSrcDog;
 
-      } else {
-        src = imgSrcCat;
-      }
+          } else {
+            src = imgSrcCat;
+          }
 
-      return src;
-    },
-    filteredPets() {
-      let filtered = this.$store.state.matches.results;
+          return src;
+        },
+        filteredPets() {
+          let filtered = this.$store.state.matches.results;
 
-      if (this.$store.state.matches.filters.animal !== 'any') {
-        filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
-      }
+          if (this.$store.state.matches.filters.animal !== 'any') {
+            filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
+          }
 
-      if (this.$store.state.matches.filters.sex !== 'any') {
-        filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
-      }
+          if (this.$store.state.matches.filters.sex !== 'any') {
+            filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
+          }
 
-      if (this.$store.state.matches.filters.age !== 'any') {
-        filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
-      }
+          if (this.$store.state.matches.filters.age !== 'any') {
+            filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
+          }
 
-      if (this.$store.state.matches.filters.family !== 'any') {
-        filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
-      }
+          if (this.$store.state.matches.filters.family !== 'any') {
+            filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
+          }
 
-      return filtered;
+          return filtered;
+        }
     }
   }
-}
 </script>
 
 <style scoped>
+.info {
+  text-align: center;
 
+}
 
 .button {
   display: inline-flex;
@@ -170,8 +160,8 @@ h2 > div {
     margin: auto;
     border: 4px solid transparent;
 }
- h2 {
-   padding-top: 20%;
+
+h2 {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
     top: 0;
@@ -194,10 +184,10 @@ h2 > div {
     filter: brightness(50%) blur(2px);
     transition: .4s ease-in-out;
 }
-.grid-item:hover > h2 > div {
+.grid-item:hover > div > h2 > div, .grid-item:active > div > h2 > div  {
     display: block;
 }
-.grid-item h2 > div {
+.grid-item > div > h2 > div {
     display: none;
 }
     * {

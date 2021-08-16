@@ -26,6 +26,7 @@ import petPreferences from './components/pet-preferences.vue'
 import editProfile from './components/edit-profile.vue'
 import Settings from './components/Settings.vue'
 import Pet from './components/Pet.vue'
+import Shelter from './components/shelter.vue' 
 import error from './components/404.vue'
 
 import {store} from './store';
@@ -46,7 +47,8 @@ const routes = {
 	'/signup': Signup,
 	'/profile': Profile,
 	'/settings': Settings,
-	'/pet': Pet
+	'/pet': Pet,
+	'/shelter': Shelter
 }
 
 class Router {

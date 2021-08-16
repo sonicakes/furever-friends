@@ -16,7 +16,7 @@
   import blueFooter from './Footer.vue'
   import matchesCards from './Matches-Cards.vue'
   import matchesFilters from './matches/Filters'
-  import App from "../App";
+  import App from "../App"
 
   export default {
     name: 'matches',
@@ -37,7 +37,7 @@
     },
     methods: {
       fetchData () {
-        fetch(`${App.apiBase}/pet/`).then(r => r.json()).then(j => {
+        fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
           this.$store.commit('setMatchesResults', j);
           setTimeout(() => this.loading = false, 1500);
         })

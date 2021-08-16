@@ -36,20 +36,20 @@ import PetAPI from '../PetAPI.js'
     },
     methods: {
         srcImage(pet) {
-        let src;
+          let src;
 
-        if (typeof(pet.photoData) !== 'undefined' && pet.photoData !== null) {
-            src = 'data:' + pet.photoContentType + ';base64,' + Buffer.from(pet.photoData.data).toString('base64');
+          if (typeof(pet.photoBase64) !== 'undefined' && pet.photoBase64 !== null) {
+            src = 'data:' + pet.photoContentType + ';base64,' + pet.photoBase64;
 
-        } else if(pet.petType === 'dog') {
+          } else if(pet.petType === 'dog') {
             src = imgSrcDog;
 
-        } else {
+          } else {
             src = imgSrcCat;
-        }
+          }
 
-        return src;
-        }
+          return src;
+        },
     },
     mounted() {
               var self = this;

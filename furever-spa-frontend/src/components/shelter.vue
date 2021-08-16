@@ -1,12 +1,10 @@
 <template>
-  <div id="shelter" class="small-container" style="  position: relative;
+  <div id="home" class="small-container" style="  position: relative;
   min-height: 100vh;">
   <div id="content-wrap" style="padding-bottom: 2.5rem;">
-    <div v-if="loading">
-              <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"></div>
-      </div>
       <navbar/>
-      <!-- <matchesFilters/> -->
+      <matchesFilters/>
+      <matchesCards/>
     <blueFooter/>
   </div>
       </div>
@@ -18,10 +16,10 @@
   import blueFooter from './Footer.vue'
   import matchesCards from './Matches-Cards.vue'
   import matchesFilters from './matches/Filters'
-  import App from "../App";
+  import App from "../App"
 
   export default {
-    name: 'shelter',
+    name: 'matches',
     data: function () {
       return {
         loading: true,
@@ -34,24 +32,22 @@
       blueFooter,
       matchesFilters,
     },
-    
-    methods: {
-        async getShelterPets(){
-            try{
-            this.shelter = await ShelterAPI.getShelterPets()
-            console.log(this.shelter)
-            this.render()
-            }catch(err){
-            Toast(err, 'error')
-            }
-        }
+    created () {
+      this.fetchData();
     },
+    methods: {
+      fetchData () {
+        fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
+          this.$store.commit('setMatchesResults', j);
+          setTimeout(() => this.loading = false, 1500);
+        })
+      }
+    }
   }
 
 </script>
 
 <style>
-
   #home {
     min-height: 100vh;
     background-color: #D9CDBF;
