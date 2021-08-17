@@ -57,15 +57,15 @@ class UserAPI {
   }
 
 
-  async addFavPet(petId){
+  async addFavPet(petName){
     // validate
-    if(!petId) return
+    if(!petName) return
 
     // fetch the json data
     const response = await fetch(`${App.apiBase}/user/addFavPet`, {
       method: "PUT",
       headers: { "Authorization": `Bearer ${localStorage.accessToken}`, "Content-Type": 'application/json'},
-      body: JSON.stringify({petId: petId})
+      body: JSON.stringify({petName: petName})
     })
 
     // if response not ok

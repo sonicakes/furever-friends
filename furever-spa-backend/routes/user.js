@@ -7,7 +7,7 @@ const path = require('path')
 // PUT - add favouritePets --------------------------------------
 router.put('/addFavPet/', Utils.authenticateToken, (req, res) => {  
   // validate check
-  if(!req.body.petId){
+  if(!req.body.petName){
     return res.status(400).json({
       message: "No pet specified"
     })
@@ -17,7 +17,7 @@ router.put('/addFavPet/', Utils.authenticateToken, (req, res) => {
     _id: req.user._id
   }, {
     $push: {
-      favouritePets: req.body.petId
+      favouritePets: req.body.petName
     }
   })
     .then((user) => {            

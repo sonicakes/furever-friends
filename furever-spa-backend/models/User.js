@@ -58,7 +58,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
   },
   favouritePets: [ {
-    type: Schema.ObjectId, ref: 'pets'
+    type: String
   } ]
 }, { timestamps: true })
 

@@ -4,14 +4,13 @@
   <div id="content-wrap" style="padding-bottom: 2.5rem;">
       <navbar/>
       <matchesFilters/>
-      <matchesCards/>
     <blueFooter/>
   </div>
       </div>
 </template>
 
 <script>
-  import * as Auth from '../Auth.js'
+  import Auth from '../Auth'
   import navbar from './Navbar.vue'
   import blueFooter from './Footer.vue'
   import matchesCards from './Matches-Cards.vue'
@@ -36,11 +35,31 @@
       this.fetchData();
     },
     methods: {
-      fetchData () {
-        fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
-          this.$store.commit('setMatchesResults', j);
-          setTimeout(() => this.loading = false, 1500);
+      async fetchData () {
+        var petNames;
+        var pets = [];
+        const url = App.apiBase + '/user/' + Auth.currentUser._id;
+
+        await fetch(url, {
+          headers: {
+            'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+          },
+        }).then(r => r.json()).then(j => {
+          console.log(' ')
+          petNames = j.favouritePets
         })
+        console.log(petNames.length)
+        for (var i = 0; i < petNames.length; i++) {
+          fetch(`${App.apiBase}/pet/${petNames[i]}`).then(r => r.json()).then(j => {
+            console.log(pets)
+            pets.push(j)
+          })
+        }
+        this.$store.commit('setMatchesResults', pets);
+        // fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
+        //   this.$store.commit('setMatchesResults', j);
+        //   setTimeout(() => this.loading = false, 1500);
+        // })
       }
     }
   }

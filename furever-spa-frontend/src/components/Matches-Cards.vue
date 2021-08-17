@@ -3,35 +3,29 @@
           <div class="col">
             <div id="main" style="columns: 250px; column-gap: 20px; " min-height="100vh">
               <div>
-                  <div v-for="pet in filteredPets()"
+                <div v-for="pet in filteredPets()"
                       :key="pet.petName" style="position: relative; margin: auto;">
-                      <div class='grid-item' style="position: relative;" >
-                        <a :href="`/pet/${pet.petName}`">
-                        <div style="position: relative; display: table; height: 100%;">
-                          <img 
-                              :src="srcImage(pet)"
-                          >
-                          
-                          <h2 style="margin: auto; vertical-align: middle;">
-                              <div style="font-size: 3vh;">{{ pet.petName }}</div>
-                              <div>{{ pet.age }} years old</div>
-                              <div>Breed: {{ pet.breed }}</div>
-                                  <div class="button" id="button-6">
-                                    <div id="spin"></div>
-                                    <a :href="`/pet/${pet.petName}`">More Info</a>
-                                  </div>
-                          </h2>
-                        </div>
-                          </a>
-                          <p id="match" onclick="$(this).toggleClass('matchClick'); " v-on:click="likePet(pet)"></p>
+                  <div class='grid-item' style="position: relative;" >
+                    <a :href="`/pet/${pet.petName}`">
+                      <div style="position: relative; display: table; height: 100%;">
+                        <img :src="srcImage(pet)">
+                        <h2 style="margin: auto; vertical-align: middle;">
+                            <div style="font-size: 3vh;">{{ pet.petName }}</div>
+                            <div>{{ pet.age }} years old</div>
+                            <div>Breed: {{ pet.breed }}</div>
+                                <div class="button" id="button-6">
+                                  <div id="spin"></div>
+                                  <a :href="`/pet/${pet.petName}`">More Info</a>
+                                </div>
+                        </h2>
                       </div>
+                    </a>
+                    <p id="match" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
                   </div>
                 </div>
-                <input type="hidden" name="petId" v-on:value="pet._id" />
-                <p id="match" @click="(this).toggleClass('matchClick'); this.addFavHandler.bind(this)" ></p>
               </div>
             </div>
-        </div>
+          </div>
         <div class="info">
           Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend
         </div>
@@ -39,6 +33,8 @@
 </template>
   
 <script>
+import Auth from '../Auth'
+import UserAPI from '../UserAPI'
   import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
   export default {
       name: 'matchesCards',
@@ -79,12 +75,14 @@
           return filtered;
         },
 
-      async addFavHandler(){    
+      addFavHandler(petName) {    
           try {
-            UserAPI.addFavPet(this.petId)
-            Toast.show('Pet added to favourites')
+            UserAPI.addFavPet(petName)
+            console.log(UserAPI.getUser(Auth.currentUser._id))
+            // Toast.show('Pet added to favourites')
           }catch(err){
-            Toast.show(err, 'error')
+            // Toast.show(err, 'error')
+            console.log(err)
           }
         }
     }
