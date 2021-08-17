@@ -41,7 +41,7 @@
     methods: {
       fetchData () {
         if (JSON.parse(localStorage.user).accessLevel === 1) {
-          fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
+          fetch(`${App.apiBase}/shelter/`, { headers: { "Authorization": `Bearer ${localStorage.accessToken}`} }).then(r => r.json()).then(j => {
           this.$store.commit('setMatchesResults', j);
           setTimeout(() => this.loading = false, 1500);
         })

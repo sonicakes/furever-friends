@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="small-container" style="padding-bottom:12.5rem;">
+  <div id="home" class="small-container" style="padding-bottom:11.4rem;">
     <navbar></navbar>    
     <frontVideo/>
     <carousel/>
@@ -9,14 +9,16 @@
         <a href="/matches">Find your Match</a>
       </div> 
     </div>
+    <counter/>
     <blueFooter></blueFooter>
   </div>
 </template>
 
 <script>
   import {updateUser} from '../UserAPI.js';
-  import navbar from './navbar.vue'
-  import carousel from './image-carousel.vue'
+  import counter from './Counter.vue'
+  import navbar from './Navbar.vue'
+  import carousel from './Image-Carousel.vue'
   import frontVideo from './video.vue'
   import blueFooter from './footer.vue'
 
@@ -25,6 +27,7 @@
       navbar,
       frontVideo,
       carousel,
+      counter,
       blueFooter
     },
   }

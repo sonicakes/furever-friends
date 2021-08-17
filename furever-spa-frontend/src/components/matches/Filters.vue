@@ -31,7 +31,7 @@
     <div id="main">
       <button class="openbtn" v-on:click="changeNav()"><i class="fas fa-filter"></i>    <span>Filter<span></button>
       
-      <button v-if="userLevel === 'shelter'" v-b-modal.modal-1 class="openbtn" style="position: absolute; right: 30px;"><i class="fas fa-plus"></i>    <span>Add Pet<span></button>
+      <button v-if="accessLevel === 1" v-b-modal.modal-1 class="openbtn" style="position: absolute; right: 30px;"><i class="fas fa-plus"></i>    <span>Add Pet<span></button>
       <div>
 
   <b-modal id="modal-1" title="Add Pet" style="width: 40vw"> 
@@ -174,7 +174,7 @@ import Auth from "../../Auth";
 export default {
   data() {
     return {
-      userLevel: JSON.parse(localStorage.user).userType,
+      accessLevel: JSON.parse(localStorage.user).accessLevel,
       loaded: false,
       filters: filterConfig,
     }

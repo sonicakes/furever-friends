@@ -11,13 +11,14 @@
 			<dropdown :before-open="callback" :is-icon="false" :class-name="'my-class'">
 				<template slot="btn">
 					<div class="navTriggerContainer">
-					<div class="navTrigger" style="margin: auto;position: absolute;right: 0;left: 0;top: 0;bottom: 0;" onclick="$(this).toggleClass('active')">
+					<div class="navTrigger" style="margin: auto; position: absolute; right: 0; left: 0; top: 0; bottom: 0;" onclick="$(this).toggleClass('active')">
 						<i></i><i></i><i></i>
 					</div>
 					</div>
 				</template>
 				<template slot="body">
 					<ul>
+					<li class="padded"><a href="/matches"><img src="../assets/kennel.png" style="height: 20px;"> Your Matches</a></li>
 					<li class="padded"><a href="/saved"><img src="../assets/heart-icon.png" style="height: 20px;"> Your Favourites</a></li>
 					<li class="padded">
 						<dropdown :trigger="'hover'" :role="'sublist'" :align="'right'">
@@ -25,12 +26,13 @@
 						<template slot="body">
 							<ul>
 								<li class="padded"><a style="text-decoration: none !important;" href="/profile">Profile</a></li>
+								<li class="padded"><a style="text-decoration: none !important;" href="/edit">Edit Profile</a></li>
 								<li class="padded"><a style="text-decoration: none !important;" v-on:click="logout()">Log Out</a></li>
 							</ul>
 						</template>
 						</dropdown>
 					</li>
-					<li class="padded"><a href="/matches"><img src="../assets/kennel.png" style="height: 20px;"> Your Matches</a></li>
+
 					</ul>
 				</template>
 				</dropdown>
