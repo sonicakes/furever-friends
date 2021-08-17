@@ -3,6 +3,7 @@ const router = express.Router()
 const Utils = require('./../utils')
 const User = require('./../models/User')
 const path = require('path')
+const nodemon = require('nodemon')
 
 // PUT - add favouritePets --------------------------------------
 router.put('/addFavPet/', Utils.authenticateToken, (req, res) => {  
@@ -20,7 +21,7 @@ router.put('/addFavPet/', Utils.authenticateToken, (req, res) => {
       favouritePets: req.body.petName
     }
   })
-    .then((user) => {            
+    .then(user => {            
       res.json({
         message: "Pet added to favourites"
       })
@@ -29,6 +30,29 @@ router.put('/addFavPet/', Utils.authenticateToken, (req, res) => {
       console.log(err)
       res.status(500).json({
         message: "Problem adding favourite pet"
+      })
+    })
+})
+
+router.put('/removeFavPet/', Utils.authenticateToken, (req, res) => {  
+  // validate check
+  if(!req.body.petName){
+    return res.status(400).json({
+      message: "No pet specified"
+    })
+  }
+  // add petId to favouritePets field (array - push)
+  User.updateOne({
+    _id: req.user._id
+  }, {
+    $pull: {
+      favouritePets: req.body.petName
+    }
+  })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "Problem removing favourite pet"
       })
     })
 })

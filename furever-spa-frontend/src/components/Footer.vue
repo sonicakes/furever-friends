@@ -2,34 +2,33 @@
     <div id="footer">
         <div class="row">
             <div class="col" style="margin: 20px;border-right-color: white;border-right-style: solid;border-width: 2px;">
-                <div class="row" style="padding-top: 2vh;">
+                <div class="row" style="padding-top: 1vh;">
                     <div class="col-3">
-                        <img src="../assets/favicon.png" style="height: 5vh;position: absolute;right: 0;">
+                        <img src="../assets/favicon.png" style="height: 4vh;position: absolute;right: 0;">
                     </div>
                     <div class="col-9">
-                        <img src="../assets/logo.png" style="height: 5vh;position: absolute;left: 0;">
-                        <p style="padding-top: 5vh; text-align: left;">hello@fureverfriends.com</p>
+                        <img src="../assets/logo.png" style="height: 4vh;position: absolute;left: 0;">
+                        <p style="position: absolute;padding-top: 4vh; text-align: left; left: 0;">hello@fureverfriends.com</p>
 
                     </div>
                 </div>
             </div>
             <div class="col" >
-                <div class="row" style="margin: 20px; padding-top: 6%;">
+                <div class="row" style="margin: 10px; padding-top: 4%;">
                     <div class="col-1"></div>
                     <div class="col">
-                        <i class="fab fa-facebook" style="color: white; font-size: 5vh;"></i>
+                        <i class="fab fa-facebook" style="color: white; font-size: 4vh;"></i>
                     </div>
                     <div class="col">
-                       <i class="fab fa-twitter" style="color: white; font-size: 5vh;"></i> 
+                       <i class="fab fa-twitter" style="color: white; font-size: 4vh;"></i> 
                     </div>
                     <div class="col">
-                        <i class="fab fa-instagram" style="color: white; font-size: 5vh;"></i>
+                        <i class="fab fa-instagram" style="color: white; font-size: 4vh;"></i>
                     </div>
                     <div class="col-1"></div>
                 </div>
             </div>
-            <div class="col" style="margin: 20px; border-left-color: white;border-left-style: solid;border-width: 2px;">
-                <a href="/" style="margin-right: 26px">Home </a><br>
+            <div class="col" style="margin: 10px; border-left-color: white;border-left-style: solid;border-width: 2px;">
                 <a href="/matches">Your Matches <img src="../assets/kennel.png" style="height: 20px;"> </a><br>
                 <a href="/saved">Your Favourites <img src="../assets/heart-icon.png" style="height: 20px;"></a><br>
                 <a href="/profile">Account <img src="../assets/user.png" style="height: 20px;"></a><br>
@@ -53,7 +52,7 @@
 
     a {
         font-family: 'Montserrat', sans-serif;
-        font-size: 19px;
+        font-size: 15px;
         text-align: right !important;
         position: absolute;
         right: 20%;
@@ -75,7 +74,6 @@
     }
 
     p {
-        padding-top: 10px;
         padding-bottom: 10px;
         margin: auto;
         vertical-align: middle;

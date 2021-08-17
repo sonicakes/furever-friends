@@ -20,7 +20,8 @@
                         </h2>
                       </div>
                     </a>
-                    <p id="match" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
+                    <p v-if="checkHeart(pet.petName)" id="match" class="active matchClick" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
+                    <p v-else id="match" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
                   </div>
                 </div>
               </div>
@@ -33,6 +34,7 @@
 </template>
   
 <script>
+import App from '../App'
 import Auth from '../Auth'
 import UserAPI from '../UserAPI'
   import {imgSrcDog, imgSrcCat} from "./matches/imagePlaceholders";
@@ -55,7 +57,6 @@ import UserAPI from '../UserAPI'
           return src;
         },
         filteredPets() {
-          console.log(this.$store.state.matches.results)
           let filtered = this.$store.state.matches.results;
             if (this.$store.state.matches.filters.animal !== 'any') {
               filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
@@ -75,16 +76,50 @@ import UserAPI from '../UserAPI'
           return filtered;
         },
 
+      checkHeart(petName) {
+          if (this.likedPets.indexOf(petName) !== -1) {
+            return true
+          } else {
+            return false
+          }
+      },
+
       addFavHandler(petName) {    
+        if (this.checkHeart(petName)) {
+          try {
+            UserAPI.removeFavPet(petName)
+            this.likedPets.splice(this.likedPets.indexOf(petName),1)
+            console.log(this.likedPets)
+          } catch(err) {
+            console.log(err)
+          }
+        } else {
           try {
             UserAPI.addFavPet(petName)
-            console.log(UserAPI.getUser(Auth.currentUser._id))
+            this.likedPets.push(petName)
             // Toast.show('Pet added to favourites')
           }catch(err){
             // Toast.show(err, 'error')
             console.log(err)
           }
         }
+        }
+    },
+    mounted() {
+        const url = App.apiBase + '/user/' + Auth.currentUser._id;
+
+        fetch(url, {
+          headers: {
+            'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+          },
+        }).then(r => r.json()).then(j => {
+          this.likedPets = j.favouritePets
+        })
+    },
+    data: function() {
+      return {
+        likedPets: [],
+      }
     }
   }
 </script>
