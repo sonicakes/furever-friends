@@ -25,6 +25,7 @@
 						<template slot="body">
 							<ul>
 								<li class="padded"><a style="text-decoration: none !important;" href="/profile">Profile</a></li>
+								<li class="padded"><a style="text-decoration: none !important;" v-on:click="logout()">Log Out</a></li>
 							</ul>
 						</template>
 						</dropdown>

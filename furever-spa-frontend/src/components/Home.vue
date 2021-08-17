@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="small-container" padding-bottom="50px" >
+  <div id="home" class="small-container" style="padding-bottom:12.5rem;">
     <navbar></navbar>    
     <frontVideo/>
     <carousel/>

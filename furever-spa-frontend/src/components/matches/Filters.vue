@@ -186,13 +186,11 @@ export default {
   },
   methods: {
     addPetSubmitHandler: function(event){
-            console.log("I'm here")
             event.preventDefault()    
-            const submitBtn = document.querySelector('.submit-btn')
+            const submitBtn = document.querySelector('#button-3')
             submitBtn.setAttribute('loading', '')    
             const formData = event.detail.formData
             
-    
             // addPet using Auth
             Auth.addPet(formData, () => {
                 submitBtn.removeAttribute('loading')

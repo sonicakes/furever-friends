@@ -21,6 +21,7 @@ export const store = new Vuex.Store({
             state.pathName = payload;
         },
         setMatchesResults (state, payload) {
+            console.log('Here')
             state.matches.results = payload;
         },
         setMatchesFilterAnimal (state, payload) {

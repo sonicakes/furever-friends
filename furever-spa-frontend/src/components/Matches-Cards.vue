@@ -56,8 +56,8 @@
           return src;
         },
         filteredPets() {
+          console.log(this.$store.state.matches.results)
           let filtered = this.$store.state.matches.results;
-          if (JSON.parse(localStorage.user).accessLevel === 0) {
             if (this.$store.state.matches.filters.animal !== 'any') {
               filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
             }
@@ -73,7 +73,6 @@
             if (this.$store.state.matches.filters.family !== 'any') {
               filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
             }
-          }
           return filtered;
         }
     }

@@ -41,6 +41,9 @@ app.use('/user', userRouter)
 const petRouter = require('./routes/pet')
 app.use('/pet', petRouter)
 
+const shelterRouter = require('./routes/shelter')
+app.use('/shelter', shelterRouter)
+
 // run app listen on port --------------------
 app.listen(port, () => {
   console.log("App running on port ", port)
