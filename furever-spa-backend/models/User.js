@@ -56,7 +56,10 @@ const userSchema = new mongoose.Schema({
   }, 
   accessLevel: {
     type: Number,
-  }
+  },
+  favouritePets: [ {
+    type: Schema.ObjectId, ref: 'pets'
+  } ]
 }, { timestamps: true })
 
 // encrypt password field on save

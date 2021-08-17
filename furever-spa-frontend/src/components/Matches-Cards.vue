@@ -27,6 +27,9 @@
                       </div>
                   </div>
                 </div>
+                <input type="hidden" name="petId" v-on:value="pet._id" />
+                <p id="match" @click="(this).toggleClass('matchClick'); this.addFavHandler.bind(this)" ></p>
+              </div>
             </div>
         </div>
         <div class="info">
@@ -74,6 +77,15 @@
               filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
             }
           return filtered;
+        },
+
+      async addFavHandler(){    
+          try {
+            UserAPI.addFavPet(this.petId)
+            Toast.show('Pet added to favourites')
+          }catch(err){
+            Toast.show(err, 'error')
+          }
         }
     }
   }

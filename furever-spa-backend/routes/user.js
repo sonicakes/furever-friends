@@ -4,6 +4,35 @@ const Utils = require('./../utils')
 const User = require('./../models/User')
 const path = require('path')
 
+// PUT - add favouritePets --------------------------------------
+router.put('/addFavPet/', Utils.authenticateToken, (req, res) => {  
+  // validate check
+  if(!req.body.petId){
+    return res.status(400).json({
+      message: "No pet specified"
+    })
+  }
+  // add petId to favouritePets field (array - push)
+  User.updateOne({
+    _id: req.user._id
+  }, {
+    $push: {
+      favouritePets: req.body.petId
+    }
+  })
+    .then((user) => {            
+      res.json({
+        message: "Pet added to favourites"
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "Problem adding favourite pet"
+      })
+    })
+})
+
 // GET - collection
 router.get('/', (req, res) => {
   User.find()

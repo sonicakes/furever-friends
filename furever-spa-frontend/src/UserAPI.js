@@ -55,6 +55,35 @@ class UserAPI {
     // return data
     return data
   }
+
+
+  async addFavPet(petId){
+    // validate
+    if(!petId) return
+
+    // fetch the json data
+    const response = await fetch(`${App.apiBase}/user/addFavPet`, {
+      method: "PUT",
+      headers: { "Authorization": `Bearer ${localStorage.accessToken}`, "Content-Type": 'application/json'},
+      body: JSON.stringify({petId: petId})
+    })
+
+    // if response not ok
+    if(!response.ok){ 
+      // console log error
+      const err = await response.json()
+      if(err) console.log(err)
+      // throw error (exit this function)      
+      throw new Error('Problem adding pet to favourites')
+    }
+    
+    // convert response payload into json - store as data
+    const data = await response.json()
+    
+    // return data
+    return data
+  }
+
 }
 
 export default new UserAPI()
