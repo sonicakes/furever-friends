@@ -1,13 +1,14 @@
 <template>
   <div id="home" class="small-container" style="  position: relative;
   min-height: 100vh;">
-  <div id="content-wrap" style="padding-bottom: 2.5rem;">
+  <div id="content-wrap" style="padding-bottom: 12.5rem;">
     <div v-if="loading">
-              <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"><h1 style="text-align: center;position: absolute;margin: auto;width: 100vw;bottom: 25vh;">Loading Matches</h1></div>
-      </div>
+      <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"><h1 style="text-align: center;position: absolute;margin: auto;width: 100vw;bottom: 25vh;">Loading Matches</h1></div>
+    </div>
       <navbar/>
       <matchesFilters/>
-    <blueFooter/>
+      <blueFooter/>
+    </div>
   </div>
       </div>
 </template>
@@ -39,7 +40,7 @@
     },
     methods: {
       fetchData () {
-        if (JSON.parse(localStorage.user).userType === 'shelter') {
+        if (JSON.parse(localStorage.user).accessLevel === 1) {
           fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
           this.$store.commit('setMatchesResults', j);
           setTimeout(() => this.loading = false, 1500);

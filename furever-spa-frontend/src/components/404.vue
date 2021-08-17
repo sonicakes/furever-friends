@@ -35,7 +35,7 @@ export default {
     position: absolute;
     right: 0;
     left: 0;
-    bottom: 20vh;
+    bottom: 25vh;
     display: inline-flex;
     height: 40px;
     width: 150px;
@@ -110,7 +110,6 @@ h4 {
 }
 
 button {
-
     margin: auto;
     position: absolute;
     left: 0;

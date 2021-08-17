@@ -6,11 +6,13 @@
                   <div v-for="pet in filteredPets()"
                       :key="pet.petName" style="position: relative; margin: auto;">
                       <div class='grid-item' style="position: relative;" >
+                        <a :href="`/pet/${pet.petName}`">
                         <div style="position: relative; display: table; height: 100%;">
                           <img 
                               :src="srcImage(pet)"
                           >
-                          <h2 style="margin: auto; vertical-align: middle;" onclick="window.location.href = '/pet';" v-on:click="setCurrentPet(pet.petName)">
+                          
+                          <h2 style="margin: auto; vertical-align: middle;">
                               <div style="font-size: 3vh;">{{ pet.petName }}</div>
                               <div>{{ pet.age }} years old</div>
                               <div>Breed: {{ pet.breed }}</div>
@@ -20,7 +22,7 @@
                                   </div>
                           </h2>
                         </div>
-                          
+                          </a>
                           <p id="match" onclick="$(this).toggleClass('matchClick'); " v-on:click="likePet(pet)"></p>
                       </div>
                   </div>
@@ -55,23 +57,23 @@
         },
         filteredPets() {
           let filtered = this.$store.state.matches.results;
+          if (JSON.parse(localStorage.user).accessLevel === 0) {
+            if (this.$store.state.matches.filters.animal !== 'any') {
+              filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
+            }
 
-          if (this.$store.state.matches.filters.animal !== 'any') {
-            filtered = filtered.filter(pet => pet.petType === this.$store.state.matches.filters.animal);
+            if (this.$store.state.matches.filters.sex !== 'any') {
+              filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
+            }
+
+            if (this.$store.state.matches.filters.age !== 'any') {
+              filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
+            }
+
+            if (this.$store.state.matches.filters.family !== 'any') {
+              filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
+            }
           }
-
-          if (this.$store.state.matches.filters.sex !== 'any') {
-            filtered = filtered.filter(pet => pet.sex === this.$store.state.matches.filters.sex);
-          }
-
-          if (this.$store.state.matches.filters.age !== 'any') {
-            filtered = filtered.filter(pet => pet.age === this.$store.state.matches.filters.age);
-          }
-
-          if (this.$store.state.matches.filters.family !== 'any') {
-            filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
-          }
-
           return filtered;
         }
     }
@@ -179,15 +181,15 @@ h2 {
     overflow: hidden;
     padding-bottom: 5vw;
 }
-.grid-item:hover img {
+.grid-item:hover a img {
     -webkit-filter: grayscale(50%) blur(10px);
     filter: brightness(50%) blur(2px);
     transition: .4s ease-in-out;
 }
-.grid-item:hover > div > h2 > div, .grid-item:active > div > h2 > div  {
+.grid-item:hover > a > div > h2 > div, .grid-item:active > div > h2 > div  {
     display: block;
 }
-.grid-item > div > h2 > div {
+.grid-item > a > div > h2 > div {
     display: none;
 }
     * {

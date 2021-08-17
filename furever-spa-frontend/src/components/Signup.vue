@@ -20,7 +20,8 @@
                     </div>
                     <div class="form-label-group">
                         <sl-input name="password" type="password" placeholder="Password" required toggle-password></sl-input>
-                    </div>            
+                    </div>     
+
                     <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Sign Up</sl-button>
                     
                     <div class="text-center">

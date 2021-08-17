@@ -18,29 +18,26 @@
 				</template>
 				<template slot="body">
 					<ul>
-					<li class="padded"><img src="../assets/heart-icon.png" style="height: 20px;"> Your Favourites</li>
+					<li class="padded"><a href="/saved"><img src="../assets/heart-icon.png" style="height: 20px;"> Your Favourites</a></li>
 					<li class="padded">
 						<dropdown :trigger="'hover'" :role="'sublist'" :align="'right'">
 						<template slot="btn"><img src="../assets/user.png" style="height: 20px; padding-right: 7px;">Account</template>
 						<template slot="body">
 							<ul>
-							<li class="padded"><a style="text-decoration: none !important;" href="/profile">Profile</a></li>
+								<li class="padded"><a style="text-decoration: none !important;" href="/profile">Profile</a></li>
 							</ul>
 						</template>
 						</dropdown>
 					</li>
-					<li class="padded"><img src="../assets/kennel.png" style="height: 20px;"> Your Matches</li>
+					<li class="padded"><a href="/matches"><img src="../assets/kennel.png" style="height: 20px;"> Your Matches</a></li>
 					</ul>
 				</template>
 				</dropdown>
-			<ul class="dropdown-menu" id="dropdown" aria-labelledby="navbarDarkDropdownMenuLink" style="border-radius: 0px; background-color: rgb(255, 251, 248); border-color: rgb(255, 251, 248); position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 68px);">
-				
-			</ul>
 		</li>
         <li style="display:inline-block"><a href="/"><img class="navbar-img" src="../assets/logo.png" height="40px" style="margin-top:10px; position: absolute; right: 47vw"></a><li>
 
         <li style="float:right">
-          <a href="/profile" class="nav-item top-navbar">
+          <a href="/profile" class="nav-item top-navbar" id="user">
             <img src="../assets/user.png" height="100%">
           </a>
         </li> 	
@@ -51,8 +48,8 @@
           </a>
         </li>
 		<li style="float:right">
-          <a href="/matches" class="nav-item top-navbar" id="kennel">
-            <img src="../assets/kennel.png" class="heart" style="height: 100%">
+          <a href="/matches" class="nav-item top-navbar" id="kennel" style="padding: 12px 12px;">
+            <img src="../assets/kennel.png" style="height: 100%; width: 100%;">
           </a>
         </li>
     </ul> 
@@ -92,6 +89,23 @@ import Auth from '../Auth.js';
 </script>
 
 <style scoped>
+
+#user:hover {
+	content:url('../assets/user-small-paw.png');
+}
+
+#kennel:hover {
+	content:url('../assets/kennel-with-dog.png');
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #637365;
+}
+
 .navTriggerContainer {
 	height: 55px !important;
 	width: 55px;
@@ -194,7 +208,7 @@ import Auth from '../Auth.js';
 #navbar {
     position: fixed;
     width: 100%;
-    z-index: 100;
+    z-index: 10000;
 }
 
 .navMenu {
