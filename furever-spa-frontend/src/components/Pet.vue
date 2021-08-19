@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="col-md-8">
-              
+
               <div class="profile-head">
                 <h5>
                   {{ pet.petName }}
@@ -137,6 +137,14 @@
                     </div>
                 </div>
               </div>
+              <div v-if="accessLevel === 1" class="button" id="button-6">
+                <div id="spin"></div>
+                <a :href="`/pet/${pet.petName}`">Pet Adopted</a>
+              </div>
+              <div v-else class="button" id="button-6">
+                <div id="spin"></div>
+                <a :href="`/pet/${pet.petName}`">Set me up for a date</a>
+              </div>
           </div>
         </div>
       </div>
@@ -154,6 +162,8 @@ import {store} from "../store";
 import Router from "../Router";
 import App from "../App";
 import {imgSrcCat, imgSrcDog} from "./matches/imagePlaceholders";
+import UserAPI from '../UserAPI'
+import Auth from '../Auth'
 
 export default {
     data() {
@@ -161,6 +171,7 @@ export default {
             loading: true,
             petName: null,
             pet: null,
+            likedPets: [],
             accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel
         }
     },
@@ -191,6 +202,34 @@ export default {
 
         return src;
       },
+      checkHeart(petName) {
+          if (this.likedPets.indexOf(petName) !== -1) {
+            return true
+          } else {
+            return false
+          }
+      },
+
+      addFavHandler(petName) {    
+        if (this.checkHeart(petName)) {
+          try {
+            UserAPI.removeFavPet(petName)
+            this.likedPets.splice(this.likedPets.indexOf(petName),1)
+            console.log(this.likedPets)
+          } catch(err) {
+            console.log(err)
+          }
+        } else {
+          try {
+            UserAPI.addFavPet(petName)
+            this.likedPets.push(petName)
+            // Toast.show('Pet added to favourites')
+          }catch(err){
+            // Toast.show(err, 'error')
+            console.log(err)
+          }
+        }
+        }
     },
     async created() {
       // Load current path from store
@@ -225,11 +264,22 @@ export default {
         }
       })
 
+      const url2 = App.apiBase + '/user/' + Auth.currentUser._id;
+
+        fetch(url2, {
+          headers: {
+            'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+          },
+        }).then(r => r.json()).then(j => {
+          this.likedPets = j.favouritePets
+        })
+
     }
 }
 </script>
 
 <style scoped>
+
 
 .example_b {
   position: absolute;
@@ -252,27 +302,26 @@ export default {
 	transition: all 0.4s ease 0s;
 }
 
-
 .button {
-  display: inline-flex;
-  height: 40px;
-  width: 150px;
-  border: 2px solid #ffffff;
-  margin: 20px 20px 20px 20px;
-  color: #BFC0C0;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: .8em;
-  letter-spacing: 1.5px;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    display: inline-flex;
+    height: 40px;
+    width: 200px;
+    border: 2px solid #637365;
+    margin: auto;
+    color: #637365;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 a {
-  color: #ffffff;
-  text-decoration: none;
-  letter-spacing: 1px;
+    color: #637365;
+    text-decoration: none;
+    letter-spacing: 1px;
 }
 
 
@@ -287,7 +336,6 @@ a {
 }
 
 #button-6 a {
-  top: 9px;
   position: relative;
   transition: all .45s ease-Out;
 }
@@ -306,17 +354,20 @@ a {
 
 #button-6:hover #spin {
   width: 200%;
-  height: 500%;
+  height: 600%;
   opacity: 1;
-  left: -70px;
-  top: -70px;
-  background: #ffffff;
+  left: -90px;
+  top: -90px;
+  background: #637365;
   transform: rotate(80deg);
 }
 
 #button-6:hover a {
-  color: #2D3142;
+  color: #ffffff;
 }
+
+
+
 
 span {
     background-color: lightgray;
@@ -335,6 +386,39 @@ label{
     text-align: left;
     display: block;
 }
+
+
+.matchClick {
+    animation-play-state: running !important;
+    transition: background 1s steps(28) !important;
+    background-position: right center !important; 
+}
+    /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
+    #match {
+      z-index: 100000;
+        width: 131px;
+        height: 131px;
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        background-size: cover;
+        transform: translate(-50%, -50%);
+        background-image: url('../assets/heart.png');
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        cursor: pointer;
+        animation-play-state: paused;
+        animation: fave-heart 1s steps(28);
+    }
+    
+    @keyframes fave-heart {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: left center;
+        }
+    }
 
 p {
     font-family: 'Montserrat', sans-serif;

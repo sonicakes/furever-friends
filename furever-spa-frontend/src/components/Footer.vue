@@ -1,7 +1,7 @@
 <template>
     <div id="footer">
         <div class="row top-footer">
-            <div class="col" style="margin: 20px;border-right-color: white;border-right-style: solid;border-width: 2px;">
+            <div class="col" style="margin: 10px;border-right-color: white;border-right-style: solid;border-width: 2px;">
                 <div class="row" style="padding-top: 1vh;">
                     <div class="col-3">
                         <img src="../assets/favicon.png" style="height: 4vh;position: absolute;right: 0;">

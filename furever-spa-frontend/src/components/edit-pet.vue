@@ -7,15 +7,14 @@
         <div class="page-content calign" style="background-color: #d9cdbf" v-if="!loading">
           
         <div class="container emp-profile" style="position: relative;">
-          <div v-if="accessLevel === 1" class="button_cont" align="center"><a class="example_b" href="/edit">Edit Pet</a></div>
-          <sl-form>
+ 
           <div class="row">
             <div class="col-md-4">
               <div class="profile-img">
                 <img :src="srcImage(pet)" :alt="pet.petName" />
                 <div>
-                  <sl-image ></sl-image>
-                <input type="file" name="image" />
+                  <sl-image></sl-image>
+                  <input type="file" name="image" />
                 </div>
               </div>
             </div>
@@ -30,13 +29,14 @@
                   
                     <div>
                         <b-tabs content-class="mt-3">
+                                   <sl-form v-on:sl-submit="updatePetSubmitHandler">
                             <b-tab title="About" active>
                                 <div class="row">
                                     <div class="col-4">
                                         <label>Name</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-input class="form-input" name="petName" type="text" :value="pet.petName" placeholder="Pet Name" required></sl-input>
+                                        <sl-input class="form-input" name="petName" type="text" :value="pet.petName" v-model="questions.name" placeholder="Pet Name" required></sl-input>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -44,7 +44,7 @@
                                         <label>Gender</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-select class="form-input" name="sex" type="text"  placeholder="Male / Female" :value="pet.sex" required>
+                                        <sl-select class="form-input" name="sex" type="text"  placeholder="Male / Female" :value="pet.sex" v-model="questions.sex" required>
                                           <sl-menu-item value="male">Male</sl-menu-item>
                                           <sl-menu-item value="female">Female</sl-menu-item>
                                         </sl-select>
@@ -55,7 +55,7 @@
                                         <label>Breed</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-input class="form-input" name="breed" type="text" placeholder="Breed" :value="pet.breed" required></sl-input>
+                                        <sl-input class="form-input" name="breed" type="text" placeholder="Breed" v-model="questions.breed" :value="pet.breed" required></sl-input>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -63,7 +63,7 @@
                                         <label>Description</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-textarea class="form-input" resize="auto" name="bio" :value="pet.bio" help-text="Tell us about the pet">
+                                        <sl-textarea class="form-input" resize="auto" name="bio" :value="pet.bio" v-model="questions.bio" help-text="Tell us about the pet">
                                         </sl-textarea>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                         <label>Age</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-select class="form-input" name="age" type="number"  placeholder="0-1" required>
+                                        <sl-select class="form-input" name="age" type="number"  placeholder="0-1" :value="pet.age" v-model="questions.age" required>
                                           <sl-menu-item value="0-1">0-1</sl-menu-item>
                                           <sl-menu-item value="1-4">1-4</sl-menu-item>
                                           <sl-menu-item value="4-8">4-8</sl-menu-item>
@@ -88,7 +88,7 @@
                                         <label>Weight (kg)</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-select class="form-input" name="weight" type="text"  placeholder="<5" required>
+                                        <sl-select class="form-input" name="weight" type="text"  placeholder="<5" :value="pet.weight" v-model="questions.weight" required>
                                           <sl-menu-item value="<5">&#62;5</sl-menu-item>
                                           <sl-menu-item value="5-10">5-10</sl-menu-item>
                                           <sl-menu-item value="10-20">10-20</sl-menu-item>
@@ -102,7 +102,7 @@
                                         <label>Preferred Family</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                      <sl-select class="form-input" name="preferredFamily" type="text"  placeholder="Small" required>
+                                      <sl-select class="form-input" name="preferredFamily" type="text"  placeholder="Small" :value="pet.preferredFamily" v-model="questions.preferredFamily" required>
                                         <sl-menu-item value="small">Small</sl-menu-item>
                                         <sl-menu-item value="medium">Medium</sl-menu-item>
                                         <sl-menu-item value="large">Large</sl-menu-item>
@@ -115,7 +115,7 @@
                                         <label>Colour</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                      <sl-input class="form-input" name="colour" type="text" placeholder="Colour" required></sl-input>
+                                      <sl-input class="form-input" name="colour" type="text" placeholder="Colour" :value="pet.colour" v-model="questions.colour" required></sl-input>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -123,7 +123,7 @@
                                         <label>Favourite Activities</label>
                                     </div>
                                     <div class="col-8">
-                                        <sl-select class="form-input" multiple clearable name="activities" type="text"  placeholder="Favourite Activities">
+                                        <sl-select class="form-input" multiple clearable name="activities" type="text" :value="pet.activities" placeholder="Favourite Activities">
                                           <sl-menu-item value="running">Running</sl-menu-item>
                                           <sl-menu-item value="walking">Walking</sl-menu-item>
                                           <sl-menu-item value="sleeping">Sleeping</sl-menu-item>
@@ -144,7 +144,7 @@
                                         <label>Personality</label>
                                     </div>
                                     <div class="col-8">
-                                      <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" id="personality" required v-on:sl-change="consoleLog()">
+                                      <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" id="personality" v-model="questions.personality" required v-on:sl-change="consoleLog()">
                                         <sl-menu-item checked value=confident>Confident</sl-menu-item>
                                         <sl-menu-item value="friendly">Friendly</sl-menu-item>
                                         <sl-menu-item value="needsTraining">Needs Training</sl-menu-item>
@@ -164,7 +164,7 @@
                                         <label>Preferred Living</label>
                                     </div>
                                     <div class="col-8">
-                                      <sl-select class="form-input" multiple clearable label="Preferred Living" name="preferredLiving" type="text"  placeholder="Preferred Living" required :value="pet.preferredLiving" v-on:sl-change="consoleLog()">
+                                      <sl-select class="form-input" multiple clearable label="Preferred Living" name="preferredLiving" type="text"  placeholder="Preferred Living" required v-model="questions.preferredLiving" v-on:sl-change="consoleLog()">
                                         <sl-menu-item value="outdoor">Outdoor</sl-menu-item>
                                         <sl-menu-item value="indoor">Indoor</sl-menu-item>
                                         <sl-menu-item value="backyard">Backyard</sl-menu-item>
@@ -182,7 +182,8 @@
                                         <label>Things to Avoid</label>
                                     </div>
                                     <div class="col-8">
-                                      <sl-select class="form-input" multiple clearable label="Things to Avoid" name="toAvoid" type="text"  placeholder="Kids, Stairs, Cats" required>
+                                      <sl-select class="form-input" multiple clearable label="Things to Avoid" name="toAvoid" type="text"  placeholder="Kids, Stairs, Cats" required v-bind:value="questions.thingsToAvoid"
+  v-on:sl-change="$emit('input', $event.target.value)">
                                         <sl-menu-item value="stairs">Stairs</sl-menu-item>
                                         <sl-menu-item value="cats">Cats</sl-menu-item>
                                         <sl-menu-item value="dogs">Dogs</sl-menu-item>
@@ -194,14 +195,17 @@
                                       </sl-select>
                                     </div>
                                 </div>
+
                             </b-tab>
+                            <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Edit Pet</sl-button>
+                          </sl-form>
                         </b-tabs>
                     </div>
                 </div>
               </div>
           </div>
         </div>
-        </sl-form>
+
       </div>
     </div>
     <blueFooter/>
@@ -209,6 +213,7 @@
 </template>
 
 <script>
+import PetAPI from '../PetAPI'
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 import navbar from './Navbar.vue'
@@ -217,6 +222,7 @@ import {store} from "../store";
 import Router from "../Router";
 import App from "../App";
 import {imgSrcCat, imgSrcDog} from "./matches/imagePlaceholders";
+import Toast from '../Toast'
 
 export default {
     data() {
@@ -224,7 +230,19 @@ export default {
             loading: true,
             petName: null,
             pet: null,
-            accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel
+            accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel,
+            questions: {
+              name: 'Name',
+              sex: '',
+              activities: [],
+              preferredLiving: [],
+              thingsToAvoid: [],
+              age: '0',
+              breed: '',
+              weight: '',
+              colour: '',
+              bio: '',
+            }
         }
     },
     components: {
@@ -238,9 +256,23 @@ export default {
         console.log(document.getElementById('personality').value)
       },
 
-      async updatePetSubmitHandler(e){
+      async updatePetSubmitHandler(e) {
             e.preventDefault()
-            const formData = e.detail.formData
+            const data = {
+              name: this.questions.name,
+              sex: this.questions.sex,
+              activities: this.questions.activities,
+              preferredLiving: this.questions.preferredLiving,
+              thingsToAvoid: this.questions.thingsToAvoid,
+              age: this.questions.age,
+              breed: this.questions.breed,
+              weight: this.questions.weight,
+              colour: this.questions.colour,
+              bio: this.questions.bio,
+            };
+            console.log(data)
+            const formData = document.getElementsByTagName('sl-form').getFormData
+            console.log(e)
             const submitBtn = document.querySelector('.submit-btn')
             submitBtn.setAttribute('loading', '')
             try {
@@ -315,35 +347,13 @@ export default {
 
 <style scoped>
 
-.example_b {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-	color: #fff !important;
-	text-transform: uppercase;
-	text-decoration: none;
-	background: #60a3bc;
-	padding: 10px;
-	border-radius: 50px;
-	display: inline-block;
-	border: none;
-	transition: all 0.4s ease 0s;
-}
-
-.example_b:hover {
-	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-	transition: all 0.4s ease 0s;
-}
-
-
 .button {
+  margin: auto;
   display: inline-flex;
   height: 40px;
-  width: 150px;
-  border: 2px solid #ffffff;
-  margin: 20px 20px 20px 20px;
-  color: #BFC0C0;
+  width: auto;
+  border: 2px solid #637365;
+  color: #637365;
   text-transform: uppercase;
   text-decoration: none;
   font-size: .8em;
@@ -354,9 +364,41 @@ export default {
 }
 
 a {
-  color: #ffffff;
+  color: #637365;
   text-decoration: none;
   letter-spacing: 1px;
+}
+
+
+/* Second Button */
+
+#button-2 {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#button-2 a {
+  position: relative;
+  transition: all .35s ease-Out;
+}
+
+#slide {
+  width: 100%;
+  height: 100%;
+  left: -200px;
+  background: #637365;
+  position: absolute;
+  transition: all .35s ease-Out;
+  bottom: 0;
+}
+
+#button-2:hover #slide {
+  left: 0;
+}
+
+#button-2:hover a {
+  color: #ffffff;
 }
 
 
