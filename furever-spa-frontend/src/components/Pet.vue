@@ -23,6 +23,9 @@
                 <div id="spin"></div>
                 <a v-on:click="saveDataToFile">Set me up for a date</a>
               </div>
+
+                
+
             </div>
             <div class="col-md-8">
 
@@ -233,8 +236,7 @@ export default {
           }
         },
 		    saveDataToFile() {
-
-            var data = "Pet: " + "\r\n" + "Name: " + this.pet.petName + "\r\n" + "Description: " + this.pet.bio + "\r\n" + "Age: " + this.pet.age + "\r\n" + "Breed: " + this.pet.breed + "\r\n\r\n" + "Contact Info: " + "\r\n" + "Name: " + this.user.firstName + " " + this.user.lastName + "\r\n" + "Email: " + this.user.email
+            var data = " Furever Friends \r\n------------------\r\n\r\nPet Info\r\n----------------\r\nName: " + this.pet.petName + "\r\n" + "Description: " + this.pet.bio + "\r\n" + "Age: " + this.pet.age + "\r\n" + "Breed: " + this.pet.breed + "\r\n\r\n" + "Contact Info" + "\r\n" + "----------------\r\n" + "Name: " + this.user.firstName + " " + this.user.lastName + "\r\n" + "Email: " + this.user.email + "\r\n\r\n\r\n" + '             xXXXX   xXXX\r\n            XXXXXXX XXXXXX\r\n            "XXXXXX XXXXXX\r\n             XXXXX  XXXXX xXx\r\n         XXXx XXXXX  XX" XXXX\r\n         XXXXx "XX"  "  XXXXXX\r\n          XXXXX   xXx  XXXXX"\r\n           """  xXXXXXx "XX"\r\n               XXXXXXXXXX\r\n            xXXXXXXXXXXXXXx\r\n            XXXXXXXXXXXXXXX\r\n             """"  """""""'
 			
             var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
             saveAs(blob, "info-" + this.pet.petName + ".txt");
