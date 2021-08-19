@@ -29,6 +29,7 @@
                 </div>
             </div>
             <div class="col" style="margin: 10px; border-left-color: white;border-left-style: solid;border-width: 2px;">
+                <a href="/">Home <img src="../assets/office-icon.png" style="height: 20px;"> </a><br>
                 <a href="/matches">Your Matches <img src="../assets/kennel.png" style="height: 20px;"> </a><br>
                 <a href="/saved">Your Favourites <img src="../assets/heart-icon.png" style="height: 20px;"></a><br>
                 <a href="/profile">Account <img src="../assets/user.png" style="height: 20px;"></a><br>
@@ -79,7 +80,7 @@
         width: 100%;
         height: min-content;
         width: 100%;
-        background-color: #637365;
+        background-color: #778678;
         text-align: center;
         right: 0;
         z-index: 1000000;

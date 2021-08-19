@@ -75,7 +75,7 @@
                                         <label>Age</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-select class="form-input" name="age" type="number"  placeholder="0-1" required>
+                                        <sl-select class="form-input" name="age" type="number" :value="pet.age" placeholder="0-1" required>
                                           <sl-menu-item value="0-1">0-1</sl-menu-item>
                                           <sl-menu-item value="1-4">1-4</sl-menu-item>
                                           <sl-menu-item value="4-8">4-8</sl-menu-item>
@@ -88,7 +88,7 @@
                                         <label>Weight (kg)</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-select class="form-input" name="weight" type="text"  placeholder="<5" required>
+                                        <sl-select class="form-input" name="weight" type="text" :value="pet.weight"  placeholder="<5" required>
                                           <sl-menu-item value="<5">&#62;5</sl-menu-item>
                                           <sl-menu-item value="5-10">5-10</sl-menu-item>
                                           <sl-menu-item value="10-20">10-20</sl-menu-item>
@@ -102,7 +102,7 @@
                                         <label>Preferred Family</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                      <sl-select class="form-input" name="preferredFamily" type="text"  placeholder="Small" required>
+                                      <sl-select class="form-input" name="preferredFamily" type="text"  :value="pet.preferredFamily" placeholder="Small" required>
                                         <sl-menu-item value="small">Small</sl-menu-item>
                                         <sl-menu-item value="medium">Medium</sl-menu-item>
                                         <sl-menu-item value="large">Large</sl-menu-item>
@@ -115,7 +115,7 @@
                                         <label>Colour</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                      <sl-input class="form-input" name="colour" type="text" placeholder="Colour" required></sl-input>
+                                      <sl-input class="form-input" name="colour" type="text" :value="pet.colour" placeholder="Colour" required></sl-input>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -123,7 +123,7 @@
                                         <label>Favourite Activities</label>
                                     </div>
                                     <div class="col-8">
-                                        <sl-select class="form-input" multiple clearable name="activities" type="text"  placeholder="Favourite Activities">
+                                        <sl-select class="form-input" multiple clearable name="activities" type="text" :value="pet.activities" placeholder="Favourite Activities">
                                           <sl-menu-item value="running">Running</sl-menu-item>
                                           <sl-menu-item value="walking">Walking</sl-menu-item>
                                           <sl-menu-item value="sleeping">Sleeping</sl-menu-item>
@@ -144,7 +144,7 @@
                                         <label>Personality</label>
                                     </div>
                                     <div class="col-8">
-                                      <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" id="personality" required v-on:sl-change="consoleLog()">
+                                      <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" id="personality" required :value="pet.personality" v-on:sl-change="consoleLog()">
                                         <sl-menu-item checked value=confident>Confident</sl-menu-item>
                                         <sl-menu-item value="friendly">Friendly</sl-menu-item>
                                         <sl-menu-item value="needsTraining">Needs Training</sl-menu-item>
@@ -182,7 +182,7 @@
                                         <label>Things to Avoid</label>
                                     </div>
                                     <div class="col-8">
-                                      <sl-select class="form-input" multiple clearable label="Things to Avoid" name="toAvoid" type="text"  placeholder="Kids, Stairs, Cats" required>
+                                      <sl-select class="form-input" multiple clearable label="Things to Avoid" name="toAvoid" type="text" :value="pet.toAvoid" placeholder="Kids, Stairs, Cats" required>
                                         <sl-menu-item value="stairs">Stairs</sl-menu-item>
                                         <sl-menu-item value="cats">Cats</sl-menu-item>
                                         <sl-menu-item value="dogs">Dogs</sl-menu-item>
