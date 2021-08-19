@@ -15,6 +15,14 @@
                   <p v-if="checkHeart(pet.petName)" id="match" class="active matchClick" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
                   <p v-else id="match" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
               </div>
+              <div v-if="accessLevel === 1" class="button" id="button-6">
+                <div id="spin"></div>
+                <a :href="`/pet/${pet.petName}`">Pet Adopted</a>
+              </div>
+              <div v-else class="button" id="button-6">
+                <div id="spin"></div>
+                <a v-on:click="saveDataToFile">Set me up for a date</a>
+              </div>
             </div>
             <div class="col-md-8">
 
@@ -137,14 +145,6 @@
                     </div>
                 </div>
               </div>
-              <div v-if="accessLevel === 1" class="button" id="button-6">
-                <div id="spin"></div>
-                <a :href="`/pet/${pet.petName}`">Pet Adopted</a>
-              </div>
-              <div v-else class="button" id="button-6">
-                <div id="spin"></div>
-                <a :href="`/pet/${pet.petName}`">Set me up for a date</a>
-              </div>
           </div>
         </div>
       </div>
@@ -164,12 +164,14 @@ import App from "../App";
 import {imgSrcCat, imgSrcDog} from "./matches/imagePlaceholders";
 import UserAPI from '../UserAPI'
 import Auth from '../Auth'
+import { saveAs } from 'file-saver'
 
 export default {
     data() {
         return {
             loading: true,
             petName: null,
+            user: null,
             pet: null,
             likedPets: [],
             accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel
@@ -223,13 +225,22 @@ export default {
           try {
             UserAPI.addFavPet(petName)
             this.likedPets.push(petName)
-            // Toast.show('Pet added to favourites')
+            Toast.show('Pet added to favourites')
           }catch(err){
             // Toast.show(err, 'error')
             console.log(err)
           }
+          }
+        },
+		    saveDataToFile() {
+
+            var data = "Pet: " + "\r\n" + "Name: " + this.pet.petName + "\r\n" + "Description: " + this.pet.bio + "\r\n" + "Age: " + this.pet.age + "\r\n" + "Breed: " + this.pet.breed + "\r\n\r\n" + "Contact Info: " + "\r\n" + "Name: " + this.user.firstName + " " + this.user.lastName + "\r\n" + "Email: " + this.user.email
+			
+            var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
+            saveAs(blob, "info-" + this.pet.petName + ".txt");
         }
-        }
+
+    
     },
     async created() {
       // Load current path from store
@@ -272,6 +283,7 @@ export default {
           },
         }).then(r => r.json()).then(j => {
           this.likedPets = j.favouritePets
+          this.user = j;
         })
 
     }
@@ -329,7 +341,7 @@ a {
 
 #button-6 {
   margin: auto;
-  margin-top: 10px;
+  margin-top: 30px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -395,7 +407,6 @@ label{
 }
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
-      z-index: 100000;
         width: 131px;
         height: 131px;
         position: absolute;

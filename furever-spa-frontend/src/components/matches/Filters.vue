@@ -33,10 +33,10 @@
         </div>
       </div>
     </div>
-
+  
     <div id="main">
       <button class="openbtn" v-on:click="changeNav()">
-        <i class="fas fa-filter"></i><span>Filter</span>
+        <i class="fas fa-filter"></i> <span>Filter</span>
       </button>
 
       <button

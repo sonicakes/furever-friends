@@ -1,6 +1,12 @@
 <template>
 <div class="row"> 
           <div class="col">
+            <div id="no-pets" style="display: none; margin: auto; padding-top: 10vh; text-align: center;">
+              <!-- https://yourpng.com/photo/8780/cute-sad-puppy-sitting-dog-png-images -->
+              <img src="../assets/sad-puppy.png" style="height: 25vh; width: auto;">
+              <h1 style="text-align: center;">No Pets Found</h1>
+              <h3 style="font-size: 18px; text-align: center; padding-bottom: 20px;">Maybe try changing the filters</h3>
+            </div>
             <div id="main" style="columns: 260px; column-gap: 20px; " min-height="100vh">
               <div>
                 <div v-for="pet in filteredPets()"
@@ -75,6 +81,15 @@ import UserAPI from '../UserAPI'
 
             if (this.$store.state.matches.filters.family !== 'any') {
               filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
+            }
+            try {
+            if (filtered.length === 0) {
+              document.getElementById('no-pets').style.display = "block";
+            } else {
+              document.getElementById('no-pets').style.display = "none";
+            }
+            } catch (e) {
+              return filtered;
             }
           return filtered;
         },

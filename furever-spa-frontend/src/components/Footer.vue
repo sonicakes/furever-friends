@@ -30,7 +30,8 @@
             </div>
             <div class="col" style="margin: 10px; border-left-color: white;border-left-style: solid;border-width: 2px;">
                 <a href="/">Home <img src="../assets/office-icon.png" style="height: 20px;"> </a><br>
-                <a href="/matches">Your Matches <img src="../assets/kennel.png" style="height: 20px;"> </a><br>
+                <a v-if="accessLevel === 0" href="/matches">Your Matches <img src="../assets/kennel.png" style="height: 20px;"> </a>
+                <a v-else href="/matches">Your Matches <img src="../assets/kennel.png" style="height: 20px;"> </a><br>
                 <a href="/saved">Your Favourites <img src="../assets/heart-icon.png" style="height: 20px;"></a><br>
                 <a href="/profile">Account <img src="../assets/user.png" style="height: 20px;"></a><br>
             </div>
@@ -42,6 +43,11 @@
 <script>
     export default {
         name: 'blueFooter',
+        data() {
+            return {
+                accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel
+            }
+        }
     }
 </script>
 
