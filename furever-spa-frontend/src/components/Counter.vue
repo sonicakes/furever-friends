@@ -19,7 +19,7 @@ export default {
         }
     },
     created() {
-         this.timer = setInterval(this.addCount, 1000)
+         this.timer = setInterval(this.addCount, 2000)
     },
     methods: {
         addCount: function() {

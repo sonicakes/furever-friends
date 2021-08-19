@@ -84,12 +84,14 @@ a {
 
 // page --------------------
 .page-content {
-  position: absolute;
-  top: var(--app-header-height);
+  padding-top: var(--app-header-height);
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  min-height: 100vh !important;
   &.no-pad {
     padding: 0;
   }

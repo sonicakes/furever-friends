@@ -2,42 +2,18 @@
     <div>
         <navbar/>
         <div v-if="loading">
-            <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"><h1 style="text-align: center;position: absolute;margin: auto;width: 100vw;bottom: 25vh;">Loading Matches</h1></div>
+            <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"><h1 style="text-align: center;position: absolute;margin: auto;width: 100vw;bottom: 25vh;">Loading Pet</h1></div>
         </div>
-        <!-- <div class="page-content" style="background-color: #d9cdbf">
-            <div class="row" style="margin: auto;top: 10%">
-                <div class="col-5 my-auto" style="align: right; position: relative;">
-                    <vueper-slides autoplay :slide-ratio="3 / 2" margin="auto" :bullets="false" style="right: 0px; width:20vw; position: absolute; margin-right: 5vw;" fixed-height="60vh">
-                    <template #arrow-right>
-                        <i class="fas fa-chevron-right" style="right: 10px; position: absolute; color: black;"></i>
-                    </template>
-
-                    <template #arrow-left>
-                        <i class="fas fa-chevron-left" style="left: 10px; position: absolute; color: black;"></i>
-                    </template>
-                    <vueper-slide v-for="image in pet.images" 
-                        :key="image"
-                        :image = "image"/>
-
-                    </vueper-slides>
-                <img :src="srcImage(pet)" style="height: 40vh; width: auto; position: relative; margin: auto; border-radius: 30px;">
-            </div>
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-8">
-                    <h1 style="text-align: center;">Meet {{ pet.petName }}!</h1>
-                    <p>{{ pet.bio }}</p>
-                </div>
-            </div>
-        </div> -->
-        <div class="page-content calign" style="background-color: #d9cdbf">
+        <div class="page-content calign" style="background-color: #d9cdbf" v-if="!loading">
+          
         <div class="container emp-profile" style="position: relative;">
+          <div v-if="accessLevel === 1" class="button_cont" align="center"><a class="example_b" href="/edit">Edit Pet</a></div>
           <div class="row">
             <div class="col-md-4">
               <div class="profile-img">
                 <img :src="srcImage(pet)" :alt="pet.petName" />
-                <div>
-                </div>
+                  <p v-if="checkHeart(pet.petName)" id="match" class="active matchClick" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
+                  <p v-else id="match" v-on:click="addFavHandler(pet.petName)" onclick="$(this).toggleClass('matchClick');"></p>
               </div>
             </div>
             <div class="col-md-8">
@@ -162,10 +138,11 @@
                 </div>
               </div>
           </div>
+        </div>
       </div>
-      </div>
-        <blueFooter/>
     </div>
+    <blueFooter/>
+  </div>
 </template>
 
 <script>
@@ -184,6 +161,7 @@ export default {
             loading: true,
             petName: null,
             pet: null,
+            accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel
         }
     },
     components: {
@@ -214,7 +192,7 @@ export default {
         return src;
       },
     },
-    mounted() {
+    async created() {
       // Load current path from store
       // Redirect if path name has not been saved in store,
       // but that should never happen
@@ -233,7 +211,7 @@ export default {
       // Try to load pet via name from backend
       // Redirect if pet does not exist
       const url = App.apiBase + '/pet/' + petName;
-      fetch(url, {
+      await fetch(url, {
         headers: {
           'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
         },
@@ -243,14 +221,103 @@ export default {
         } else {
           this.pet = j;
           console.log(j)
+          this.loading = false;
         }
       })
-      this.loading = false;
+
     }
 }
 </script>
 
 <style scoped>
+
+.example_b {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #60a3bc;
+	padding: 10px;
+	border-radius: 50px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+}
+
+.example_b:hover {
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+}
+
+
+.button {
+  display: inline-flex;
+  height: 40px;
+  width: 150px;
+  border: 2px solid #ffffff;
+  margin: 20px 20px 20px 20px;
+  color: #BFC0C0;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+
+/* Sixth Button */
+
+#button-6 {
+  margin: auto;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#button-6 a {
+  top: 9px;
+  position: relative;
+  transition: all .45s ease-Out;
+}
+
+#spin {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  left: 70px;
+  top: 20px;
+  transform: rotate(0deg);
+  background: none;
+  position: absolute;
+  transition: all .5s ease-Out;
+}
+
+#button-6:hover #spin {
+  width: 200%;
+  height: 500%;
+  opacity: 1;
+  left: -70px;
+  top: -70px;
+  background: #ffffff;
+  transform: rotate(80deg);
+}
+
+#button-6:hover a {
+  color: #2D3142;
+}
+
 span {
     background-color: lightgray;
     padding: 3px;

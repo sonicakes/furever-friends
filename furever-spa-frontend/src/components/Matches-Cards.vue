@@ -1,7 +1,7 @@
 <template>
 <div class="row"> 
           <div class="col">
-            <div id="main" style="columns: 250px; column-gap: 20px; " min-height="100vh">
+            <div id="main" style="columns: 260px; column-gap: 20px; " min-height="100vh">
               <div>
                 <div v-for="pet in filteredPets()"
                       :key="pet.petName" style="position: relative; margin: auto;">
@@ -9,7 +9,7 @@
                     <a :href="`/pet/${pet.petName}`">
                       <div style="position: relative; display: table; height: 100%;">
                         <img :src="srcImage(pet)">
-                        <h2 style="margin: auto; vertical-align: middle;">
+                        <h2 style="margin: auto;">
                             <div style="font-size: 3vh;">{{ pet.petName }}</div>
                             <div>{{ pet.age }} years old</div>
                             <div>Breed: {{ pet.breed }}</div>
@@ -27,8 +27,11 @@
               </div>
             </div>
           </div>
-        <div class="info">
+        <div class="info" v-if="accessLevel === 0">
           Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend
+        </div>
+        <div class="info" v-else>
+          Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets
         </div>
     </div>
 </template>
@@ -119,6 +122,7 @@ import UserAPI from '../UserAPI'
     data: function() {
       return {
         likedPets: [],
+        accessLevel: JSON.parse(localStorage.user).accessLevel,
       }
     }
   }
@@ -210,7 +214,7 @@ h2 > div {
 h2 {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
-    top: 0;
+    top: 15px;
     display: block;
     color: #ffffff;
     font-size: 2vh;
@@ -247,6 +251,7 @@ h2 {
 }
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
+      z-index: 100000;
         width: 131px;
         height: 131px;
         position: absolute;

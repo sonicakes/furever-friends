@@ -27,7 +27,9 @@
 }
 
   #text {
-    font-family: 'Otomanopee One', sans-serif;  
+    font-family: 'Montserrat', sans-serif;  
+    font-weight: bolder;
+    font-size: 3rem;
     color: white;
     position:absolute;
     top:40vh;

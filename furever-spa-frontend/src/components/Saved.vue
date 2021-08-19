@@ -2,6 +2,9 @@
   <div id="home" class="small-container" style="  position: relative;
   min-height: 100vh;">
   <div id="content-wrap" style="padding-bottom: 2.5rem;">
+    <div v-if="loading">
+      <div style="position: absolute; z-index: 10000; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"><h1 style="text-align: center;position: absolute;margin: auto;width: 100vw;bottom: 25vh;">Loading Favourites</h1></div>
+    </div>
       <navbar/>
       <matchesFilters/>
     <blueFooter/>
@@ -35,32 +38,43 @@
       this.fetchData();
     },
     methods: {
-      async fetchData () {
-        var petNames;
-        var pets = [];
-        const url = App.apiBase + '/user/' + Auth.currentUser._id;
 
-        await fetch(url, {
-          headers: {
-            'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
-          },
-        }).then(r => r.json()).then(j => {
-          console.log(' ')
-          petNames = j.favouritePets
-        })
-        console.log(petNames.length)
-        for (var i = 0; i < petNames.length; i++) {
-          fetch(`${App.apiBase}/pet/${petNames[i]}`).then(r => r.json()).then(j => {
-            console.log(pets)
-            pets.push(j)
+    async fetchPet(petNames, i) {
+     return new Promise((resolve) => {
+         fetch(`${App.apiBase}/pet/${petNames[i]}`).then(r => {
+            console.log('Done Fetch')
+            resolve(r.json())
           })
-        }
-        this.$store.commit('setMatchesResults', pets);
-        // fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
-        //   this.$store.commit('setMatchesResults', j);
-        //   setTimeout(() => this.loading = false, 1500);
-        // })
+      });
+    },
+
+    async fetchData () {
+      var petNames;
+      var pets = [];
+      const url = App.apiBase + '/user/' + Auth.currentUser._id;
+
+      await fetch(url, {
+        headers: {
+          'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+        },
+      }).then(r => r.json()).then(j => {
+        console.log(' ')
+        petNames = j.favouritePets
+      })
+      console.log(petNames.length)
+      for (var i = 0; i < petNames.length; i++) {
+        pets.push(this.fetchPet(petNames,i));
       }
+      Promise.all(pets).then((results) => {
+        console.log(results)
+        this.$store.commit('setMatchesResults', results);
+        this.loading = false;
+      })
+      // fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
+      //   this.$store.commit('setMatchesResults', j);
+      
+      // })
+    }
     }
   }
 

@@ -1,7 +1,7 @@
 <template>
 <div class="row"> 
           <div class="col">
-            <div id="main" style="columns: 250px; column-gap: 20px; " min-height="100vh">
+            <div id="main" style="columns: 250px; column-gap: 20px; ">
               <div>
                   <div v-for="pet in filteredPets()"
                       :key="pet.petName" style="position: relative; margin: auto;">

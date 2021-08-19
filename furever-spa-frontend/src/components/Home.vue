@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="small-container" style="padding-bottom:11.4rem;">
+  <div id="home" class="small-container" style="padding-bottom:7.75rem;">
     <navbar></navbar>    
     <frontVideo/>
     <carousel/>
@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 a {

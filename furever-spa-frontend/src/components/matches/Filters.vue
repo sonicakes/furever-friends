@@ -1,172 +1,301 @@
 <template>
   <div style="padding-top: 100px">
-
     <div id="mySidebar" class="sidebar">
-    <a class="closebtn" v-on:click="closeNav()">&times;</a>
-    <div v-if="!loaded">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center py-5">
-            Loading
+      <a class="closebtn" v-on:click="closeNav()">&times;</a>
+      <div v-if="!loaded">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center py-5">Loading</div>
           </div>
         </div>
       </div>
-    </div>
-    <div v-else class="filters">
-      <div class="filter" v-for="filter in filters">
-        <div class="filter-name">
-          {{ filter.name }}
-        </div><br>
-        <select @change="updateFilter" :name="filter.name" :data-commit-method="filter.commitMethod">
-          <option v-for="filterValue in filter.values" :value="filterValue.value"
-                 :name="filter.key"
-                 :id="'input-' + filter.key + '-' + filterValue.value"
-                 :selected="state.matches.filters[filter.key] === filterValue.value">{{ filterValue.label }}
-          </option>
-        </select>
+      <div v-else class="filters">
+        <div class="filter" v-for="filter in filters">
+          <div class="filter-name">
+            {{ filter.name }}
+          </div>
+          <br />
+          <select
+            @change="updateFilter"
+            :name="filter.name"
+            :data-commit-method="filter.commitMethod"
+          >
+            <option
+              v-for="filterValue in filter.values"
+              :value="filterValue.value"
+              :name="filter.key"
+              :id="'input-' + filter.key + '-' + filterValue.value"
+              :selected="state.matches.filters[filter.key] === filterValue.value"
+            >
+              {{ filterValue.label }}
+            </option>
+          </select>
+        </div>
       </div>
-    </div>
     </div>
 
     <div id="main">
-      <button class="openbtn" v-on:click="changeNav()"><i class="fas fa-filter"></i>    <span>Filter<span></button>
-      
-      <button v-if="accessLevel === 1" v-b-modal.modal-1 class="openbtn" style="position: absolute; right: 30px;"><i class="fas fa-plus"></i>    <span>Add Pet<span></button>
+      <button class="openbtn" v-on:click="changeNav()">
+        <i class="fas fa-filter"></i><span>Filter</span>
+      </button>
+
+      <button
+        v-if="accessLevel === 1"
+        v-b-modal.modal-1
+        class="openbtn"
+        style="position: absolute; right: 30px"
+      >
+        <i class="fas fa-plus"></i> <span>Add Pet</span>
+      </button>
+
+      <matchesCards></matchesCards>
       <div>
-
-  <b-modal id="modal-1" title="Add Pet" style="width: 40vw"> 
-        <div class="form-box">
-          <div>
-          <sl-form v-on:sl-submit.prevent="addPetSubmitHandler" id="form" style="padding: none;">
-            <div class="input-group custom-input">
-              <sl-input class="form-input" label="Name" name="petName" type="text" placeholder="Pet Name" required></sl-input>
+        <b-modal id="modal-1" title="Add Pet" style="width: 40vw">
+          <div class="form-box">
+            <div>
+              <sl-form
+                v-on:sl-submit.prevent="addPetSubmitHandler"
+                id="form"
+                style="padding: none"
+              >
+                <div class="input-group custom-input">
+                  <sl-input
+                    class="form-input"
+                    label="Name"
+                    name="petName"
+                    type="text"
+                    placeholder="Pet Name"
+                    required
+                  ></sl-input>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    label="Pet Type"
+                    name="petType"
+                    type="text"
+                    placeholder="Select an animal type"
+                    required
+                  >
+                    <sl-menu-item value="cat">Cat</sl-menu-item>
+                    <sl-menu-item value="dog">Dog</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    label="Age"
+                    name="age"
+                    type="number"
+                    placeholder="Please select an age"
+                    required
+                  >
+                    <sl-menu-item value="0-1">0-1</sl-menu-item>
+                    <sl-menu-item value="1-4">1-4</sl-menu-item>
+                    <sl-menu-item value="4-8">4-8</sl-menu-item>
+                    <sl-menu-item value=">8">&#62;8</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-input
+                    class="form-input"
+                    label="Breed"
+                    name="breed"
+                    type="text"
+                    placeholder="Ragdoll"
+                    required
+                  ></sl-input>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    label="Sex"
+                    name="sex"
+                    type="text"
+                    placeholder="Please select a gender"
+                    required
+                  >
+                    <sl-menu-item value="male">Male</sl-menu-item>
+                    <sl-menu-item value="female">Female</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    label="Weight (kg)"
+                    name="weight"
+                    type="text"
+                    placeholder="Please select a weight"
+                    required
+                  >
+                    <sl-menu-item value="<5">&#62;5</sl-menu-item>
+                    <sl-menu-item value="5-10">5-10</sl-menu-item>
+                    <sl-menu-item value="10-20">10-20</sl-menu-item>
+                    <sl-menu-item value="20-30">20-30</sl-menu-item>
+                    <sl-menu-item value=">30">&#62;30</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-input
+                    label="Colour"
+                    name="colour"
+                    type="text"
+                    placeholder="Colour"
+                    required
+                  ></sl-input>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    multiple
+                    clearable
+                    label="Activities"
+                    name="activities"
+                    type="text"
+                    placeholder="Please select activities"
+                    required
+                  >
+                    <sl-menu-item value="running">Running</sl-menu-item>
+                    <sl-menu-item value="walking">Walking</sl-menu-item>
+                    <sl-menu-item value="sleeping">Sleeping</sl-menu-item>
+                    <sl-menu-item value="playing-toys"
+                      >Playing with toys</sl-menu-item
+                    >
+                    <sl-menu-item value="playing-fetch"
+                      >Playing fetch</sl-menu-item
+                    >
+                    <sl-menu-item value="swimming">Swimming</sl-menu-item>
+                    <sl-menu-item value="bathing">Bathing</sl-menu-item>
+                    <sl-menu-item value="grooming">Grooming</sl-menu-item>
+                    <sl-menu-item value="dress-ups">Dress-ups</sl-menu-item>
+                    <sl-menu-item value="bird-watching"
+                      >Bird watching</sl-menu-item
+                    >
+                    <sl-menu-item value="lap-time">Lap time</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    multiple
+                    clearable
+                    label="Personality"
+                    name="personality"
+                    type="text"
+                    placeholder="Please select personalities"
+                    required
+                  >
+                    <sl-menu-item value="confident">Confident</sl-menu-item>
+                    <sl-menu-item value="friendly">Friendly</sl-menu-item>
+                    <sl-menu-item value="needsTraining"
+                      >Needs Training</sl-menu-item
+                    >
+                    <sl-menu-item value="shy-timid">Shy or timid</sl-menu-item>
+                    <sl-menu-item value="independant">Independant</sl-menu-item>
+                    <sl-menu-item value="laidback">Laidback</sl-menu-item>
+                    <sl-menu-item value="adaptable">Adaptable</sl-menu-item>
+                    <sl-menu-item value="energetic">Energitic</sl-menu-item>
+                    <sl-menu-item value="dependant">Dependant</sl-menu-item>
+                    <sl-menu-item value="serious">Serious</sl-menu-item>
+                    <sl-menu-item value="calm">Calm</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    label="Preferred Family"
+                    name="preferredFamily"
+                    type="text"
+                    placeholder="Small"
+                    required
+                  >
+                    <sl-menu-item value="small">Small</sl-menu-item>
+                    <sl-menu-item value="medium">Medium</sl-menu-item>
+                    <sl-menu-item value="large">Large</sl-menu-item>
+                    <sl-menu-item value="any">Any</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    multiple
+                    clearable
+                    label="Preferred Living"
+                    name="preferredLiving"
+                    type="text"
+                    placeholder="Outdoor, Indoor, Backyard"
+                    required
+                  >
+                    <sl-menu-item value="outdoor">Outdoor</sl-menu-item>
+                    <sl-menu-item value="indoor">Indoor</sl-menu-item>
+                    <sl-menu-item value="backyard">Backyard</sl-menu-item>
+                    <sl-menu-item value="balcony">Balcony</sl-menu-item>
+                    <sl-menu-item value="house">House</sl-menu-item>
+                    <sl-menu-item value="apartment">Apartment</sl-menu-item>
+                    <sl-menu-item value="couch-potato"
+                      >Couch Potato</sl-menu-item
+                    >
+                    <sl-menu-item value="on-the-road">On the road</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-select
+                    class="form-input"
+                    multiple
+                    clearable
+                    label="Things to Avoid"
+                    name="toAvoid"
+                    type="text"
+                    placeholder="Kids, Stairs, Cats"
+                    required
+                  >
+                    <sl-menu-item value="stairs">Stairs</sl-menu-item>
+                    <sl-menu-item value="cats">Cats</sl-menu-item>
+                    <sl-menu-item value="dogs">Dogs</sl-menu-item>
+                    <sl-menu-item value="otherPets">Other Pets</sl-menu-item>
+                    <sl-menu-item value="kids">Kids</sl-menu-item>
+                    <sl-menu-item value="carRides">Car Rides</sl-menu-item>
+                    <sl-menu-item value="offLeash">Off Leash</sl-menu-item>
+                    <sl-menu-item value="outdoors">Outdoors</sl-menu-item>
+                  </sl-select>
+                </div>
+                <div class="input-group custom-input">
+                  <sl-textarea
+                    class="form-input"
+                    name="bio"
+                    resize="auto"
+                    label="Bio"
+                    help-text="Tell us about the pet"
+                  >
+                  </sl-textarea>
+                  <label>Pet Image</label><br />
+                  <sl-image
+                    image="$App.apiBase/images/this.pet.image"
+                  ></sl-image>
+                  <input type="file" name="image" />
+                </div>
+                <div
+                  onclick="$('#form').get(0).submit()"
+                  class="button"
+                  id="button-3"
+                >
+                  <div id="circle"></div>
+                  <a submit>Add Pet</a>
+                </div>
+              </sl-form>
             </div>
-            <div class="input-group custom-input">
-              <sl-select class="form-input" label="Pet Type" name="petType" type="text" placeholder="Select an animal type" required>
-                <sl-menu-item value="cat">Cat</sl-menu-item>
-                <sl-menu-item value="dog">Dog</sl-menu-item>
-              </sl-select>
-            </div>
-            <div class="input-group custom-input">
-              <sl-select class="form-input" label="Age" name="age" type="number" placeholder="Please select an age" required>
-                <sl-menu-item value="0-1">0-1</sl-menu-item>
-                <sl-menu-item value="1-4">1-4</sl-menu-item>
-                <sl-menu-item value="4-8">4-8</sl-menu-item>
-                <sl-menu-item value=">8">&#62;8</sl-menu-item>
-              </sl-select>
-            </div>
-            <div class="input-group custom-input">
-              <sl-input class="form-input" label="Breed" name="breed" type="text" placeholder="Ragdoll" required></sl-input>
-            </div>
-            <div class="input-group custom-input">
-              <sl-select class="form-input" label="Sex" name="sex" type="text" placeholder="Please select a gender" required>
-                <sl-menu-item value="male">Male</sl-menu-item>
-                <sl-menu-item value="female">Female</sl-menu-item>
-              </sl-select>
-            </div>  
-            <div class="input-group custom-input">
-              <sl-select class="form-input" label="Weight (kg)" name="weight" type="text" placeholder="Please select a weight" required>
-                <sl-menu-item value="<5">&#62;5</sl-menu-item>
-                <sl-menu-item value="5-10">5-10</sl-menu-item>
-                <sl-menu-item value="10-20">10-20</sl-menu-item>
-                <sl-menu-item value="20-30">20-30</sl-menu-item>
-                <sl-menu-item value=">30">&#62;30</sl-menu-item>
-              </sl-select>
-            </div>  
-            <div class="input-group custom-input">
-              <sl-input label="Colour" name="colour" type="text" placeholder="Colour" required></sl-input>
-            </div>  
-            <div class="input-group custom-input">
-              <sl-select class="form-input" multiple clearable label="Activities" name="activities" type="text" placeholder="Please select activities" required>
-                <sl-menu-item value="running">Running</sl-menu-item>
-                <sl-menu-item value="walking">Walking</sl-menu-item>
-                <sl-menu-item value="sleeping">Sleeping</sl-menu-item>
-                <sl-menu-item value="playing-toys">Playing with toys</sl-menu-item>
-                <sl-menu-item value="playing-fetch">Playing fetch</sl-menu-item>
-                <sl-menu-item value="swimming">Swimming</sl-menu-item>
-                <sl-menu-item value="bathing">Bathing</sl-menu-item>
-                <sl-menu-item value="grooming">Grooming</sl-menu-item>
-                <sl-menu-item value="dress-ups">Dress-ups</sl-menu-item>
-                <sl-menu-item value="bird-watching">Bird watching</sl-menu-item>
-                <sl-menu-item value="lap-time">Lap time</sl-menu-item>
-              </sl-select>
-            </div>  
-            <div class="input-group custom-input">
-              <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" placeholder="Please select personalities" required>
-                <sl-menu-item value="confident">Confident</sl-menu-item>
-                <sl-menu-item value="friendly">Friendly</sl-menu-item>
-                <sl-menu-item value="needsTraining">Needs Training</sl-menu-item>
-                <sl-menu-item value="shy-timid">Shy or timid</sl-menu-item>
-                <sl-menu-item value="independant">Independant</sl-menu-item>
-                <sl-menu-item value="laidback">Laidback</sl-menu-item>
-                <sl-menu-item value="adaptable">Adaptable</sl-menu-item>
-                <sl-menu-item value="energetic">Energitic</sl-menu-item>
-                <sl-menu-item value="dependant">Dependant</sl-menu-item>
-                <sl-menu-item value="serious">Serious</sl-menu-item>
-                <sl-menu-item value="calm">Calm</sl-menu-item>
-              </sl-select>
-            </div> 
-            <div class="input-group custom-input">
-              <sl-select class="form-input" label="Preferred Family" name="preferredFamily" type="text" placeholder="Small" required>
-                <sl-menu-item value="small">Small</sl-menu-item>
-                <sl-menu-item value="medium">Medium</sl-menu-item>
-                <sl-menu-item value="large">Large</sl-menu-item>
-                <sl-menu-item value="any">Any</sl-menu-item>
-              </sl-select>
-            </div> 
-            <div class="input-group custom-input">
-              <sl-select class="form-input" multiple clearable label="Preferred Living" name="preferredLiving" type="text" placeholder="Outdoor, Indoor, Backyard" required>
-                <sl-menu-item value="outdoor">Outdoor</sl-menu-item>
-                <sl-menu-item value="indoor">Indoor</sl-menu-item>
-                <sl-menu-item value="backyard">Backyard</sl-menu-item>
-                <sl-menu-item value="balcony">Balcony</sl-menu-item>
-                <sl-menu-item value="house">House</sl-menu-item>
-                <sl-menu-item value="apartment">Apartment</sl-menu-item>
-                <sl-menu-item value="couch-potato">Couch Potato</sl-menu-item>
-                <sl-menu-item value="on-the-road">On the road</sl-menu-item>
-              </sl-select>
-            </div>
-            <div class="input-group custom-input">
-              <sl-select class="form-input " multiple clearable label="Things to Avoid" name="toAvoid" type="text" placeholder="Kids, Stairs, Cats" required>
-                <sl-menu-item value="stairs">Stairs</sl-menu-item>
-                <sl-menu-item value="cats">Cats</sl-menu-item>
-                <sl-menu-item value="dogs">Dogs</sl-menu-item>
-                <sl-menu-item value="otherPets">Other Pets</sl-menu-item>
-                <sl-menu-item value="kids">Kids</sl-menu-item>
-                <sl-menu-item value="carRides">Car Rides</sl-menu-item>
-                <sl-menu-item value="offLeash">Off Leash</sl-menu-item>
-                <sl-menu-item value="outdoors">Outdoors</sl-menu-item>
-              </sl-select>
-            </div>
-            <div class="input-group custom-input">
-              <sl-textarea class="form-input" name="bio" resize="auto" label="Bio" help-text="Tell us about the pet">
-              </sl-textarea>
-              <label>Pet Image</label><br>          
-                <sl-image image="$App.apiBase/images/this.pet.image"></sl-image>
-                <input type="file" name="image" />
-            </div>   
-              <div onclick="$('#form').get(0).submit()" class="button" id="button-3">
-                <div id="circle"></div>
-                <a submit>Add Pet</a>
-              </div>
-          </sl-form>
+            <p>Cancel add? <a href="/">Return Home</a></p>
           </div>
-          <p>Cancel add? <a href="/">Return Home</a></p>
+        </b-modal>
       </div>
-    <blueFooter/>
-  </div>
-  </b-modal>
-
-            
-      <matchesCards/>
-    </div>
     </div>
   </div>
 </template>
 
 <script>
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import add from '../add-pet.vue'
-  import matchesCards from '../Matches-Cards.vue'
+import matchesCards from '../Matches-Cards.vue'
 import filterConfig from './config';
 import App from "../../App";
 import Auth from "../../Auth";
@@ -186,15 +315,15 @@ export default {
   },
   methods: {
     addPetSubmitHandler: function(event){
-            event.preventDefault()    
+            event.preventDefault()
             const submitBtn = document.querySelector('#button-3')
-            submitBtn.setAttribute('loading', '')    
+            submitBtn.setAttribute('loading', '')
             const formData = event.detail.formData
-            
+
             // addPet using Auth
             Auth.addPet(formData, () => {
                 submitBtn.removeAttribute('loading')
-            })   
+            })
         },
     openNav() {
       document.getElementById("mySidebar").classList += " active"
@@ -230,7 +359,9 @@ export default {
       filters.forEach(field => {
         const key = 'questionFilter' + field;
         if (j.hasOwnProperty(key)) {
-          this.$store.commit('setMatchesFilter' + field , j[key]);
+          if (this.accessLevel === 0) {
+            this.$store.commit('setMatchesFilter' + field , j[key]);
+          }
         }
       })
 
@@ -244,17 +375,16 @@ export default {
 </script>
 
 <style scoped>
-
 .button {
   display: inline-flex;
   height: 40px;
   width: 150px;
-  border: 2px solid #BFC0C0;
+  border: 2px solid #bfc0c0;
   margin: 20px 20px 20px 20px;
-  color: #BFC0C0;
+  color: #bfc0c0;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: .8em;
+  font-size: 0.8em;
   letter-spacing: 1.5px;
   align-items: center;
   justify-content: center;
@@ -262,11 +392,10 @@ export default {
 }
 
 a {
-  color: #BFC0C0;
+  color: #bfc0c0;
   text-decoration: none !important;
   letter-spacing: 1px;
 }
-
 
 /* Third Button */
 
@@ -278,7 +407,7 @@ a {
 
 #button-3 a {
   position: relative;
-  transition: all .45s ease-Out;
+  transition: all 0.45s ease-Out;
 }
 
 #circle {
@@ -287,9 +416,9 @@ a {
   opacity: 0;
   line-height: 40px;
   border-radius: 50%;
-  background: #BFC0C0;
+  background: #bfc0c0;
   position: absolute;
-  transition: all .5s ease-Out;
+  transition: all 0.5s ease-Out;
   top: 20px;
   left: 70px;
 }
@@ -303,19 +432,20 @@ a {
 }
 
 #button-3:hover a {
-  color: #2D3142;
+  color: #2d3142;
 }
 
+.filter-name,
+.filter-value,
+.filter-value label {
+  display: inline;
+}
 
-  .filter-name, .filter-value, .filter-value label {
-    display: inline;
-  }
-
-  button {
-    width: auto;
-  }
+button {
+  width: auto;
+}
 .filter-name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: black;
   margin-left: 5%;
   font-size: 18px;
@@ -333,29 +463,31 @@ select {
 }
 
 body {
-	 background-color: #d1d7dc;
-	 font-family: 'Fira Sans', sans-serif;
+  background-color: #d1d7dc;
+  font-family: "Fira Sans", sans-serif;
 }
- *, *::before, *::after {
-	 box-sizing: inherit;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
- html {
-	 box-sizing: border-box;
+html {
+  box-sizing: border-box;
 }
- code {
-	 background-color: #9aa3ac;
-	 padding: 0 8px;
+code {
+  background-color: #9aa3ac;
+  padding: 0 8px;
 }
- 
+
 option {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .filter {
   color: white;
 }
 
- /* The sidebar menu */
+/* The sidebar menu */
 .sidebar {
   height: 100%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
@@ -412,14 +544,13 @@ option {
   border: none;
 }
 
-
 .openbtn:hover {
   background-color: #7b8f7d;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-  transition: margin-left .5s; /* If you want a transition effect */
+  transition: margin-left 0.5s; /* If you want a transition effect */
   padding: 20px;
 }
 
@@ -428,8 +559,11 @@ option {
   .sidebar {
     z-index: 100000;
   }
-  .active { width: 100vw; }
-  .sidebar a { font-size: 18px; }
-} 
-
+  .active {
+    width: 100vw;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+}
 </style>

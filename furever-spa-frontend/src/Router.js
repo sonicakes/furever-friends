@@ -26,10 +26,9 @@ import petPreferences from './components/pet-preferences.vue'
 import editProfile from './components/edit-profile.vue'
 import Settings from './components/Settings.vue'
 import Pet from './components/Pet.vue'
-import Shelter from './components/shelter.vue' 
 import error from './components/404.vue'
 import Saved from './components/Saved.vue'
-import {store} from './store';
+import {store} from './store'
 
 
 // define routes
@@ -48,7 +47,6 @@ const routes = {
 	'/profile': Profile,
 	'/settings': Settings,
 	'/pet': Pet,
-	'/shelter': Shelter,
 	'/saved': Saved
 }
 

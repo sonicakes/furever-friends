@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-        <div class="row">
+        <div class="row top-footer">
             <div class="col" style="margin: 20px;border-right-color: white;border-right-style: solid;border-width: 2px;">
                 <div class="row" style="padding-top: 1vh;">
                     <div class="col-3">
@@ -45,6 +45,18 @@
 </script>
 
 <style scoped>
+
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+    .top-footer {
+        display: none;
+    }
+    p {
+        padding-top: 10px;
+    }
+}
 
     a:hover {
         color: #e0d1c4;
