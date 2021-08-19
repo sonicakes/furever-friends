@@ -18,6 +18,7 @@
 				</template>
 				<template slot="body">
 					<ul>
+					<li class="padded"><a href="/"><img src="../assets/office-icon.png" style="height: 20px;"> Home</a></li>
 					<li class="padded"><a href="/matches"><img src="../assets/kennel.png" style="height: 20px;"> Your Matches</a></li>
 					<li class="padded"><a href="/saved"><img src="../assets/heart-icon.png" style="height: 20px;"> Your Favourites</a></li>
 					<li class="padded">
