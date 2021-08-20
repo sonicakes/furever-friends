@@ -1,4 +1,5 @@
 <template>
+<div>
 <div class="row"> 
           <div class="col">
             <div id="no-pets" style="display: none; margin: auto; padding-top: 10vh; text-align: center;">
@@ -33,13 +34,15 @@
               </div>
             </div>
           </div>
-        <div class="info" v-if="accessLevel === 0">
+        
+    </div>
+    <div class="info" v-if="accessLevel === 0">
           Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend
         </div>
         <div class="info" v-else>
           Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets
         </div>
-    </div>
+        </div>
 </template>
   
 <script>
@@ -234,7 +237,7 @@ h2 {
     color: #ffffff;
     font-size: 2vh;
     font-weight: bold;
-    z-index: 999999;
+    z-index: 99;
     right: 0;
     left: 0;
     text-align: center;
@@ -266,7 +269,7 @@ h2 {
 }
     /* Code taken from https://codemyui.com/pure-css-twitter-heart-animation/ */
     #match {
-      z-index: 100000;
+      z-index: 100;
         width: 131px;
         height: 131px;
         position: absolute;

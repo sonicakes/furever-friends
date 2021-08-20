@@ -28,7 +28,6 @@ class Auth {
     /// pet add success - show toast and redirect to sign in page
     Toast.show('Pet added')        
     // redirect to add
-    gotoRoute('/add')
   }
   
   async signUp(userData, fail = false) {  

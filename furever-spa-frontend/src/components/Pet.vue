@@ -4,7 +4,7 @@
         <div v-if="loading">
             <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"><h1 style="text-align: center;position: absolute;margin: auto;width: 100vw;bottom: 25vh;">Loading Pet</h1></div>
         </div>
-        <div class="page-content calign" style="background-color: #d9cdbf" v-if="!loading">
+        <div class="page-content calign" style="background-color: #d9cdbf" v-if="!loading" id="content">
           
         <div class="container emp-profile" style="position: relative;">
           <div v-if="accessLevel === 1" class="button_cont" align="center"><a class="example_b" :href="`/edit-pet/${pet.petName}`">Edit Pet</a></div>
@@ -17,15 +17,34 @@
               </div>
               <div v-if="accessLevel === 1" class="button" id="button-6">
                 <div id="spin"></div>
-                <a :href="`/pet/${pet.petName}`">Pet Adopted</a>
+                <a :href="`/pet/$ {pet.petName}`">Pet Adopted</a>
               </div>
               <div v-else class="button" id="button-6">
                 <div id="spin"></div>
-                <a v-on:click="saveDataToFile">Set me up for a date</a>
+                <a v-on:click="saveDataToFile(pet.userID)" data-toggle="modal" data-target="#exampleModal">Set me up for a date</a>
               </div>
-
                 
-
+               
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="padding-top: 100px;">
+    <div class="modal-content">
+      <div class="modal-header" style="padding: 0;">
+       <img :src="srcImage(pet)" style="width: 100%; height: 20vh;object-fit: cover;object-position: top;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 20px; right: 0;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>SUCCESS</h1>
+        <p style="text-align: center;">Get ready for your date with {{ this.pet.petName }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
             </div>
             <div class="col-md-8">
 
@@ -152,13 +171,13 @@
         </div>
       </div>
     </div>
+    
     <blueFooter/>
   </div>
 </template>
 
 <script>
 import { VueperSlides, VueperSlide } from 'vueperslides'
-import 'vueperslides/dist/vueperslides.css'
 import navbar from './Navbar.vue'
 import blueFooter from './Footer.vue'
 import {store} from "../store";
@@ -235,16 +254,36 @@ export default {
           }
           }
         },
-		    saveDataToFile() {
+		    saveDataToFile(userID) {
             var data = " Furever Friends \r\n------------------\r\n\r\nPet Info\r\n----------------\r\nName: " + this.pet.petName + "\r\n" + "Description: " + this.pet.bio + "\r\n" + "Age: " + this.pet.age + "\r\n" + "Breed: " + this.pet.breed + "\r\n\r\n" + "Contact Info" + "\r\n" + "----------------\r\n" + "Name: " + this.user.firstName + " " + this.user.lastName + "\r\n" + "Email: " + this.user.email + "\r\n\r\n\r\n" + '             xXXXX   xXXX\r\n            XXXXXXX XXXXXX\r\n            "XXXXXX XXXXXX\r\n             XXXXX  XXXXX xXx\r\n         XXXx XXXXX  XX" XXXX\r\n         XXXXx "XX"  "  XXXXXX\r\n          XXXXX   xXx  XXXXX"\r\n           """  xXXXXXx "XX"\r\n               XXXXXXXXXX\r\n            xXXXXXXXXXXXXXx\r\n            XXXXXXXXXXXXXXX\r\n             """"  """""""'
 			
-            var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
-            saveAs(blob, "info-" + this.pet.petName + ".txt");
-        }
+            const url2 = App.apiBase + '/user/' + userID;
+
+            fetch(url2, {
+              headers: {
+                'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+              },
+            }).then(r => r.json()).then(j => {
+              this.likedPets = j.favouritePets
+              this.user = j;
+            })
+
+                var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
+                saveAs(blob, "info-" + this.pet.petName + ".txt");
+            }
 
     
     },
     async created() {
+      $('#modal-1').on('shown.bs.modal', function (e) {
+        $("#content").css({ opacity: 0.5 });
+      })
+
+      //when modal closes
+      $('#modal-1').on('hidden.bs.modal', function (e) {
+        $("#content").css({ opacity: 1 });
+      })
+
       // Load current path from store
       // Redirect if path name has not been saved in store,
       // but that should never happen
@@ -293,7 +332,9 @@ export default {
 </script>
 
 <style scoped>
-
+.modal-backdrop.show {
+    opacity: 0.7;
+}
 
 .example_b {
   position: absolute;
@@ -380,7 +421,10 @@ a {
   color: #ffffff;
 }
 
-
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
 
 
 span {

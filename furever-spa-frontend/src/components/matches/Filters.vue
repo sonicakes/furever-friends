@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-  
+
     <div id="main">
       <button class="openbtn" v-on:click="changeNav()">
         <i class="fas fa-filter"></i> <span>Filter</span>
@@ -41,7 +41,7 @@
 
       <button
         v-if="accessLevel === 1"
-        v-b-modal.modal-1
+         data-toggle="modal" data-target="#exampleModal"
         class="openbtn"
         style="position: absolute; right: 30px"
       >
@@ -50,10 +50,18 @@
 
       <matchesCards></matchesCards>
       <div>
-        <b-modal id="modal-1" title="Add Pet" style="width: 40vw">
-          <div class="form-box">
-            <div>
-              <sl-form
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="padding-top: 100px; padding-bottom: 100px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Add Pet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <sl-form
                 v-on:sl-submit.prevent="addPetSubmitHandler"
                 id="form"
                 style="padding: none"
@@ -274,7 +282,11 @@
                   ></sl-image>
                   <input type="file" name="image" />
                 </div>
-                <div
+                <sl-input :value="userID" hidden/>
+              </sl-form>
+      </div>
+      <div class="modal-footer">
+        <div
                   onclick="$('#form').get(0).submit()"
                   class="button"
                   id="button-3"
@@ -282,11 +294,10 @@
                   <div id="circle"></div>
                   <a submit>Add Pet</a>
                 </div>
-              </sl-form>
-            </div>
-            <p>Cancel add? <a href="/">Return Home</a></p>
-          </div>
-        </b-modal>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </div>
@@ -303,6 +314,7 @@ import Auth from "../../Auth";
 export default {
   data() {
     return {
+      userID: JSON.parse(localStorage.user)._id,
       accessLevel: JSON.parse(localStorage.user).accessLevel,
       loaded: false,
       filters: filterConfig,

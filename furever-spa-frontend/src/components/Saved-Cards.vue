@@ -1,4 +1,5 @@
 <template>
+<div>
 <div class="row"> 
           <div class="col">
             <div id="main" style="columns: 250px; column-gap: 20px; ">
@@ -27,8 +28,9 @@
                 </div>
             </div>
         </div>
-        <div class="info">
-          Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} pets looking for their Furever Friend
+    </div>
+            <div class="info">
+          Showing {{ filteredPets().length }} of {{ this.$store.state.matches.results.length }} favourite pets
         </div>
     </div>
 </template>
