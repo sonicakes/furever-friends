@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="small-container" style="padding-bottom:7.75rem;">
+  <div id="home" class="small-container" style="">
     <navbar></navbar>    
     <frontVideo/>
     <carousel/>
@@ -36,9 +36,19 @@
 
 <style scoped>
   #home {
+    padding-bottom:7.75rem;
     position: relative;
     background-color: #d9cdbf;
   }
+
+  @media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #home {
+  object-fit: cover;
+  padding-bottom: 44px;
+}
+}
+
 
 
 .button {
