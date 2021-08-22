@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="login-signup container-fluid">
     <div class="row no-gutter">
       <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
       <div class="col-md-8 col-lg-6">
@@ -21,7 +21,12 @@
                     <div class="form-label-group">
                         <sl-input name="password" type="password" placeholder="Password" required toggle-password></sl-input>
                     </div>     
-
+                    <div class="form-label-group">
+                      <sl-select name="accessLevel" placeholder="Furever account" >
+                        <sl-menu-item value="0">Adoptee</sl-menu-item>
+                        <sl-menu-item value="1">Shelter</sl-menu-item>
+                      </sl-select>
+                    </div>
                     <sl-button type="primary" class="submit-btn" submit style="width: 100%;">Sign Up</sl-button>
                     
                     <div class="text-center">

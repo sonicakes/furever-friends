@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="login-signup container-fluid">
     <div class="row no-gutter">
       <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
       <div class="col-md-8 col-lg-6">
@@ -65,6 +65,11 @@ export default {
 .image {
   min-height: 100vh;
 }
+
+.login-signup{
+      background-color: #d9cdbf;
+}
+
 .bg-image {
   background-image: url('https://images.unsplash.com/photo-1415369629372-26f2fe60c467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80');
   background-size: cover;

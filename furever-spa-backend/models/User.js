@@ -56,6 +56,7 @@ const userSchema = new mongoose.Schema({
   }, 
   accessLevel: {
     type: Number,
+    required: true
   },
   favouritePets: [ {
     type: String
