@@ -23,7 +23,7 @@
 					<li class="padded" v-else><a href="/matches"><img src="../assets/kennel.png" style="height: 20px;"> Your Matches</a></li>
 					<li class="padded"><a href="/saved"><img src="../assets/heart-icon.png" style="height: 20px;"> Your Favourites</a></li>
 					<li class="padded">
-						<dropdown :trigger="'hover'" :role="'sublist'" :align="'bottom'">
+						<dropdown :trigger="'click'" :role="'sublist'" :align="'bottom'">
 						<template slot="btn"><img src="../assets/user.png" style="height: 20px; padding-right: 7px;">Account</template>
 						<template slot="body">
 							<ul>
