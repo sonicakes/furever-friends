@@ -11,7 +11,7 @@ router.get('/', Utils.authenticateToken, (req, res) => {
 
   User.findById(req.user._id)
     .then(user => {
-      Pet.find({user: user._id})
+      Pet.find({user: user._id}).lean()
         .then(pets => {
             if(pets == null){
             return res.status(404).json({

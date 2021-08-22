@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 router.get('/', (req, res) => {
   // validate request
   if(Object.keys(req.body).length === 0) {   
-    return Pet.find()
+    return Pet.find().lean()
       .then(pets => {
             if(pets == null) {
             return res.status(404).json({
