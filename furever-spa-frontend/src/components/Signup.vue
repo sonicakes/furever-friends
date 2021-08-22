@@ -36,26 +36,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-<!-- 
-    <div class="row">
-        <div class="col">
-            <img src="https://images.unsplash.com/photo-1415369629372-26f2fe60c467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" style="height: 100vh;">
-        </div>
-        <div class="col">
-            <div class="page-content page-centered">      
-                <div class="signinup-box">
-                <img class="signinup-logo" src="../assets/logo.png">
-                <h1>Sign Up</h1>
-                
-                <p>Have an account? <a href="/login">Sign In</a></p>
-                </div>
-            </div>
-        </div>
-    </div>  -->
 </template>
 
 <script>
@@ -67,6 +47,8 @@ export default {
             const submitBtn = document.querySelector('.submit-btn')
             submitBtn.setAttribute('loading', '')    
             const formData = event.detail.formData
+            formData['accessLevel'] === 0
+            console.log(formData)
     
             // sign up using Auth
             Auth.signUp(formData, () => {

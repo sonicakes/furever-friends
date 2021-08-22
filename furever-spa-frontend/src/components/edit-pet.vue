@@ -36,7 +36,7 @@
                                         <label>Name</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-input class="form-input" name="petName" type="text" :value="pet.petName" v-model="questions.name" placeholder="Pet Name" required></sl-input>
+                                        <sl-input class="form-input" name="petName" id="name" type="text" :value="pet.petName" v-model="questions.name" placeholder="Pet Name" required></sl-input>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -44,7 +44,7 @@
                                         <label>Gender</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-select class="form-input" name="sex" type="text"  placeholder="Male / Female" :value="pet.sex" v-model="questions.sex" required>
+                                        <sl-select class="form-input" name="sex" type="text" id="sex" placeholder="Male / Female" :value="pet.sex" v-model="questions.sex" required>
                                           <sl-menu-item value="male">Male</sl-menu-item>
                                           <sl-menu-item value="female">Female</sl-menu-item>
                                         </sl-select>
@@ -55,7 +55,7 @@
                                         <label>Breed</label>
                                     </div>
                                     <div class="col-8" style="margin-bottom: 5px;">
-                                        <sl-input class="form-input" name="breed" type="text" placeholder="Breed" v-model="questions.breed" :value="pet.breed" required></sl-input>
+                                        <sl-input class="form-input" id="breed" name="breed" type="text" placeholder="Breed" v-model="questions.breed" :value="pet.breed" required></sl-input>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -123,7 +123,7 @@
                                         <label>Favourite Activities</label>
                                     </div>
                                     <div class="col-8">
-                                        <sl-select class="form-input" multiple clearable name="activities" type="text" :value="pet.activities" placeholder="Favourite Activities">
+                                        <sl-select class="form-input" multiple clearable name="activities" type="text" :value="pet.activities" placeholder="Favourite Activities" id="activities">
                                           <sl-menu-item value="running">Running</sl-menu-item>
                                           <sl-menu-item value="walking">Walking</sl-menu-item>
                                           <sl-menu-item value="sleeping">Sleeping</sl-menu-item>
@@ -144,7 +144,7 @@
                                         <label>Personality</label>
                                     </div>
                                     <div class="col-8">
-                                      <sl-select class="form-input" multiple clearable label="Personality" name="personality" type="text" id="personality" v-model="questions.personality" required v-on:sl-change="consoleLog()">
+                                      <sl-select class="form-input" multiple clearable label="Personality" id="personality" name="personality" type="text" id="personality" v-model="questions.personality" required v-on:sl-change="consoleLog()">
                                         <sl-menu-item checked value=confident>Confident</sl-menu-item>
                                         <sl-menu-item value="friendly">Friendly</sl-menu-item>
                                         <sl-menu-item value="needsTraining">Needs Training</sl-menu-item>
@@ -164,7 +164,7 @@
                                         <label>Preferred Living</label>
                                     </div>
                                     <div class="col-8">
-                                      <sl-select class="form-input" multiple clearable label="Preferred Living" name="preferredLiving" type="text"  placeholder="Preferred Living" required v-model="questions.preferredLiving" v-on:sl-change="consoleLog()">
+                                      <sl-select class="form-input" multiple clearable label="Preferred Living" id="preferredLiving" name="preferredLiving" type="text"  placeholder="Preferred Living" required v-model="questions.preferredLiving" v-on:sl-change="consoleLog()">
                                         <sl-menu-item value="outdoor">Outdoor</sl-menu-item>
                                         <sl-menu-item value="indoor">Indoor</sl-menu-item>
                                         <sl-menu-item value="backyard">Backyard</sl-menu-item>
@@ -259,24 +259,22 @@ export default {
       async updatePetSubmitHandler(e) {
             e.preventDefault()
             const data = {
-              name: this.questions.name,
-              sex: this.questions.sex,
-              activities: this.questions.activities,
+              name: document.getElementById('name').value,
+              sex: document.getElementById('sex').value,
+              activities: document.getElementById('activities').value,
               preferredLiving: this.questions.preferredLiving,
               thingsToAvoid: this.questions.thingsToAvoid,
               age: this.questions.age,
-              breed: this.questions.breed,
+              breed: document.getElementById('breed').value,
               weight: this.questions.weight,
               colour: this.questions.colour,
               bio: this.questions.bio,
             };
             console.log(data)
-            const formData = document.getElementsByTagName('sl-form').getFormData
-            console.log(e)
             const submitBtn = document.querySelector('.submit-btn')
             submitBtn.setAttribute('loading', '')
             try {
-            const updatedPet = await PetAPI.updatePet(petName, formData)      
+            const updatedPet = await PetAPI.updatePet(petName, data)      
             // delete updatedPet.password        
             this.pet = updatedPet    
             petName = updatedPet

@@ -7,7 +7,7 @@
         <div class="page-content calign" style="background-color: #d9cdbf" v-if="!loading" id="content">
           
         <div class="container emp-profile" style="position: relative;">
-          <div v-if="accessLevel === 1" class="button_cont" align="center"><a class="example_b" :href="`/edit-pet/${pet.petName}`">Edit Pet</a></div>
+          <div v-if="accessLevel === 1" class="button_cont" align="center"><a class="example_b" :href="`/editpet/${pet.petName}`">Edit Pet</a></div>
           <div class="row">
             <div class="col-md-4">
               <div class="profile-img">

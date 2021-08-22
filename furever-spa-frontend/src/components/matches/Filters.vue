@@ -282,7 +282,7 @@
                   ></sl-image>
                   <input type="file" name="image" />
                 </div>
-                <sl-input :value="userID" hidden/>
+                <sl-input name="user" :value="userID" hidden/>
               </sl-form>
       </div>
       <div class="modal-footer">
@@ -371,7 +371,7 @@ export default {
       filters.forEach(field => {
         const key = 'questionFilter' + field;
         if (j.hasOwnProperty(key)) {
-          if (this.accessLevel === 0) {
+          if (!(this.accessLevel === 1) ) {
             this.$store.commit('setMatchesFilter' + field , j[key]);
           }
         }
