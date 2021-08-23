@@ -66,11 +66,12 @@ router.get('/', (req, res) => {
 
 // GET - get single user -------------------------------------------------------
 router.get('/:id', Utils.authenticateToken, (req, res) => {
-  if(req.user._id != req.params.id){
-    return res.status(401).json({
-      message: "Not authorised"
-    })
-  }
+  console.log(req)
+  // if(req.user._id != req.params.id){
+  //   return res.status(401).json({
+  //     message: "Not authorised"
+  //   })
+  // }
 
   User.findById(req.params.id)
     .then(user => {

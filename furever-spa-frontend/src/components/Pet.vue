@@ -21,7 +21,7 @@
               </div>
               <div v-else class="button" id="button-6">
                 <div id="spin"></div>
-                <a v-on:click="saveDataToFile(pet.userID)" data-toggle="modal" data-target="#exampleModal">Set me up for a date</a>
+                <a v-on:click="saveDataToFile(pet.user)" data-toggle="modal" data-target="#exampleModal">Set me up for a date</a>
               </div>
                 
                
@@ -196,7 +196,8 @@ export default {
             user: null,
             pet: null,
             likedPets: [],
-            accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel
+            accessLevel: JSON.parse(localStorage.getItem('user')).accessLevel,
+            userID: null,
         }
     },
     components: {
@@ -254,22 +255,23 @@ export default {
           }
           }
         },
+
 		    saveDataToFile(userID) {
-            var data = " Furever Friends \r\n------------------\r\n\r\nPet Info\r\n----------------\r\nName: " + this.pet.petName + "\r\n" + "Description: " + this.pet.bio + "\r\n" + "Age: " + this.pet.age + "\r\n" + "Breed: " + this.pet.breed + "\r\n\r\n" + "Contact Info" + "\r\n" + "----------------\r\n" + "Name: " + this.user.firstName + " " + this.user.lastName + "\r\n" + "Email: " + this.user.email + "\r\n\r\n\r\n" + '             xXXXX   xXXX\r\n            XXXXXXX XXXXXX\r\n            "XXXXXX XXXXXX\r\n             XXXXX  XXXXX xXx\r\n         XXXx XXXXX  XX" XXXX\r\n         XXXXx "XX"  "  XXXXXX\r\n          XXXXX   xXx  XXXXX"\r\n           """  xXXXXXx "XX"\r\n               XXXXXXXXXX\r\n            xXXXXXXXXXXXXXx\r\n            XXXXXXXXXXXXXXX\r\n             """"  """""""'
-			
             const url2 = App.apiBase + '/user/' + userID;
+            var user;
 
             fetch(url2, {
               headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
               },
             }).then(r => r.json()).then(j => {
-              this.likedPets = j.favouritePets
-              this.user = j;
-            })
+              console.log(j)
+              user = j;
+              var data = " Furever Friends \r\n------------------\r\n\r\nPet Info\r\n----------------\r\nName: " + this.pet.petName + "\r\n" + "Description: " + this.pet.bio + "\r\n" + "Age: " + this.pet.age + "\r\n" + "Breed: " + this.pet.breed + "\r\n\r\n" + "Contact Info" + "\r\n" + "----------------\r\n" + "Name: " + j.firstName + " " + j.lastName + "\r\n" + "Email: " + j.email + "\r\n\r\n\r\n" + '             xXXXX   xXXX\r\n            XXXXXXX XXXXXX\r\n            "XXXXXX XXXXXX\r\n             XXXXX  XXXXX xXx\r\n         XXXx XXXXX  XX" XXXX\r\n         XXXXx "XX"  "  XXXXXX\r\n          XXXXX   xXx  XXXXX"\r\n           """  xXXXXXx "XX"\r\n               XXXXXXXXXX\r\n            xXXXXXXXXXXXXXx\r\n            XXXXXXXXXXXXXXX\r\n             """"  """""""'
 
                 var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
                 saveAs(blob, "info-" + this.pet.petName + ".txt");
+            })
             }
 
     
@@ -311,6 +313,7 @@ export default {
           Router.gotoRoute('/matches');
         } else {
           this.pet = j;
+          this.userID = j.userID
           console.log(j)
           this.loading = false;
         }
