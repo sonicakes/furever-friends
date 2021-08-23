@@ -28,28 +28,6 @@ a {
   color: var(--link-color);
 }
 
-
-// app splash screen -------
-.app-splash {
-  position: fixed;
-  background: #fff;
-  color: #777;
-  display: flex;
-  left: 0;
-  top:0;
-  right: 0;
-  bottom: 0;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  .app-logo {
-    width: 180px;
-    display: block;
-    margin-bottom: 1em;
-  }
-}
-
-
 // helper classes ---------
 .calign {
   text-align: center;

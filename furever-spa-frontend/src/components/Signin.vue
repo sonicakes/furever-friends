@@ -41,7 +41,6 @@ export default {
     methods: {
         signInSubmitHandler: function (e) {
             e.preventDefault()
-            console.log(e)
             const formData = e.detail.formData
             const submitBtn = document.querySelector('.submit-btn')
             submitBtn.setAttribute('loading', '')    

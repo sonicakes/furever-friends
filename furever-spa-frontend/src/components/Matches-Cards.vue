@@ -2,7 +2,7 @@
 <div>
 <div class="row"> 
           <div class="col">
-            <div id="no-pets" style="display: none; margin: auto; padding-top: 10vh; text-align: center;">
+            <div v-if="filteredPets().length === 0" ref="no-pets" style="margin: auto; padding-top: 10vh; text-align: center;">
               <!-- https://yourpng.com/photo/8780/cute-sad-puppy-sitting-dog-png-images -->
               <img src="../assets/sad-puppy.png" style="height: 25vh; width: auto;">
               <h1 style="text-align: center;">No Pets Found</h1>
@@ -85,15 +85,6 @@ import UserAPI from '../UserAPI'
             if (this.$store.state.matches.filters.family !== 'any') {
               filtered = filtered.filter(pet => pet.preferredFamily === this.$store.state.matches.filters.family);
             }
-            try {
-            if (filtered.length === 0) {
-              document.getElementById('no-pets').style.display = "block";
-            } else {
-              document.getElementById('no-pets').style.display = "none";
-            }
-            } catch (e) {
-              return filtered;
-            }
           return filtered;
         },
 
@@ -110,7 +101,6 @@ import UserAPI from '../UserAPI'
           try {
             UserAPI.removeFavPet(petName)
             this.likedPets.splice(this.likedPets.indexOf(petName),1)
-            console.log(this.likedPets)
           } catch(err) {
             console.log(err)
           }

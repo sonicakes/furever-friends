@@ -139,7 +139,6 @@ export default {
 
     methods: {
         addPetSubmitHandler: function(event){
-            console.log("I'm here")
             event.preventDefault()    
             const submitBtn = document.querySelector('.submit-btn')
             submitBtn.setAttribute('loading', '')    

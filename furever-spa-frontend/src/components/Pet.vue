@@ -240,7 +240,6 @@ export default {
           try {
             UserAPI.removeFavPet(petName)
             this.likedPets.splice(this.likedPets.indexOf(petName),1)
-            console.log(this.likedPets)
           } catch(err) {
             console.log(err)
           }
@@ -258,15 +257,12 @@ export default {
 
 		    saveDataToFile(userID) {
             const url2 = App.apiBase + '/user/' + userID;
-            var user;
 
             fetch(url2, {
               headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
               },
             }).then(r => r.json()).then(j => {
-              console.log(j)
-              user = j;
               var data = " Furever Friends \r\n------------------\r\n\r\nPet Info\r\n----------------\r\nName: " + this.pet.petName + "\r\n" + "Description: " + this.pet.bio + "\r\n" + "Age: " + this.pet.age + "\r\n" + "Breed: " + this.pet.breed + "\r\n\r\n" + "Contact Info" + "\r\n" + "----------------\r\n" + "Name: " + j.firstName + " " + j.lastName + "\r\n" + "Email: " + j.email + "\r\n\r\n\r\n" + '             xXXXX   xXXX\r\n            XXXXXXX XXXXXX\r\n            "XXXXXX XXXXXX\r\n             XXXXX  XXXXX xXx\r\n         XXXx XXXXX  XX" XXXX\r\n         XXXXx "XX"  "  XXXXXX\r\n          XXXXX   xXx  XXXXX"\r\n           """  xXXXXXx "XX"\r\n               XXXXXXXXXX\r\n            xXXXXXXXXXXXXXx\r\n            XXXXXXXXXXXXXXX\r\n             """"  """""""'
 
                 var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
@@ -314,7 +310,6 @@ export default {
         } else {
           this.pet = j;
           this.userID = j.userID
-          console.log(j)
           this.loading = false;
         }
       })

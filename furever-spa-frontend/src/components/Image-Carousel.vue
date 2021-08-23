@@ -56,7 +56,6 @@ import PetAPI from '../PetAPI.js'
         var petPromise = PetAPI.getPets();
         petPromise.then(function(response) {
             self.pets = response
-            console.log(response)
         })
     },
   }

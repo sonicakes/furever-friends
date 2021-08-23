@@ -7,12 +7,7 @@ Vue.use(VueTreeNavigation);
 Vue.use(BootstrapVue)
 Vue.use(Vuex);
 
-// import views
-import fourOFourView from './views/pages/404'
-// import signinView from './views/pages/signin'
-// import signupView from './views/pages/signup'
-// import profileView from './views/pages/profile'
-// import editProfileView from './views/pages/editProfile'
+// Import Components
 import matches from './components/matches.vue'
 import home from './components/home.vue'
 import Signin from './components/signin.vue'
@@ -35,13 +30,10 @@ import {store} from './store'
 const routes = {
 	'/': home,	
 	'/matches': matches,
-	'/add': addPet,
-	'/editpet': editPet,
 	'/about': aboutYou,
 	'/edit': editProfile,
 	'/profile': Profile,
 	'/preferences': petPreferences,
-	'404' : fourOFourView,
 	'/login': Signin,
 	'/signup': Signup,
 	'/profile': Profile,

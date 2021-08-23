@@ -13,7 +13,6 @@ class App {
   }
   
   init() { 
-    console.log("App.init")
     
     // Toast init
     Toast.init()   

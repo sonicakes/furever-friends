@@ -42,7 +42,6 @@
     async fetchPet(petNames, i) {
      return new Promise((resolve) => {
          fetch(`${App.apiBase}/pet/${petNames[i]}`).then(r => {
-            console.log('Done Fetch')
             resolve(r.json())
           })
       });
@@ -58,22 +57,15 @@
           'authorization': 'Bearer ' + localStorage.getItem('accessToken'),
         },
       }).then(r => r.json()).then(j => {
-        console.log(' ')
         petNames = j.favouritePets
       })
-      console.log(petNames.length)
       for (var i = 0; i < petNames.length; i++) {
         pets.push(this.fetchPet(petNames,i));
       }
       Promise.all(pets).then((results) => {
-        console.log(results)
         this.$store.commit('setMatchesResults', results);
         this.loading = false;
       })
-      // fetch(`${App.apiBase}/shelter/`).then(r => r.json()).then(j => {
-      //   this.$store.commit('setMatchesResults', j);
-      
-      // })
     }
     }
   }
