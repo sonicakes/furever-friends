@@ -73,7 +73,6 @@
         font-family: 'Montserrat', sans-serif;
         font-size: 15px;
         text-align: right !important;
-        position: absolute;
         right: 20%;
         text-decoration: none;
         color: white;

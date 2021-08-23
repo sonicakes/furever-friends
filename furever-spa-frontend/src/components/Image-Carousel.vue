@@ -2,7 +2,7 @@
   <div style="max-width: 100vw; padding-top: 50px; padding-bottom: 20px;" >
     <h3 style="text-align:center; padding-bottom:10px;">ANIMALS WAITING FOR YOU</h3>
     <VueSlickCarousel v-bind="settings">
-      <div class="card" v-for="pet in pets" :key="pet"><img :src="srcImage(pet)" height="350px" style="border-radius: 10px;"></div>
+      <div class="card" v-for="pet in pets.slice(0,5)" :key="pet.petName"><img :src="srcImage(pet)" height="350px" style="border-radius: 10px;"></div>
     </VueSlickCarousel>
   </div>
 </template>
@@ -21,7 +21,9 @@ import PetAPI from '../PetAPI.js'
     data() {  
       return {
         pets: PetAPI.getPets(),
+        limit: 5,
         settings: {
+          "arrows": true,
           "dots": true,
           "infinite": true,
           "centerMode": true,
@@ -29,7 +31,7 @@ import PetAPI from '../PetAPI.js'
           "slidesToShow": 1,
           "slidesToScroll": 1,
           "speed": 500,
-          "autoplaySpeed": 500,
+          "autoplaySpeed": 100,
           "variableWidth": true
         }
       }

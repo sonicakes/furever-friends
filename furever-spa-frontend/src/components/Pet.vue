@@ -7,7 +7,6 @@
         <div class="page-content calign" style="background-color: #d9cdbf" v-if="!loading" id="content">
           
         <div class="container emp-profile" style="position: relative;">
-          <div v-if="accessLevel === 1" class="button_cont" align="center"><a class="example_b" :href="`/editpet/${pet.petName}`">Edit Pet</a></div>
           <div class="row">
             <div class="col-md-4">
               <div class="profile-img">
@@ -17,7 +16,7 @@
               </div>
               <div v-if="accessLevel === 1" class="button" id="button-6">
                 <div id="spin"></div>
-                <a :href="`/pet/$ {pet.petName}`">Pet Adopted</a>
+                <a>Pet Adopted</a>
               </div>
               <div v-else class="button" id="button-6">
                 <div id="spin"></div>
@@ -162,6 +161,9 @@
                                       <p v-else>Nothing</p>
                                     </div>
                                 </div>
+                            </b-tab>
+                            <b-tab title="Guarantee">
+                              <img src="../assets/guarantee.png" style="width: 30vw;">
                             </b-tab>
                         </b-tabs>
                     </div>

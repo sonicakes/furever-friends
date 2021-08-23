@@ -305,7 +305,6 @@
 
 <script>
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import add from '../add-pet.vue'
 import matchesCards from '../Matches-Cards.vue'
 import filterConfig from './config';
 import App from "../../App";
