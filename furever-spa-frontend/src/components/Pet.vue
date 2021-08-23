@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="home">
         <navbar/>
         <div v-if="loading">
             <div style="position: absolute; z-index: 100; height: 90%; padding-top: 70px; padding-bottom: 45px; margin: auto; width: 100%;background-color: #d9cdbf;"><img src="../assets/loading.gif" style="height: 30vh; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; margin: auto;"><h1 style="text-align: center;position: absolute;margin: auto;width: 100vw;bottom: 25vh;">Loading Pet</h1></div>
@@ -425,6 +425,40 @@ a {
 {
     opacity:0.5 !important;
 }
+
+ #home {
+    position: relative;
+    background-color: #d9cdbf;
+  }
+
+  @media only screen and (max-width:375px) {
+  /* For mobile phones: */
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 68px !important;
+    }
+}
+  @media only screen and (max-width:768px) {
+  /* For mobile phones: */
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 44px !important;
+    }
+}
+
+#home::after {
+    content: '';
+    display: block;
+    height: 150px;
+  }
 
 
 span {

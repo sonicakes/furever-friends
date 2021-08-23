@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="small-container" style="">
+  <div id="home" class="small-container">
     <navbar></navbar>    
     <frontVideo/>
     <carousel/>
@@ -36,18 +36,38 @@
 
 <style scoped>
   #home {
-    padding-bottom:7.75rem;
     position: relative;
     background-color: #d9cdbf;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width:375px) {
   /* For mobile phones: */
-  #home {
-  object-fit: cover;
-  padding-bottom: 44px;
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 68px !important;
+    }
 }
+  @media only screen and (max-width:768px) {
+  /* For mobile phones: */
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 44px !important;
+    }
 }
+
+#home::after {
+    content: '';
+    display: block;
+    height: 150px;
+  }
 
 
 

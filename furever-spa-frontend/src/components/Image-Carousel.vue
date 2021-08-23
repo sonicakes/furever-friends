@@ -31,7 +31,7 @@ import PetAPI from '../PetAPI.js'
           "slidesToShow": 1,
           "slidesToScroll": 1,
           "speed": 500,
-          "autoplaySpeed": 100,
+          "autoplaySpeed": 500,
           "variableWidth": true
         }
       }

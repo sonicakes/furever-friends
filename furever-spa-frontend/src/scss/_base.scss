@@ -23,6 +23,36 @@ h1,h2,h3,h5,h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
+@media only screen and (max-width:375px) {
+  /* For mobile phones: */
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 68px !important;
+    }
+}
+  @media only screen and (max-width:768px) {
+  /* For mobile phones: */
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 44px !important;
+    }
+}
+
+#home::after {
+    content: '';
+    display: block;
+    height: 150px !important;
+  }
+
+
 // links ---------------
 a {
   color: var(--link-color);
@@ -69,7 +99,6 @@ a {
   padding-right: 1em;
   padding-bottom: 1em;
   padding-left: 1em;
-  min-height: 100vh !important;
   &.no-pad {
     padding: 0;
   }
