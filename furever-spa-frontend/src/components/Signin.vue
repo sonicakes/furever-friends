@@ -66,7 +66,7 @@ export default {
 }
 
 .login-signup{
-      background-color: #d9cdbf;
+      background-color: #ffffff;
 }
 
 .bg-image {

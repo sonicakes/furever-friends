@@ -63,7 +63,7 @@
       <div class="modal-body">
           <sl-form
                 v-on:sl-submit.prevent="addPetSubmitHandler"
-                id="form"
+                id="form" 
                 style="padding: none"
               >
                 <div class="input-group custom-input">
@@ -325,7 +325,7 @@ export default {
     }
   },
   methods: {
-    addPetSubmitHandler: function(event){
+        addPetSubmitHandler: function(event) {
             event.preventDefault()
             const submitBtn = document.querySelector('#button-3')
             submitBtn.setAttribute('loading', '')
@@ -336,6 +336,7 @@ export default {
                 submitBtn.removeAttribute('loading')
             })
         },
+
     openNav() {
       document.getElementById("mySidebar").classList += " active"
       document.getElementById("main").style.marginLeft = "20vw"
