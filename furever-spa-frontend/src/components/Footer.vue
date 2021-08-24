@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col" >
+            <div class="col">
                 <div class="row" style="margin: 10px; padding-top: 4%;">
                     <div class="col-1"></div>
                     <div class="col">

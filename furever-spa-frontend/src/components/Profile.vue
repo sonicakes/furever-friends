@@ -1,7 +1,7 @@
 <template>
   <div>
     <navbar />
-    <div class="page-content calign" style="background-color: #d9cdbf">
+    <div id="home" class="page-content calign" style="background-color: #d9cdbf">
       <div class="container emp-profile" style="position: relative;">
           <div class="row">
             <div class="button_cont" align="center"><a class="example_b" href="/edit">Edit Profile</a></div>
@@ -221,6 +221,39 @@ p {
 }
 
 
+ #home {
+    position: relative;
+    background-color: #d9cdbf;
+  }
+
+  @media only screen and (max-width:375px) {
+  /* For mobile phones: */
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 68px !important;
+    }
+}
+  @media only screen and (max-width:768px) {
+  /* For mobile phones: */
+    #home {
+    object-fit: cover;
+    }
+    #home::after {
+      content: '';
+      display: block;
+      height: 44px !important;
+    }
+}
+
+#home::after {
+    content: '';
+    display: block;
+    height: 150px;
+  }
 
 
 .profile-head .nav-tabs .nav-link.active {
