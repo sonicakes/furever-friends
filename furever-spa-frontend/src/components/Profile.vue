@@ -4,7 +4,7 @@
     <div id="home" class="page-content calign" style="background-color: #d9cdbf">
       <div class="container emp-profile" style="position: relative;">
           <div class="row">
-            <div class="button_cont" align="center"><a class="example_b" href="/edit">Edit Profile</a></div>
+            <div class="button_cont" align="center"><a style="z-index: 10000" class="example_b" href="/edit">Edit Profile</a></div>
             <div class="col-md-4">
               <div class="profile-img">
                 <img src="../assets/user.png" alt="" />
