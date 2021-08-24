@@ -253,7 +253,6 @@ export default {
     },
     methods: {
       consoleLog() {
-        console.log(document.getElementById('personality').value)
       },
 
       async updatePetSubmitHandler(e) {
@@ -270,7 +269,6 @@ export default {
               colour: this.questions.colour,
               bio: this.questions.bio,
             };
-            console.log(data)
             const submitBtn = document.querySelector('.submit-btn')
             submitBtn.setAttribute('loading', '')
             try {
@@ -334,7 +332,6 @@ export default {
           Router.gotoRoute('/matches');
         } else {
           this.pet = j;
-          console.log(j)
           this.loading = false;
         }
       })

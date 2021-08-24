@@ -1,7 +1,7 @@
 <template>
   <div style="overflow: hidden;">
     <video autoplay muted loop id="myVideo" style="">
-        <source src="..\assets\video.mp4" type="video/mp4" >
+        <source src="..\assets\Banner video.mp4" type="video/mp4" >
     </video>
     <h1 id="text">Find your pawfect match</h1>
   </div>

@@ -56,13 +56,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5>Add Pet</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button id="closeButton" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
           <sl-form
-                v-on:sl-submit.prevent="addPetSubmitHandler"
+                v-on:sl-submit.prevent="addPetSubmitHandler($event)"
                 id="form" 
                 style="padding: none"
               >
@@ -110,7 +110,7 @@
                     label="Breed"
                     name="breed"
                     type="text"
-                    placeholder="Ragdoll"
+                    placeholder="Please enter a breed"
                     required
                   ></sl-input>
                 </div>
@@ -148,7 +148,7 @@
                     label="Colour"
                     name="colour"
                     type="text"
-                    placeholder="Colour"
+                    placeholder="Please enter a colour"
                     required
                   ></sl-input>
                 </div>
@@ -199,11 +199,11 @@
                       >Needs Training</sl-menu-item
                     >
                     <sl-menu-item value="shy-timid">Shy or timid</sl-menu-item>
-                    <sl-menu-item value="independant">Independant</sl-menu-item>
+                    <sl-menu-item value="independent">Independent</sl-menu-item>
                     <sl-menu-item value="laidback">Laidback</sl-menu-item>
                     <sl-menu-item value="adaptable">Adaptable</sl-menu-item>
-                    <sl-menu-item value="energetic">Energitic</sl-menu-item>
-                    <sl-menu-item value="dependant">Dependant</sl-menu-item>
+                    <sl-menu-item value="energetic">Energetic</sl-menu-item>
+                    <sl-menu-item value="dependent">Dependent</sl-menu-item>
                     <sl-menu-item value="serious">Serious</sl-menu-item>
                     <sl-menu-item value="calm">Calm</sl-menu-item>
                   </sl-select>
@@ -214,7 +214,7 @@
                     label="Preferred Family"
                     name="preferredFamily"
                     type="text"
-                    placeholder="Small"
+                    placeholder="Please select a family type"
                     required
                   >
                     <sl-menu-item value="small">Small</sl-menu-item>
@@ -231,7 +231,7 @@
                     label="Preferred Living"
                     name="preferredLiving"
                     type="text"
-                    placeholder="Outdoor, Indoor, Backyard"
+                    placeholder="Please select preferred living"
                     required
                   >
                     <sl-menu-item value="outdoor">Outdoor</sl-menu-item>
@@ -254,8 +254,7 @@
                     label="Things to Avoid"
                     name="toAvoid"
                     type="text"
-                    placeholder="Kids, Stairs, Cats"
-                    required
+                    placeholder="Please enter things to avoid"
                   >
                     <sl-menu-item value="stairs">Stairs</sl-menu-item>
                     <sl-menu-item value="cats">Cats</sl-menu-item>
@@ -325,7 +324,7 @@ export default {
     }
   },
   methods: {
-        addPetSubmitHandler: function(event) {
+        addPetSubmitHandler(event) {
             event.preventDefault()
             const submitBtn = document.querySelector('#button-3')
             submitBtn.setAttribute('loading', '')
@@ -335,6 +334,7 @@ export default {
             Auth.addPet(formData, () => {
                 submitBtn.removeAttribute('loading')
             })
+            document.getElementById('closeButton').click();
         },
 
     openNav() {

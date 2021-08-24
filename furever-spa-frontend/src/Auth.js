@@ -73,20 +73,17 @@ class Auth {
     // sign in success
     const data = await response.json()
     Toast.show(`Welcome  ${data.user.firstName}`)
-    console.log(data)
     // save access token (jwt) to local storage
     localStorage.setItem('accessToken', data.accessToken)
     localStorage.setItem('user', JSON.stringify(data.user))
     // set current user
-    this.currentUser = data.user      
-    console.log(this.currentUser)           
+    this.currentUser = data.user     
     // redirect to home
     window.location.href = '/matches';
   }
 
 
   async check(success){
-    console.log(localStorage.getItem('user'))
     // check local token is there
     if(null === localStorage.getItem('accessToken')){
       // no local token!
@@ -131,7 +128,6 @@ class Auth {
     
     // token is valid!
     const data = await response.json()
-    // console.log(data)
     // set currentUser obj
     this.currentUser = data.user
     // run success

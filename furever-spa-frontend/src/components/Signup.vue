@@ -53,7 +53,7 @@ export default {
             submitBtn.setAttribute('loading', '')    
             const formData = event.detail.formData
             formData['accessLevel'] === 0
-            console.log(formData)
+    
     
             // sign up using Auth
             Auth.signUp(formData, () => {

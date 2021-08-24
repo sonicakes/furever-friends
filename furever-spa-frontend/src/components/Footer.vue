@@ -17,13 +17,13 @@
                 <div class="row" style="margin: 10px; padding-top: 4%;">
                     <div class="col-1"></div>
                     <div class="col">
-                        <i class="fab fa-facebook" style="color: white; font-size: 4vh;"></i>
+                        <a href="http://facebook.com/"><i class="fab fa-facebook" style="color: white; font-size: 4vh;"></i></a>
                     </div>
                     <div class="col">
-                       <i class="fab fa-twitter" style="color: white; font-size: 4vh;"></i> 
+                       <a href="http://facebook.com/"><i class="fab fa-twitter" style="color: white; font-size: 4vh;"></i></a>
                     </div>
                     <div class="col">
-                        <i class="fab fa-instagram" style="color: white; font-size: 4vh;"></i>
+                        <a href="http://instagram.com/"><i class="fab fa-instagram" style="color: white; font-size: 4vh;"></i></a>
                     </div>
                     <div class="col-1"></div>
                 </div>
