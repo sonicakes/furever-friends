@@ -1,7 +1,7 @@
 <template>
   <div>
     <navbar />
-    <div class="page-content calign" style="background-color: #d9cdbf">
+    <div id="home" class="page-content calign" style="background-color: #d9cdbf">
       <div class="container emp-profile">
         <sl-form>
           <div class="row">
