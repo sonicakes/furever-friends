@@ -62,7 +62,7 @@
       </div>
       <div class="modal-body">
           <sl-form
-                v-on:sl-submit.prevent="addPetSubmitHandler($event)"
+                v-on:sl-submit="addPetSubmitHandler"
                 id="form" 
                 style="padding: none"
               >
@@ -324,18 +324,18 @@ export default {
     }
   },
   methods: {
-        addPetSubmitHandler(event) {
-            event.preventDefault()
-            const submitBtn = document.querySelector('#button-3')
-            submitBtn.setAttribute('loading', '')
-            const formData = event.detail.formData
+    addPetSubmitHandler: function (event) {
+        event.preventDefault()
+        const submitBtn = document.querySelector('#button-3')
+        submitBtn.setAttribute('loading', '')
+        const formData = event.detail.formData
 
-            // addPet using Auth
-            Auth.addPet(formData, () => {
-                submitBtn.removeAttribute('loading')
-            })
-            document.getElementById('closeButton').click();
-        },
+        // addPet using Auth
+        Auth.addPet(formData, () => {
+            submitBtn.removeAttribute('loading')
+        })
+        document.getElementById('closeButton').click();
+    },
 
     openNav() {
       document.getElementById("mySidebar").classList += " active"

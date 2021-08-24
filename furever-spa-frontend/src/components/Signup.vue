@@ -52,7 +52,6 @@ export default {
             const submitBtn = document.querySelector('.submit-btn')
             submitBtn.setAttribute('loading', '')    
             const formData = event.detail.formData
-            formData['accessLevel'] === 0
     
     
             // sign up using Auth

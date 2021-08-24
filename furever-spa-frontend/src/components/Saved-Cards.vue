@@ -181,7 +181,7 @@ h2 > div {
 h2 {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
-    top: 0;
+    bottom: 40px;
     display: block;
     color: #ffffff;
     font-size: 2vh;
