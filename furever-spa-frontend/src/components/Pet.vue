@@ -163,7 +163,7 @@
                                 </div>
                             </b-tab>
                             <b-tab title="Guarantee">
-                              <img src="../assets/guarantee.png" style="width: 30vw;">
+                              <img src="../assets/guarantee.png" style="width: 50vh;">
                             </b-tab>
                         </b-tabs>
                     </div>

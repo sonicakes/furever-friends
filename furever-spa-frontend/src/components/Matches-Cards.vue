@@ -9,7 +9,7 @@
               <h3 style="font-size: 18px; text-align: center; padding-bottom: 20px;">Maybe try changing the filters</h3>
             </div>
             <div id="main" style="columns: 260px; column-gap: 20px; " min-height="100vh">
-              <div>
+              <div style="max-height: 100%;">
                 <div v-for="pet in filteredPets()"
                       :key="pet.petName" style="position: relative; margin: auto;">
                   <div class='grid-item' style="position: relative;" >
@@ -176,7 +176,7 @@ a {
 }
 
 #button-6 a {
-  top: 9px;
+  top: 30%;
   position: relative;
   transition: all .45s ease-Out;
 }
@@ -222,7 +222,7 @@ h2 > div {
 h2 {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
-    bottom: 40px;
+    bottom: 20%;
     display: block;
     color: #ffffff;
     font-size: 2vh;
@@ -234,9 +234,11 @@ h2 {
     transition: .4s ease-in-out;
 }
 .grid-item {
+    break-inside: avoid-column;
     overflow: hidden;
     padding-bottom: 5vw;
 }
+
 .grid-item:hover a img {
     -webkit-filter: grayscale(50%) blur(10px);
     filter: brightness(50%) blur(2px);
