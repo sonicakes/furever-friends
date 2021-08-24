@@ -22,6 +22,7 @@ import Pet from './components/Pet.vue'
 import error from './components/404.vue'
 import Saved from './components/Saved.vue'
 import {store} from './store'
+import add from './components/add-pet.vue'
 
 
 // define routes
@@ -37,7 +38,8 @@ const routes = {
 	'/profile': Profile,
 	'/settings': Settings,
 	'/pet': Pet,
-	'/saved': Saved
+	'/saved': Saved,
+	'/add': add
 }
 
 class Router {

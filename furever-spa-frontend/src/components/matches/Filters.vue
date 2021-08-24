@@ -41,7 +41,7 @@
 
       <button
         v-if="accessLevel === 1"
-         data-toggle="modal" data-target="#exampleModal"
+         onclick="window.location.href='/add';"
         class="openbtn"
         style="position: absolute; right: 30px"
       >
