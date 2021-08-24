@@ -179,7 +179,7 @@
                 </div>
               </div>
             </div>
-              <div class="button" id="button-2">
+              <div class="button" id="button-2" style="padding-right: 10px; padding-left: 10px;">
                 <div id="slide"></div>
                 <a v-on:click="submitForm">Save Changes</a>
               </div> 
